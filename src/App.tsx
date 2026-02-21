@@ -121,15 +121,6 @@ function UnderlivePanel({
 		);
 	}, [selected, dayTab]);
 
-	const centerLabel = useMemo(() => {
-		if (!selected?.centers?.length) return undefined;
-		const active = selected.centers.filter(
-			(c) => c.scope === "all" || c.scope === dayTab,
-		);
-		if (active.length === 0) return undefined;
-		return active[0].label ?? (active.length === 1 ? "C" : "WC");
-	}, [selected, dayTab]);
-
 	const sortedMembers = useMemo(() => {
 		if (!activeCenterIds.size) return activeMembers;
 		const centers = activeMembers.filter((m) => activeCenterIds.has(m.id));
@@ -183,18 +174,6 @@ function UnderlivePanel({
 							)}
 						</div>
 					</div>
-
-					{activeCenterIds.size > 0 && (
-						<div className="center-hero">
-							<span className="center-hero-label">👑 {centerLabel}</span>
-							<span className="center-hero-names">
-								{activeMembers
-									.filter((m) => activeCenterIds.has(m.id))
-									.map((m) => m.name)
-									.join(" / ")}
-							</span>
-						</div>
-					)}
 
 					{hasDayScoped && (
 						<div className="day-tabs">

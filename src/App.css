@@ -290,29 +290,6 @@ h1 {
 	color: #aaa;
 }
 
-/* センターヒーロー領域 */
-.center-hero {
-	background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
-	border: 1px solid #f0d060;
-	border-radius: 8px;
-	padding: 0.75rem 1rem;
-	margin-bottom: 1rem;
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-}
-
-.center-hero-label {
-	font-weight: 700;
-	color: #b8860b;
-	font-size: 1rem;
-}
-
-.center-hero-names {
-	color: #555;
-	font-size: 0.9rem;
-}
-
 /* センターカード強調 */
 .member-card--center {
 	border-color: #f0c030;
