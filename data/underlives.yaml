@@ -1,6 +1,16 @@
 # アンダーライブデータ
 # member_ids: data/members.yaml の id フィールドを使用
 # absent: 欠席メンバーの id と理由
+# centers: センターメンバー（省略可）
+#   id: member_ids に含まれる id
+#   scope: "all" | "day1" | "day2" | "day3"
+#   label: 表示ラベル（省略時: 1名→"センター", 複数→"Wセンター"）
+#
+# 例:
+#   centers:
+#      id: okamoto_hina
+#       scope: all
+#       label: "センター"
 
 - id: ul_41st_2026
   title: "41stSGアンダーライブ"
@@ -11,6 +21,10 @@
     - "2026-03-19"
   venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/page/underlive"
+  centers:
+    - id: okamoto_hina
+      scope: all
+      label: "センター"
   member_ids:
     - ito_riria
     - iwamoto_renka
@@ -42,6 +56,10 @@
     - "2025-12-21"
   venue: "日本武道館"
   source_url: "https://www.eventernote.com/events/449940"
+  centers:
+    - id:  ioki_mao
+      scope: all
+      label: "センター"
   member_ids:
     - ioki_mao
     - ito_riria
@@ -68,6 +86,10 @@
     - "2025-10-09"
   venue: "横浜BUNTAI"
   source_url: "https://www.eventernote.com/events/437007"
+  centers:
+    - id: kanagawa_saya
+      scope: all
+      label: "センター"
   member_ids:
     - ito_riria
     - iwamoto_renka
@@ -90,6 +112,10 @@
     - "2025-04-05"
   venue: "ぴあアリーナMM"
   source_url: "https://www.eventernote.com/events/421053"
+  centers:
+    - id:  shibata_yuna
+      scope: all
+      label: "センター"
   member_ids:
     - iwamoto_renka
     - okamoto_hina
@@ -113,6 +139,10 @@
     - "2025-01-30"
   venue: "幕張メッセ イベントホール"
   source_url: "https://www.eventernote.com/events/401362"
+  centers:
+    - id: tomisato_nao
+      scope: all
+      label: "センター"
   member_ids:
     - ito_riria
     - okamoto_hina
