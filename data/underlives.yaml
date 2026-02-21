@@ -14,29 +14,12 @@
   member_ids:
     - ito_riria
     - iwamoto_renka
-    - umezawa_minami
     - yoshida_ayano
-    - endo_sakura
-    - kaki_haruka
     - kanagawa_saya
     - kuromi_asuka
     - sato_rikka
     - shibata_yuzuna
-    - tamura_mayu
-    - tsutsui_ayame
-    - hayashi_runa
-    - yumiki_nao
-    - iogi_mao
-    - ikeda_terasa
-    - ichinose_miku
-    - inoue_nagi
     - okamoto_himena
-    - ogawa_aya
-    - okuda_iroha
-    - kawasaki_sakura
-    - sugawara_satsuki
-    - tomisato_nao
-    - nakanishi_aruno
     - atago_kokone
     - okoshi_hinano
     - otsu_reina
@@ -48,7 +31,8 @@
     - masuda_mario
     - morihira_reishin
     - yada_moeka
-  absent: []  # TODO: 欠席メンバーを追加
+  absent:
+    - okuda_iroha  
 
 - id: ul_40th_2025
   title: "40thSGアンダーライブ"
