@@ -373,7 +373,7 @@
   color2_name: 緑
   icon: /icons/sample.png
   active: false
-  call:
+  call: ももこ
 - id: kubo_shiori
   name: 久保 史緒里
   gen: 3期生
@@ -389,7 +389,7 @@
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-  call:
+  call: たまちゃん
 - id: sato_kaede
   name: 佐藤 楓
   gen: 3期生
@@ -397,7 +397,7 @@
   color2_name: 赤
   icon: /icons/sample.png
   active: false
-  call:
+  call: でんちゃん
 - id: nakamura_reno
   name: 中村 麗乃
   gen: 3期生
@@ -405,7 +405,7 @@
   color2_name: 白
   icon: /icons/sample.png
   active: false
-  call:
+  call: れのちゃん
 - id: mukai_hazuki
   name: 向井 葉月
   gen: 3期生
@@ -413,7 +413,7 @@
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-  call:
+  call: はづき
 - id: yamashita_mizuki
   name: 山下 美月
   gen: 3期生
@@ -421,7 +421,7 @@
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-  call:
+  call: みづき
 - id: yoshida_ayano
   name: 吉田 綾乃クリスティー
   gen: 3期生
@@ -461,7 +461,7 @@
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-  call:
+  call: さぁちゃん
 - id: kanagawa_saya
   name: 金川 紗耶
   gen: 4期生
@@ -477,15 +477,7 @@
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-  call: 
-- id: seimiyamiya_rei
-  name: 清宮 レイ
-  gen: 4期生
-  color1_name: オレンジ
-  color2_name: オレンジ
-  icon: /icons/sample.png
-  active: false
-  call:
+  call: ゆりちゃん
 - id: kuromi_harukaka
   name: 黒見 明香
   gen: 4期生
@@ -510,6 +502,14 @@
   icon: /icons/sample.png
   active: true
   call: ゆんちゃん
+- id: seimiyamiya_rei
+  name: 清宮 レイ
+  gen: 4期生
+  color1_name: オレンジ
+  color2_name: オレンジ
+  icon: /icons/sample.png
+  active: false
+  call: れいちゃん
 - id: tamura_mayu
   name: 田村 真佑
   gen: 4期生
@@ -533,7 +533,7 @@
   color2_name: 青
   icon: /icons/sample.png
   active: false
-  call:
+  call: せいら
 - id: hayashi_runa
   name: 林 瑠奈
   gen: 4期生
