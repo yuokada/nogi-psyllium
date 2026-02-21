@@ -216,3 +216,28 @@
     - yakubo_mio
     - yoshida_ayano
   absent: []
+
+- id: ul_33rd_2023
+  title: "33rdSGアンダーライブ"
+  year: 2023
+  dates:
+    - "2023-09-29"
+    - "2023-09-30"
+    - "2023-10-01"
+  venue: "横浜アリーナ"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/66711"
+  member_ids:
+    - ogawa_aya
+    - okuda_iroha
+    - kuromi_harukaka
+    - sakaguchi_tamami
+    - sato_kaede
+    - sato_rika
+    - seimiyamiya_rei
+    - tomisato_nao
+    - nakanishi_aruno
+    - matsuo_miyu
+    - mukai_hazuki
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
