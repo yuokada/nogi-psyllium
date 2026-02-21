@@ -36,17 +36,157 @@
 - id: ul_40th_2025
   title: "40thSGアンダーライブ"
   year: 2025
-  dates: []  # TODO: 実際の日程に修正
+  dates:
+    - "2025-12-19"
+    - "2025-12-20"
+    - "2025-12-21"
   venue: "日本武道館"
-  source_url: ""
-  member_ids: []  # TODO: 出演メンバーを追加
-  absent: []  # TODO: 欠席メンバーを追加
+  source_url: "https://www.eventernote.com/events/449940"
+  member_ids:
+    - ioki_mao
+    - ito_riria
+    - iwamoto_renka
+    - okuda_iroha
+    - kanagawa_saya
+    - kuromi_harukaka
+    - sato_rika
+    - shibata_yuna
+    - tamura_mayu
+    - tomisato_nao
+    - hayashi_runa
+    - matsuo_miyu
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
 
-- id: ul_39th_2024
+- id: ul_39th_2025
   title: "39thSGアンダーライブ"
+  year: 2025
+  dates:
+    - "2025-10-07"
+    - "2025-10-08"
+    - "2025-10-09"
+  venue: "横浜BUNTAI"
+  source_url: "https://www.eventernote.com/events/437007"
+  member_ids:
+    - ito_riria
+    - iwamoto_renka
+    - okuda_iroha
+    - kanagawa_saya
+    - kuromi_harukaka
+    - sato_rika
+    - shibata_yuna
+    - tamura_mayu
+    - hayashi_runa
+    - matsuo_miyu
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
+
+- id: ul_38th_2025
+  title: "38thSGアンダーライブ"
+  year: 2025
+  dates:
+    - "2025-04-05"
+  venue: "ぴあアリーナMM"
+  source_url: "https://www.eventernote.com/events/421053"
+  member_ids:
+    - iwamoto_renka
+    - okamoto_hina
+    - kuromi_harukaka
+    - sato_kaede
+    - sato_rika
+    - shibata_yuna
+    - matsuo_miyu
+    - yakubo_mio
+    - yoshida_ayano
+  absent:
+    - id: ito_riria
+      note: "スケジュールの都合により休演"
+
+- id: ul_37th_2025
+  title: "37thSGアンダーライブ"
+  year: 2025
+  dates:
+    - "2025-01-28"
+    - "2025-01-29"
+    - "2025-01-30"
+  venue: "幕張メッセ イベントホール"
+  source_url: "https://www.eventernote.com/events/401362"
+  member_ids:
+    - ito_riria
+    - okamoto_hina
+    - kuromi_harukaka
+    - sato_kaede
+    - sato_rika
+    - shibata_yuna
+    - sugawara_satsuki
+    - tomisato_nao
+    - nakamura_reno
+    - matsuo_miyu
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
+
+- id: ul_36th_2024
+  title: "36thSGアンダーライブ"
   year: 2024
-  dates: []  # TODO: 実際の日程に修正
-  venue: "TODO: 会場名"
-  source_url: ""
-  member_ids: []  # TODO: 出演メンバーを追加
-  absent: []  # TODO: 欠席メンバーを追加
+  dates:
+    - "2024-10-07"  # 福岡: Zepp Fukuoka
+    - "2024-10-08"  # 福岡: Zepp Fukuoka
+    - "2024-10-14"  # 愛知: Zepp Nagoya
+    - "2024-10-15"  # 愛知: Zepp Nagoya
+    - "2024-10-21"  # 大阪: Zepp Osaka Bayside
+    - "2024-10-22"  # 大阪: Zepp Osaka Bayside
+    - "2024-10-28"  # 北海道: Zepp Sapporo
+    - "2024-10-29"  # 北海道: Zepp Sapporo
+    - "2024-11-18"  # 神奈川: KT Zepp Yokohama
+    - "2024-11-19"  # 神奈川: KT Zepp Yokohama
+    - "2024-11-20"  # 神奈川: KT Zepp Yokohama
+  venue: "Zepp Fukuoka / Zepp Nagoya / Zepp Osaka Bayside / Zepp Sapporo / KT Zepp Yokohama"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/100560"
+  member_ids:
+    - ito_riria
+    - okamoto_hina
+    - okuda_iroha
+    - kuromi_harukaka
+    - sato_kaede
+    - sato_rika
+    - shibata_yuna
+    - nakamura_reno
+    - hayashi_runa
+    - matsuo_miyu
+    - mukai_hazuki
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
+  # 注: 中村麗乃・吉田綾乃クリスティーは神奈川公演のみ出演
+
+- id: ul_35th_2024
+  title: "35thSGアンダーライブ"
+  year: 2024
+  dates:
+    - "2024-06-07"
+    - "2024-06-08"
+    - "2024-06-09"
+  venue: "有明アリーナ"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/100304"
+  member_ids:
+    - okamoto_hina
+    - ogawa_aya
+    - okuda_iroha
+    - kanagawa_saya
+    - kuromi_harukaka
+    - sato_rika
+    - shibata_yuna
+    - sugawara_satsuki
+    - seimiyamiya_rei
+    - tsutsui_ayame
+    - tomisato_nao
+    - nakanishi_aruno
+    - hayashi_runa
+    - matsuo_miyu
+    - yakubo_mio
+  absent:
+    - id: okuda_iroha
+      note: "スケジュールの都合により6月8日・9日休演"
