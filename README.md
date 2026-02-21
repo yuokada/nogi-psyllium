@@ -31,8 +31,8 @@ npm run build
 ### CSVのフォーマット
 
 ```
-name,gen,color1_name,color2_name,icon
-伊藤 理々杏,3期生,紫,赤,/icons/sample.png
+name,gen,color1_name,color2_name,icon,active
+伊藤 理々杏,3期生,紫,赤,/icons/sample.png,true
 ```
 
 | カラム名 | 必須 | 説明 |
@@ -42,7 +42,9 @@ name,gen,color1_name,color2_name,icon
 | `color1_name` | 必須 | サイリウムカラー1（メインカラー） |
 | `color2_name` | 任意 | サイリウムカラー2（サブカラー） |
 | `icon` | 任意 | アイコン画像のパス |
-| `active` | 任意 | 在籍中なら `true`、卒業済みなら `false`（省略時は `undefined`） |
+| `active` | 任意 | 在籍中なら `true`、卒業済みなら `false`（省略時は非表示扱い） |
+
+> **注意**: デフォルト表示では `active: true` のメンバーのみ表示されます。画面上の「卒業メンバーを含む」チェックボックスをオンにすると全メンバーを表示できます。
 
 ### メンバーを追加・更新する手順
 
@@ -59,3 +61,18 @@ name,gen,color1_name,color2_name,icon
 npm run lint      # Biome によるコードチェック
 npm run preview   # ビルド成果物のプレビュー
 ```
+
+## pre-commit
+
+[pre-commit](https://pre-commit.com/) を使用してコミット前に自動チェックを実行します。
+
+```bash
+# pre-commit のインストール（初回のみ）
+pip install pre-commit
+pre-commit install
+```
+
+設定済みのフック:
+
+- **pre-commit-hooks**: ファイル末尾改行・trailing whitespace・マージ競合などの基本チェック
+- **biome-check**: フォーマット・import整理・lint・安全な自動修正
