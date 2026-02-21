@@ -1,0 +1,62 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+      - 'enhancement'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+  - title: '👋 Deprecated'
+    labels:
+      - 'deprecation'
+  - title: '🗄️ Data Updates'
+    labels:
+      - 'data'
+  - title: '⛓ Dependency Updates'
+    labels:
+      - 'library-update'
+      - 'test-library-update'
+      - 'dependencies'
+  - title: '🛠 Internal Updates'
+    labels:
+      - 'internal'
+      - 'kaizen'
+      - 'chore'
+  - title: '📚 Docs'
+    labels:
+      - 'doc'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+
+template: |
+  ## What's Changed
+  $CHANGES
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
+autolabeler:
+  - label: 'doc'
+    files:
+      - '*.md'
+  - label: 'data'
+    files:
+      - 'public/data/*.csv'
+  - label: 'dependencies'
+    files:
+      - 'package.json'
+      - 'package-lock.json'
+  - label: 'chore'
+    files:
+      - '.github/**'
+      - '.husky/**'
+      - '.pre-commit-config.yaml'
+  - label: 'feature'
+    title:
+      - '/add/i'
+      - '/implement/i'
+  - label: 'bug'
+    title:
+      - '/fix/i'
+  - label: 'deprecation'
+    title:
+      - '/deprecate/i'
