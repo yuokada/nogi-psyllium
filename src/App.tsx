@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { getPenlightHex, PENLIGHT_COLORS } from "./colors";
 import type { Member, Underlive } from "./types";
@@ -260,6 +260,19 @@ function App() {
 	const selectedUnderliveId = searchParams.get("id") ?? "";
 	const showAbsent = searchParams.get("absent") === "1";
 
+	// IME コンポジション対応: 入力中は URL を更新せずローカル state で管理する
+	const [inputValue, setInputValue] = useState(
+		() => searchParams.get("q") ?? "",
+	);
+	const composingRef = useRef(false);
+
+	// ブラウザ戻る/進むで URL が変化したとき inputValue を同期する
+	useEffect(() => {
+		if (!composingRef.current) {
+			setInputValue(search);
+		}
+	}, [search]);
+
 	useEffect(() => {
 		const jsonPath = `${import.meta.env.BASE_URL}data/members.json`;
 		fetch(jsonPath)
@@ -435,8 +448,20 @@ function App() {
 								type="text"
 								className="search-input"
 								placeholder="名前・期・色名で検索..."
-								value={search}
-								onChange={(e) => setSearch(e.target.value)}
+								value={inputValue}
+								onChange={(e) => {
+									setInputValue(e.target.value);
+									if (!composingRef.current) {
+										setSearch(e.target.value);
+									}
+								}}
+								onCompositionStart={() => {
+									composingRef.current = true;
+								}}
+								onCompositionEnd={(e) => {
+									composingRef.current = false;
+									setSearch(e.currentTarget.value);
+								}}
 							/>
 							<select
 								className="gen-select"
