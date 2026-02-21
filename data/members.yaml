@@ -1,556 +1,649 @@
-- name: 秋元 真夏
+- id: akimoto_manatsu
+  name: 秋元 真夏
   gen: 1期生
   color1_name: 赤
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 生田 絵梨花
+- id: ikuta_erika
+  name: 生田 絵梨花
   gen: 1期生
   color1_name: 黄
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-- name: 生駒 里奈
+- id: ikoma_rina
+  name: 生駒 里奈
   gen: 1期生
   color1_name: 水色
   color2_name: 青
   icon: /icons/sample.png
   active: false
-- name: 伊藤 寧々
+- id: ito_nene
+  name: 伊藤 寧々
   gen: 1期生
   color1_name: ピンク
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 伊藤 万理華
+- id: ito_marika
+  name: 伊藤 万理華
   gen: 1期生
   color1_name: 緑
   color2_name: 紫
   icon: /icons/sample.png
   active: false
-- name: 井上 小百合
+- id: inoue_sayuri
+  name: 井上 小百合
   gen: 1期生
   color1_name: 白
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 衛藤 美彩
+- id: eto_misa
+  name: 衛藤 美彩
   gen: 1期生
   color1_name: 赤
   color2_name: 赤
   icon: /icons/sample.png
   active: false
-- name: 川後 陽菜
+- id: kawago_hina
+  name: 川後 陽菜
   gen: 1期生
   color1_name: 赤
   color2_name: 赤
   icon: /icons/sample.png
   active: false
-- name: 川村 真洋
+- id: kawamura_mahiro
+  name: 川村 真洋
   gen: 1期生
   color1_name: 赤
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 齋藤 飛鳥
+- id: saito_asuka
+  name: 齋藤 飛鳥
   gen: 1期生
   color1_name: 水色
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 斎藤 ちはる
+- id: saito_chiharu
+  name: 斎藤 ちはる
   gen: 1期生
   color1_name: 青
   color2_name: 赤
   icon: /icons/sample.png
   active: false
-- name: 斉藤 優里
+- id: saito_yuri
+  name: 斉藤 優里
   gen: 1期生
   color1_name: ピンク
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 桜井 玲香
+- id: sakurai_reika
+  name: 桜井 玲香
   gen: 1期生
   color1_name: 赤
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 白石 麻衣
+- id: shiraishi_mai
+  name: 白石 麻衣
   gen: 1期生
   color1_name: 水色
   color2_name: 水色
   icon: /icons/sample.png
   active: false
-- name: 高山 一実
+- id: takayama_kazumi
+  name: 高山 一実
   gen: 1期生
   color1_name: 水色
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 中田 花奈
+- id: nakada_kana
+  name: 中田 花奈
   gen: 1期生
   color1_name: 黒
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 中元 日芽香
+- id: nakamoto_himeka
+  name: 中元 日芽香
   gen: 1期生
   color1_name: ピンク
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 永島 聖羅
+- id: nagashima_seira
+  name: 永島 聖羅
   gen: 1期生
   color1_name: 黄
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-- name: 西野 七瀬
+- id: nishino_nanase
+  name: 西野 七瀬
   gen: 1期生
   color1_name: 緑
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 能條 愛未
+- id: nojo_ami
+  name: 能條 愛未
   gen: 1期生
   color1_name: オレンジ
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 橋本 奈々未
+- id: hashimoto_nanami
+  name: 橋本 奈々未
   gen: 1期生
   color1_name: 緑
   color2_name: 緑
   icon: /icons/sample.png
   active: false
-- name: 畠中 清羅
+- id: hatanaka_seira
+  name: 畠中 清羅
   gen: 1期生
   color1_name: 青
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 樋口 日奈
+- id: higuchi_nina
+  name: 樋口 日奈
   gen: 1期生
   color1_name: 紫
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 深川 麻衣
+- id: fukagawa_mai
+  name: 深川 麻衣
   gen: 1期生
   color1_name: 緑
   color2_name: 紫
   icon: /icons/sample.png
   active: false
-- name: 星野 みなみ
+- id: hoshino_minami
+  name: 星野 みなみ
   gen: 1期生
   color1_name: 白
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 松村 沙友理
+- id: matsumura_sayuri
+  name: 松村 沙友理
   gen: 1期生
   color1_name: 赤
   color2_name: 赤
   icon: /icons/sample.png
   active: false
-- name: 大和 里奈
+- id: yamato_rina
+  name: 大和 里奈
   gen: 1期生
   color1_name: ピンク
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 若月 佑美
+- id: wakatsuki_yumi
+  name: 若月 佑美
   gen: 1期生
   color1_name: 青
   color2_name: 青
   icon: /icons/sample.png
   active: false
-- name: 和田 まあや
+- id: wada_maaya
+  name: 和田 まあや
   gen: 1期生
   color1_name: 黄
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 伊藤 かりん
+- id: ito_karin
+  name: 伊藤 かりん
   gen: 2期生
   color1_name: 緑
   color2_name: 紫
   icon: /icons/sample.png
   active: false
-- name: 伊藤 純奈
+- id: ito_junna
+  name: 伊藤 純奈
   gen: 2期生
   color1_name: 水色
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 柏 幸奈
+- id: kashiwa_yukina
+  name: 柏 幸奈
   gen: 2期生
   color1_name: ピンク
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 北野 日奈子
+- id: kitano_hinako
+  name: 北野 日奈子
   gen: 2期生
   color1_name: ピンク
   color2_name: 黄緑
   icon: /icons/sample.png
   active: false
-- name: 相楽 伊織
+- id: sagara_iori
+  name: 相楽 伊織
   gen: 2期生
   color1_name: 緑
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 佐々木 琴子
+- id: sasaki_kotoko
+  name: 佐々木 琴子
   gen: 2期生
   color1_name: 青
   color2_name: 緑
   icon: /icons/sample.png
   active: false
-- name: 新内 眞衣
+- id: shinuchi_mai
+  name: 新内 眞衣
   gen: 2期生
   color1_name: 青
   color2_name: 紫
   icon: /icons/sample.png
   active: false
-- name: 鈴木 絢音
+- id: suzuki_ayane
+  name: 鈴木 絢音
   gen: 2期生
   color1_name: 白
   color2_name: 紫
   icon: /icons/sample.png
   active: false
-- name: 寺田 蘭世
+- id: terada_ranze
+  name: 寺田 蘭世
   gen: 2期生
   color1_name: 赤
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 堀 未央奈
+- id: hori_miona
+  name: 堀 未央奈
   gen: 2期生
   color1_name: 白
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 矢田 里沙子
+- id: yada_risako
+  name: 矢田 里沙子
   gen: 2期生
   color1_name: ピンク
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 山崎 怜奈
+- id: yamazaki_reina
+  name: 山崎 怜奈
   gen: 2期生
   color1_name: 黄
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 米徳 京花
+- id: yonenori_kyoka
+  name: 米徳 京花
   gen: 2期生
   color1_name: 水色
   color2_name: 青
   icon: /icons/sample.png
   active: false
-- name: 渡辺 みり愛
+- id: watanabe_miria
+  name: 渡辺 みり愛
   gen: 2期生
   color1_name: 黄
   color2_name: 黄緑
   icon: /icons/sample.png
   active: false
-- name: 伊藤 理々杏
+- id: ito_riria
+  name: 伊藤 理々杏
   gen: 3期生
   color1_name: 紫
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-- name: 岩本 蓮加
+- id: iwamoto_renka
+  name: 岩本 蓮加
   gen: 3期生
   color1_name: ピンク
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-- name: 梅澤 美波
+- id: umezawa_minami
+  name: 梅澤 美波
   gen: 3期生
   color1_name: 青
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 大園 桃子
+- id: ozono_momoko
+  name: 大園 桃子
   gen: 3期生
   color1_name: ピンク
   color2_name: 緑
   icon: /icons/sample.png
   active: false
-- name: 久保 史緒里
+- id: kubo_shiori
+  name: 久保 史緒里
   gen: 3期生
   color1_name: 水色
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-- name: 阪口 珠美
+- id: sakaguchi_tamami
+  name: 阪口 珠美
   gen: 3期生
   color1_name: 紫
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-- name: 佐藤 楓
+- id: sato_kaede
+  name: 佐藤 楓
   gen: 3期生
   color1_name: 赤
   color2_name: 赤
   icon: /icons/sample.png
   active: false
-- name: 中村 麗乃
+- id: nakamura_reno
+  name: 中村 麗乃
   gen: 3期生
   color1_name: 青
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 向井 葉月
+- id: mukai_hazuki
+  name: 向井 葉月
   gen: 3期生
   color1_name: 黄
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-- name: 山下 美月
+- id: yamashita_mizuki
+  name: 山下 美月
   gen: 3期生
   color1_name: 青
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-- name: 吉田 綾乃クリスティー
+- id: yoshida_ayano
+  name: 吉田 綾乃クリスティー
   gen: 3期生
   color1_name: 紫
   color2_name: ピンク
   icon: /icons/sample.png
   active: true
-- name: 与田 祐希
+- id: yoda_yuki
+  name: 与田 祐希
   gen: 3期生
   color1_name: 赤
   color2_name: 緑
   icon: /icons/sample.png
   active: false
-- name: 遠藤 さくら
+- id: endo_sakura
+  name: 遠藤 さくら
   gen: 4期生
   color1_name: 白
   color2_name: ピンク
   icon: /icons/sample.png
   active: true
-- name: 賀喜 遥香
+- id: kaki_haruka
+  name: 賀喜 遥香
   gen: 4期生
   color1_name: オレンジ
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-- name: 掛橋 沙耶香
+- id: kakehashi_sayaka
+  name: 掛橋 沙耶香
   gen: 4期生
   color1_name: ピンク
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 金川 紗耶
+- id: kanagawa_saya
+  name: 金川 紗耶
   gen: 4期生
   color1_name: 赤
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 北川 悠理
+- id: kitagawa_yuri
+  name: 北川 悠理
   gen: 4期生
   color1_name: 水色
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 清宮 レイ
+- id: kiyomiya_rei
+  name: 清宮 レイ
   gen: 4期生
   color1_name: オレンジ
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- name: 黒見 明香
+- id: kuromi_asuka
+  name: 黒見 明香
   gen: 4期生
   color1_name: 紫
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-- name: 佐藤 璃果
+- id: sato_rikka
+  name: 佐藤 璃果
   gen: 4期生
   color1_name: ピンク
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: true
-- name: 柴田 柚菜
+- id: shibata_yuzuna
+  name: 柴田 柚菜
   gen: 4期生
   color1_name: 青
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-- name: 田村 真佑
+- id: tamura_mayu
+  name: 田村 真佑
   gen: 4期生
   color1_name: 紫
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 筒井 あやめ
+- id: tsutsui_ayame
+  name: 筒井 あやめ
   gen: 4期生
   color1_name: 紫
   color2_name: 紫
   icon: /icons/sample.png
   active: true
-- name: 早川 聖来
+- id: hayakawa_seira
+  name: 早川 聖来
   gen: 4期生
   color1_name: 青
   color2_name: 青
   icon: /icons/sample.png
   active: false
-- name: 林 瑠奈
+- id: hayashi_runa
+  name: 林 瑠奈
   gen: 4期生
   color1_name: ピンク
   color2_name: ピンク
   icon: /icons/sample.png
   active: true
-- name: 松尾 美佑
+- id: matsuo_miyu
+  name: 松尾 美佑
   gen: 4期生
   color1_name: ターコイズ
   color2_name: 白
   icon: /icons/sample.png
   active: false
-- name: 矢久保 美緒
+- id: yakubo_mio
+  name: 矢久保 美緒
   gen: 4期生
   color1_name: 黄
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- name: 弓木 奈於
+- id: yumiki_nao
+  name: 弓木 奈於
   gen: 4期生
   color1_name: 赤
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-- name: 五百城 茉央
+- id: iogi_mao
+  name: 五百城 茉央
   gen: 5期生
   color1_name: ターコイズ
   color2_name: 青
   icon: /icons/sample.png
   active: true
-- name: 池田 瑛紗
+- id: ikeda_terasa
+  name: 池田 瑛紗
   gen: 5期生
   color1_name: 白
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-- name: 一ノ瀬 美空
+- id: ichinose_miku
+  name: 一ノ瀬 美空
   gen: 5期生
   color1_name: 水色
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 井上 和
+- id: inoue_nagi
+  name: 井上 和
   gen: 5期生
   color1_name: 白
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-- name: 岡本 姫奈
+- id: okamoto_himena
+  name: 岡本 姫奈
   gen: 5期生
   color1_name: 紫
   color2_name: 青
   icon: /icons/sample.png
   active: true
-- name: 小川 彩
+- id: ogawa_aya
+  name: 小川 彩
   gen: 5期生
   color1_name: 白
   color2_name: 白
   icon: /icons/sample.png
   active: true
-- name: 奥田 いろは
+- id: okuda_iroha
+  name: 奥田 いろは
   gen: 5期生
   color1_name: ピンク
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-- name: 川﨑 桜
+- id: kawasaki_sakura
+  name: 川﨑 桜
   gen: 5期生
   color1_name: ピンク
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-- name: 菅原 咲月
+- id: sugawara_satsuki
+  name: 菅原 咲月
   gen: 5期生
   color1_name: ピンク
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 冨里 奈央
+- id: tomisato_nao
+  name: 冨里 奈央
   gen: 5期生
   color1_name: ターコイズ
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: true
-- name: 中西 アルノ
+- id: nakanishi_aruno
+  name: 中西 アルノ
   gen: 5期生
   color1_name: ターコイズ
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 愛宕 心響
+- id: atago_kokone
+  name: 愛宕 心響
   gen: 6期生
   color1_name: ピンク
   color2_name: 青
   icon: /icons/sample.png
   active: true
-- name: 大越 ひなの
+- id: okoshi_hinano
+  name: 大越 ひなの
   gen: 6期生
   color1_name: 白
   color2_name: 黄
   icon: /icons/sample.png
   active: true
-- name: 小津 玲奈
+- id: otsu_reina
+  name: 小津 玲奈
   gen: 6期生
   color1_name: 紫
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: true
-- name: 海邉 朱莉
+- id: kaibe_shuri
+  name: 海邉 朱莉
   gen: 6期生
   color1_name: 青
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-- name: 川端 晃菜
+- id: kawabata_akina
+  name: 川端 晃菜
   gen: 6期生
   color1_name: 緑
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 鈴木 佑捺
+- id: suzuki_yuna
+  name: 鈴木 佑捺
   gen: 6期生
   color1_name: 白
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- name: 瀬戸口 心月
+- id: setoguchi_kozuki
+  name: 瀬戸口 心月
   gen: 6期生
   color1_name: 青
   color2_name: 黄
   icon: /icons/sample.png
   active: true
-- name: 長嶋 凛桜
+- id: nagashima_rino
+  name: 長嶋 凛桜
   gen: 6期生
   color1_name: ピンク
   color2_name: オレンジ
   icon: /icons/sample.png
   active: true
-- name: 増田 三莉音
+- id: masuda_mario
+  name: 増田 三莉音
   gen: 6期生
   color1_name: 青
   color2_name: 青
   icon: /icons/sample.png
   active: true
-- name: 森平 麗心
+- id: morihira_reishin
+  name: 森平 麗心
   gen: 6期生
   color1_name: 黄
   color2_name: 黄
   icon: /icons/sample.png
   active: true
-- name: 矢田 萌華
+- id: yada_moeka
+  name: 矢田 萌華
   gen: 6期生
   color1_name: 白
   color2_name: 紫
