@@ -137,6 +137,62 @@ h1 {
 	color: #d32f2f;
 }
 
+.app-footer {
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid #ddd;
+	text-align: center;
+}
+
+.footer-title {
+	font-size: 0.85rem;
+	color: #666;
+	margin-bottom: 0.25rem;
+}
+
+.footer-ref {
+	font-size: 0.75rem;
+	color: #999;
+	margin-bottom: 0.5rem;
+}
+
+.footer-ref a {
+	color: #888;
+	text-decoration: underline;
+}
+
+.color-cycle {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.cycle-item {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.cycle-swatch {
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	flex-shrink: 0;
+}
+
+.cycle-name {
+	font-size: 0.8rem;
+	color: #555;
+}
+
+.cycle-arrow {
+	font-size: 0.75rem;
+	color: #aaa;
+}
+
 @media (max-width: 900px) {
 	.card-grid {
 		grid-template-columns: repeat(3, 1fr);

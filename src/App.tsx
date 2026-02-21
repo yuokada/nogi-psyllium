@@ -1,9 +1,23 @@
 import Papa from "papaparse";
 import { useEffect, useMemo, useState } from "react";
-import { getPenlightHex } from "./colors";
+import { getPenlightHex, PENLIGHT_COLORS } from "./colors";
 import type { Member } from "./types";
 import { getTextColor, isValidHex } from "./utils";
 import "./App.css";
+
+const COLOR_CYCLE = [
+	"白",
+	"オレンジ",
+	"青",
+	"黄",
+	"紫",
+	"緑",
+	"ピンク",
+	"赤",
+	"水色",
+	"黄緑",
+	"ターコイズ",
+];
 
 function MemberCard({ member }: { member: Member }) {
 	const hex1 = getPenlightHex(member.color1_name) ?? "#cccccc";
@@ -139,6 +153,33 @@ function App() {
 					<MemberCard key={`${member.name}-${i}`} member={member} />
 				))}
 			</div>
+			<footer className="app-footer">
+				<p className="footer-title">ペンライト 色変更順</p>
+				<p className="footer-ref">
+					色順参考：
+					<a
+						href="https://www.nogizaka46shop.com/category/60"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						乃木坂46公式ショップ ペンライトカテゴリ
+					</a>
+				</p>
+				<div className="color-cycle">
+					{COLOR_CYCLE.map((name, i) => (
+						<div key={name} className="cycle-item">
+							<div
+								className="cycle-swatch"
+								style={{ backgroundColor: PENLIGHT_COLORS[name] }}
+							/>
+							<span className="cycle-name">{name}</span>
+							{i < COLOR_CYCLE.length - 1 && (
+								<span className="cycle-arrow">→</span>
+							)}
+						</div>
+					))}
+				</div>
+			</footer>
 		</div>
 	);
 }
