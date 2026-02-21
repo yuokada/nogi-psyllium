@@ -4,20 +4,20 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
+		"predev": "yq -o=json data/members.yaml > public/data/members.json",
 		"dev": "vite",
+		"prebuild": "yq -o=json data/members.yaml > public/data/members.json",
 		"build": "tsc -b && vite build",
 		"lint": "biome check .",
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"papaparse": "^5.5.3",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.4",
 		"@types/node": "^25.2.3",
-		"@types/papaparse": "^5.5.2",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^5.1.1",

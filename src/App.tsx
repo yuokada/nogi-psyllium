@@ -1,4 +1,3 @@
-import Papa from "papaparse";
 import { useEffect, useMemo, useState } from "react";
 import { getPenlightHex, PENLIGHT_COLORS } from "./colors";
 import type { Member } from "./types";
@@ -68,19 +67,14 @@ function App() {
 	const [showAll, setShowAll] = useState(false);
 
 	useEffect(() => {
-		const csvPath = `${import.meta.env.BASE_URL}data/members.csv`;
-		fetch(csvPath)
+		const jsonPath = `${import.meta.env.BASE_URL}data/members.json`;
+		fetch(jsonPath)
 			.then((res) => {
-				if (!res.ok) throw new Error(`CSV読み込みエラー: ${res.status}`);
-				return res.text();
+				if (!res.ok) throw new Error(`データ読み込みエラー: ${res.status}`);
+				return res.json() as Promise<Member[]>;
 			})
-			.then((text) => {
-				const result = Papa.parse<Member>(text, {
-					header: true,
-					skipEmptyLines: true,
-					dynamicTyping: true,
-				});
-				setMembers(result.data);
+			.then((data) => {
+				setMembers(data);
 				setLoading(false);
 			})
 			.catch((err) => {
