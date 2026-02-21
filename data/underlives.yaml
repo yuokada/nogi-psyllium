@@ -9,8 +9,7 @@
 # 例:
 #   centers:
 #      id: okamoto_hina
-#       scope: all
-#       label: "C"
+#        scope: all
 
 - id: ul_41st_2026
   title: "41stSGアンダーライブ"
@@ -56,7 +55,7 @@
   venue: "日本武道館"
   source_url: "https://www.eventernote.com/events/449940"
   centers:
-    - id:  ioki_mao
+    - id: ioki_mao
       scope: all
   member_ids:
     - ioki_mao
@@ -110,7 +109,7 @@
   venue: "ぴあアリーナMM"
   source_url: "https://www.eventernote.com/events/421053"
   centers:
-    - id:  shibata_yuna
+    - id: shibata_yuna
       scope: all
   member_ids:
     - iwamoto_renka
