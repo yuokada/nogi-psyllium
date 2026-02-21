@@ -133,9 +133,14 @@ h1 {
 	border-top: 1px solid #eee;
 }
 
-.absent-title {
-	font-size: 1rem;
+.absent-toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 0.95rem;
 	color: #666;
+	cursor: pointer;
+	user-select: none;
 	margin-bottom: 0.5rem;
 }
 

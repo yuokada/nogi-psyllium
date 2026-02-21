@@ -106,6 +106,8 @@ function UnderlivePanel({
 	selectedId: string;
 	onSelectId: (id: string) => void;
 }) {
+	const [showAbsent, setShowAbsent] = useState(false);
+
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
 		[underlives, selectedId],
@@ -210,15 +212,24 @@ function UnderlivePanel({
 
 					{absentMembers.length > 0 && (
 						<div className="absent-section">
-							<h3 className="absent-title">欠席メンバー</h3>
-							<ul className="absent-list">
-								{absentMembers.map(({ member, note }) => (
-									<li key={member.id} className="absent-item">
-										<span className="absent-name">{member.name}</span>
-										{note && <span className="absent-note"> — {note}</span>}
-									</li>
-								))}
-							</ul>
+							<label className="absent-toggle">
+								<input
+									type="checkbox"
+									checked={showAbsent}
+									onChange={(e) => setShowAbsent(e.target.checked)}
+								/>
+								欠席メンバーを表示（{absentMembers.length}名）
+							</label>
+							{showAbsent && (
+								<ul className="absent-list">
+									{absentMembers.map(({ member, note }) => (
+										<li key={member.id} className="absent-item">
+											<span className="absent-name">{member.name}</span>
+											{note && <span className="absent-note"> — {note}</span>}
+										</li>
+									))}
+								</ul>
+							)}
 						</div>
 					)}
 				</>
