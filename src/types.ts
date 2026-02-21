@@ -13,11 +13,8 @@ export interface AbsentMember {
 	note?: string;
 }
 
-export type CenterScope = "all" | `day${number}`;
-
 export interface Center {
 	id: string;
-	scope: CenterScope;
 	label?: string;
 }
 

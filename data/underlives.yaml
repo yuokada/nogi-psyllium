@@ -3,13 +3,11 @@
 # absent: 欠席メンバーの id と理由
 # centers: センターメンバー（省略可）
 #   id: member_ids に含まれる id
-#   scope: "all" | "day1" | "day2" | "day3"
 #   label: 表示ラベル（省略時: 1名→"C", 複数→"WC"）
 #
 # 例:
 #   centers:
 #      id: okamoto_hina
-#        scope: all
 
 - id: ul_41st_2026
   title: "41stSGアンダーライブ"
@@ -22,7 +20,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/page/underlive"
   centers:
     - id: okamoto_hina
-      scope: all
   member_ids:
     - ito_riria
     - iwamoto_renka
@@ -56,7 +53,6 @@
   source_url: "https://www.eventernote.com/events/449940"
   centers:
     - id: ioki_mao
-      scope: all
   member_ids:
     - ioki_mao
     - ito_riria
@@ -85,7 +81,6 @@
   source_url: "https://www.eventernote.com/events/437007"
   centers:
     - id: kanagawa_saya
-      scope: all
   member_ids:
     - ito_riria
     - iwamoto_renka
@@ -110,7 +105,6 @@
   source_url: "https://www.eventernote.com/events/421053"
   centers:
     - id: shibata_yuna
-      scope: all
   member_ids:
     - iwamoto_renka
     - okamoto_hina
@@ -136,7 +130,6 @@
   source_url: "https://www.eventernote.com/events/401362"
   centers:
     - id: tomisato_nao
-      scope: all
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -171,7 +164,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/100560"
   centers:
     - id: okuda_iroha
-      scope: all
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -200,7 +192,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/100304"
   centers:
     - id: tsutsui_ayame
-      scope: all
   member_ids:
     - okamoto_hina
     - ogawa_aya
@@ -232,7 +223,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66904"
   centers:
     - id: nakanishi_aruno
-      scope: all
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -261,7 +251,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66711"
   centers:
     - id: matsuo_miyu
-      scope: all
   member_ids:
     - ogawa_aya
     - okuda_iroha
@@ -294,9 +283,7 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66268"
   centers:
     - id: ito_riria
-      scope: all
     - id: hayashi_runa
-      scope: all
   member_ids:
     - ikeda_teresa
     - ito_riria
@@ -335,7 +322,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65967"
   centers:
     - id: nakamura_reno
-      scope: all
   member_ids:
     - ito_riria
     - kitagawa_yuri
@@ -363,7 +349,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65811"
   centers:
     - id: wada_maaya
-      scope: all
   member_ids:
     - ito_riria
     - kitagawa_yuri
@@ -392,7 +377,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65310"
   centers:
     - id: sato_kaede
-      scope: all
   member_ids:
     - ito_riria
     - kanagawa_saya
@@ -423,7 +407,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/63880"
   centers:
     - id: terada_ranze
-      scope: all
   member_ids:
     - ito_riria
     - kanagawa_saya
@@ -455,7 +438,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/61398"
   centers:
     - id: yamazaki_reina
-      scope: all
   member_ids:
     - ito_junna
     - ito_riria
@@ -483,7 +465,6 @@
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/58998"
   centers:
     - id: sakaguchi_tamami
-      scope: all
   member_ids:
     - ito_junna
     - ito_riria

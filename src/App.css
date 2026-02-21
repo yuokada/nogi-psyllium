@@ -308,29 +308,6 @@ h1 {
 	flex-shrink: 0;
 }
 
-/* 日別タブ */
-.day-tabs {
-	display: flex;
-	gap: 0.5rem;
-	margin-bottom: 0.75rem;
-}
-
-.day-tab {
-	padding: 0.3rem 0.8rem;
-	font-size: 0.85rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	background: #fff;
-	cursor: pointer;
-	color: #666;
-}
-
-.day-tab.active {
-	border-color: #333;
-	background: #333;
-	color: #fff;
-}
-
 @media (max-width: 900px) {
 	.card-grid {
 		grid-template-columns: repeat(3, 1fr);

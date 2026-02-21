@@ -4,8 +4,6 @@ import type { Member, Underlive } from "./types";
 import { getTextColor, isValidHex } from "./utils";
 import "./App.css";
 
-const DAY_TABS = ["all", "day1", "day2", "day3"] as const;
-
 const COLOR_CYCLE = [
 	"白",
 	"オレンジ",
@@ -77,8 +75,6 @@ function UnderlivePanel({
 	members: Member[];
 }) {
 	const [selectedId, setSelectedId] = useState(underlives[0]?.id ?? "");
-	const [dayTab, setDayTab] = useState<string>("all");
-
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
 		[underlives, selectedId],
@@ -109,17 +105,10 @@ function UnderlivePanel({
 		return result;
 	}, [selected, memberMap]);
 
-	const hasDayScoped =
-		selected?.centers?.some((c) => c.scope !== "all") ?? false;
-
 	const activeCenterIds = useMemo(() => {
 		if (!selected?.centers) return new Set<string>();
-		return new Set(
-			selected.centers
-				.filter((c) => c.scope === "all" || c.scope === dayTab)
-				.map((c) => c.id),
-		);
-	}, [selected, dayTab]);
+		return new Set(selected.centers.map((c) => c.id));
+	}, [selected]);
 
 	const sortedMembers = useMemo(() => {
 		if (!activeCenterIds.size) return activeMembers;
@@ -174,21 +163,6 @@ function UnderlivePanel({
 							)}
 						</div>
 					</div>
-
-					{hasDayScoped && (
-						<div className="day-tabs">
-							{DAY_TABS.map((d) => (
-								<button
-									key={d}
-									type="button"
-									className={dayTab === d ? "day-tab active" : "day-tab"}
-									onClick={() => setDayTab(d)}
-								>
-									{d === "all" ? "ALL" : d.toUpperCase()}
-								</button>
-							))}
-						</div>
-					)}
 
 					<div className="member-count">
 						出演メンバー {sortedMembers.length}名
