@@ -392,3 +392,29 @@
   absent:
     - id: kuromi_harukaka
       note: "学業のため休演"
+
+- id: ul_26th_2020
+  title: "26thSGアンダーライブ"
+  year: 2020
+  dates:
+    - "2020-12-18"
+    - "2020-12-19"
+    - "2020-12-20"
+  venue: "配信のみ（オンライン開催）"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/58998"
+  member_ids:
+    - ito_junna
+    - ito_riria
+    - kitano_hinako
+    - sakaguchi_tamami
+    - sato_kaede
+    - suzuki_ayane
+    - terada_ranze
+    - nakamura_reno
+    - higuchi_hina
+    - mukai_hazuki
+    - yamazaki_reina
+    - yoshida_ayano
+    - watanabe_miria
+    - wada_maaya
+  absent: []
