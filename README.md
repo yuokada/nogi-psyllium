@@ -50,8 +50,8 @@ npm run build
 | `id` | 必須 | 一意の識別子（スネークケース） |
 | `name` | 必須 | メンバー名 |
 | `gen` | 任意 | 期（例: `3期生`） |
-| `color1_name` | 必須 | サイリウムカラー1（メインカラー） |
-| `color2_name` | 任意 | サイリウムカラー2（サブカラー） |
+| `color1_name` | 必須 | サイリウムカラー1 |
+| `color2_name` | 必須 | サイリウムカラー2 |
 | `icon` | 任意 | アイコン画像のパス |
 | `active` | 任意 | 在籍中なら `true`、卒業済みなら `false`（省略時は非表示扱い） |
 
@@ -76,8 +76,8 @@ npm run build
     - ito_riria
     - okamoto_hina
   absent:
-    - id: sato_rika
-      note: 体調不良
+    - id: okuda_iroha
+      note: "スケジュールの都合により休演"
 ```
 
 | フィールド | 必須 | 説明 |
