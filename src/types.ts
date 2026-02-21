@@ -13,6 +13,14 @@ export interface AbsentMember {
 	note?: string;
 }
 
+export type CenterScope = "all" | `day${number}`;
+
+export interface Center {
+	id: string;
+	scope: CenterScope;
+	label?: string;
+}
+
 export interface Underlive {
 	id: string;
 	title: string;
@@ -22,4 +30,5 @@ export interface Underlive {
 	source_url?: string;
 	member_ids: string[];
 	absent?: AbsentMember[];
+	centers?: Center[];
 }
