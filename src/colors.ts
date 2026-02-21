@@ -10,6 +10,7 @@ export const PENLIGHT_COLORS: Record<string, string> = {
 	水色: "#87CEEB",
 	黄緑: "#ADFF2F",
 	ターコイズ: "#40E0D0",
+	黒: "#000000",
 };
 
 export function getPenlightHex(colorName: string): string | undefined {
