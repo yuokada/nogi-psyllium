@@ -190,3 +190,29 @@
   absent:
     - id: okuda_iroha
       note: "スケジュールの都合により6月8日・9日休演"
+
+- id: ul_34th_2024
+  title: "34thSGアンダーライブ"
+  year: 2024
+  dates:
+    - "2024-01-25"
+    - "2024-01-26"
+    - "2024-01-27"
+  venue: "ぴあアリーナMM"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/66904"
+  member_ids:
+    - ito_riria
+    - okamoto_hina
+    - ogawa_aya
+    - okuda_iroha
+    - sakaguchi_tamami
+    - sato_kaede
+    - sato_rika
+    - seimiyamiya_rei
+    - nakanishi_aruno
+    - nakamura_reno
+    - hayashi_runa
+    - matsuo_miyu
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
