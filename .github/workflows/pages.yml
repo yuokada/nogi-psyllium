@@ -25,6 +25,10 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.52.4/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-pages-artifact@v4
