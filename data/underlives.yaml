@@ -9,7 +9,7 @@
     - "2026-03-17"
     - "2026-03-18"
     - "2026-03-19"
-  venue: "TODO: 会場名"
+  venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/page/underlive"
   member_ids:
     - ito_riria
@@ -22,7 +22,6 @@
     - okamoto_hina
     - atago_kokone
     - okoshi_hinano
-    - ozu_reina
     - kaibe_akari
     - kawabata_hina
     - suzuki_yuna
@@ -32,13 +31,13 @@
     - morihira_urumi
     - yada_moeka
   absent:
-    - okuda_iroha
+    - id: okuda_iroha
 
 - id: ul_40th_2025
   title: "40thSGアンダーライブ"
   year: 2025
   dates: []  # TODO: 実際の日程に修正
-  venue: "TODO: 会場名"
+  venue: "日本武道館"
   source_url: ""
   member_ids: []  # TODO: 出演メンバーを追加
   absent: []  # TODO: 欠席メンバーを追加
