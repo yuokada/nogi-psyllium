@@ -453,16 +453,6 @@ function App() {
 
 				<footer className="app-footer">
 					<p className="footer-title">ペンライト 色変更順</p>
-					<p className="footer-ref">
-						色順参考：
-						<a
-							href="https://www.nogizaka46shop.com/category/60"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							乃木坂46公式ショップ ペンライトカテゴリ
-						</a>
-					</p>
 					<div className="color-cycle">
 						{COLOR_CYCLE.map((name, i) => (
 							<div key={name} className="cycle-item">
@@ -477,6 +467,16 @@ function App() {
 							</div>
 						))}
 					</div>
+					<p className="footer-ref">
+						色順参考：
+						<a
+							href="https://www.nogizaka46shop.com/category/60"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							乃木坂46公式ショップ
+						</a>
+					</p>
 				</footer>
 			</div>
 		</>
