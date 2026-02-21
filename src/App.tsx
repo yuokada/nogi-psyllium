@@ -4,6 +4,8 @@ import type { Member, Underlive } from "./types";
 import { getTextColor, isValidHex } from "./utils";
 import "./App.css";
 
+const DAY_TABS = ["all", "day1", "day2", "day3"] as const;
+
 const COLOR_CYCLE = [
 	"白",
 	"オレンジ",
@@ -18,7 +20,15 @@ const COLOR_CYCLE = [
 	"ターコイズ",
 ];
 
-function MemberCard({ member }: { member: Member }) {
+function MemberCard({
+	member,
+	isCenter = false,
+	centerLabel,
+}: {
+	member: Member;
+	isCenter?: boolean;
+	centerLabel?: string;
+}) {
 	const hex1 = getPenlightHex(member.color1_name) ?? "#cccccc";
 	const hex2 = member.color2_name
 		? getPenlightHex(member.color2_name)
@@ -27,10 +37,15 @@ function MemberCard({ member }: { member: Member }) {
 	const color2Valid = hex2 ? isValidHex(hex2) : false;
 
 	return (
-		<div className="member-card">
+		<div
+			className={isCenter ? "member-card member-card--center" : "member-card"}
+		>
 			<div className="member-header">
 				<span className="member-name">{member.name}</span>
 				{member.gen && <span className="member-gen">{member.gen}</span>}
+				{isCenter && (
+					<span className="center-badge">👑 {centerLabel ?? "センター"}</span>
+				)}
 			</div>
 			<div className="color-boxes">
 				<div
@@ -66,6 +81,8 @@ function UnderlivePanel({
 	members: Member[];
 }) {
 	const [selectedId, setSelectedId] = useState(underlives[0]?.id ?? "");
+	const [dayTab, setDayTab] = useState<string>("all");
+	const [centerOnly, setCenterOnly] = useState(false);
 
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
@@ -96,6 +113,38 @@ function UnderlivePanel({
 		}
 		return result;
 	}, [selected, memberMap]);
+
+	const hasDayScoped =
+		selected?.centers?.some((c) => c.scope !== "all") ?? false;
+
+	const activeCenterIds = useMemo(() => {
+		if (!selected?.centers) return new Set<string>();
+		return new Set(
+			selected.centers
+				.filter((c) => c.scope === "all" || c.scope === dayTab)
+				.map((c) => c.id),
+		);
+	}, [selected, dayTab]);
+
+	const centerLabel = useMemo(() => {
+		if (!selected?.centers?.length) return undefined;
+		const active = selected.centers.filter(
+			(c) => c.scope === "all" || c.scope === dayTab,
+		);
+		if (active.length === 0) return undefined;
+		return active[0].label ?? (active.length === 1 ? "センター" : "Wセンター");
+	}, [selected, dayTab]);
+
+	const sortedMembers = useMemo(() => {
+		if (!activeCenterIds.size) return activeMembers;
+		const centers = activeMembers.filter((m) => activeCenterIds.has(m.id));
+		const others = activeMembers.filter((m) => !activeCenterIds.has(m.id));
+		return [...centers, ...others];
+	}, [activeMembers, activeCenterIds]);
+
+	const displayMembers = centerOnly
+		? sortedMembers.filter((m) => activeCenterIds.has(m.id))
+		: sortedMembers;
 
 	if (underlives.length === 0) {
 		return <div className="loading">アンダーライブデータがありません</div>;
@@ -144,12 +193,56 @@ function UnderlivePanel({
 						</div>
 					</div>
 
-					<div className="member-count">
-						出演メンバー {activeMembers.length}名
+					{activeCenterIds.size > 0 && (
+						<div className="center-hero">
+							<span className="center-hero-label">👑 {centerLabel}</span>
+							<span className="center-hero-names">
+								{activeMembers
+									.filter((m) => activeCenterIds.has(m.id))
+									.map((m) => m.name)
+									.join(" / ")}
+							</span>
+						</div>
+					)}
+
+					{hasDayScoped && (
+						<div className="day-tabs">
+							{DAY_TABS.map((d) => (
+								<button
+									key={d}
+									type="button"
+									className={dayTab === d ? "day-tab active" : "day-tab"}
+									onClick={() => setDayTab(d)}
+								>
+									{d === "all" ? "ALL" : d.toUpperCase()}
+								</button>
+							))}
+						</div>
+					)}
+
+					<div className="underlive-toolbar">
+						<span className="member-count">
+							出演メンバー {displayMembers.length}名
+						</span>
+						{activeCenterIds.size > 0 && (
+							<label className="center-only-label">
+								<input
+									type="checkbox"
+									checked={centerOnly}
+									onChange={(e) => setCenterOnly(e.target.checked)}
+								/>
+								センターのみ表示
+							</label>
+						)}
 					</div>
 					<div className="card-grid">
-						{activeMembers.map((member, i) => (
-							<MemberCard key={`${member.id}-${i}`} member={member} />
+						{displayMembers.map((member, i) => (
+							<MemberCard
+								key={`${member.id}-${i}`}
+								member={member}
+								isCenter={activeCenterIds.has(member.id)}
+								centerLabel={centerLabel}
+							/>
 						))}
 					</div>
 
