@@ -82,7 +82,6 @@ function UnderlivePanel({
 }) {
 	const [selectedId, setSelectedId] = useState(underlives[0]?.id ?? "");
 	const [dayTab, setDayTab] = useState<string>("all");
-	const [centerOnly, setCenterOnly] = useState(false);
 
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
@@ -141,10 +140,6 @@ function UnderlivePanel({
 		const others = activeMembers.filter((m) => !activeCenterIds.has(m.id));
 		return [...centers, ...others];
 	}, [activeMembers, activeCenterIds]);
-
-	const displayMembers = centerOnly
-		? sortedMembers.filter((m) => activeCenterIds.has(m.id))
-		: sortedMembers;
 
 	if (underlives.length === 0) {
 		return <div className="loading">アンダーライブデータがありません</div>;
@@ -220,23 +215,11 @@ function UnderlivePanel({
 						</div>
 					)}
 
-					<div className="underlive-toolbar">
-						<span className="member-count">
-							出演メンバー {displayMembers.length}名
-						</span>
-						{activeCenterIds.size > 0 && (
-							<label className="center-only-label">
-								<input
-									type="checkbox"
-									checked={centerOnly}
-									onChange={(e) => setCenterOnly(e.target.checked)}
-								/>
-								センターのみ表示
-							</label>
-						)}
+					<div className="member-count">
+						出演メンバー {sortedMembers.length}名
 					</div>
 					<div className="card-grid">
-						{displayMembers.map((member, i) => (
+						{sortedMembers.map((member, i) => (
 							<MemberCard
 								key={`${member.id}-${i}`}
 								member={member}
