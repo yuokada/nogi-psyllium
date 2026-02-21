@@ -241,3 +241,38 @@
     - yakubo_mio
     - yoshida_ayano
   absent: []
+
+- id: ul_32nd_2023
+  title: "32ndSGアンダーライブ"
+  year: 2023
+  dates:
+    - "2023-04-05"  # 東京: TOKYO DOME CITY HALL
+    - "2023-04-06"  # 東京: TOKYO DOME CITY HALL
+    - "2023-04-08"  # 大阪: グランキューブ大阪
+    - "2023-04-09"  # 大阪: グランキューブ大阪
+    - "2023-04-11"  # 愛知: 名古屋国際会議場 センチュリーホール
+    - "2023-04-12"  # 愛知: 名古屋国際会議場 センチュリーホール
+    - "2023-04-26"  # 東京: 東京ガーデンシアター
+    - "2023-04-27"  # 東京: 東京ガーデンシアター
+  venue: "TOKYO DOME CITY HALL / グランキューブ大阪 / 名古屋国際会議場 センチュリーホール / 東京ガーデンシアター"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/66268"
+  member_ids:
+    - ikeda_teresa
+    - ito_riria
+    - okamoto_hina
+    - ogawa_aya
+    - okuda_iroha
+    - kitagawa_yuri
+    - kuromi_harukaka
+    - sakaguchi_tamami
+    - sato_kaede
+    - seimiyamiya_rei
+    - tomisato_nao
+    - nakanishi_aruno
+    - hayashi_runa
+    - mukai_hazuki
+    - yakubo_mio
+    - yoshida_ayano
+  absent:
+    - id: nakamura_reno
+      note: "スケジュールの都合により全公演休演"
