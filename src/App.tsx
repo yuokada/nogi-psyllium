@@ -51,6 +51,7 @@ function App() {
 	const [error, setError] = useState<string | null>(null);
 	const [search, setSearch] = useState("");
 	const [genFilter, setGenFilter] = useState("");
+	const [showAll, setShowAll] = useState(false);
 
 	useEffect(() => {
 		const csvPath = `${import.meta.env.BASE_URL}data/members.csv`;
@@ -63,6 +64,7 @@ function App() {
 				const result = Papa.parse<Member>(text, {
 					header: true,
 					skipEmptyLines: true,
+					dynamicTyping: true,
 				});
 				setMembers(result.data);
 				setLoading(false);
@@ -83,6 +85,7 @@ function App() {
 
 	const filtered = useMemo(() => {
 		return members.filter((m) => {
+			if (!showAll && m.active !== true) return false;
 			if (genFilter && m.gen !== genFilter) return false;
 			if (search) {
 				const q = search.toLowerCase();
@@ -93,7 +96,7 @@ function App() {
 			}
 			return true;
 		});
-	}, [members, search, genFilter]);
+	}, [members, search, genFilter, showAll]);
 
 	if (loading) return <div className="loading">読み込み中...</div>;
 	if (error) return <div className="error">エラー: {error}</div>;
@@ -121,6 +124,14 @@ function App() {
 						</option>
 					))}
 				</select>
+				<label className="show-all-label">
+					<input
+						type="checkbox"
+						checked={showAll}
+						onChange={(e) => setShowAll(e.target.checked)}
+					/>
+					卒業メンバーを含む
+				</label>
 			</div>
 			<div className="member-count">{filtered.length}件表示</div>
 			<div className="card-grid">

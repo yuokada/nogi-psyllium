@@ -42,6 +42,7 @@ name,gen,color1_name,color2_name,icon
 | `color1_name` | 必須 | サイリウムカラー1（メインカラー） |
 | `color2_name` | 任意 | サイリウムカラー2（サブカラー） |
 | `icon` | 任意 | アイコン画像のパス |
+| `active` | 任意 | 在籍中なら `true`、卒業済みなら `false`（省略時は `undefined`） |
 
 ### メンバーを追加・更新する手順
 

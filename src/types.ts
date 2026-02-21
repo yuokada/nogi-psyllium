@@ -4,4 +4,5 @@ export interface Member {
 	color1_name: string;
 	color2_name?: string;
 	icon?: string;
+	active?: boolean;
 }
