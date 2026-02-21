@@ -393,6 +393,29 @@
     - id: kuromi_harukaka
       note: "学業のため休演"
 
+- id: ul_27th_2021
+  title: "27thSGアンダーライブ"
+  year: 2021
+  dates:
+    - "2021-05-26"
+  venue: "無観客・配信のみ"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/61398"
+  member_ids:
+    - ito_junna
+    - ito_riria
+    - kitano_hinako
+    - sakaguchi_tamami
+    - sato_kaede
+    - suzuki_ayane
+    - terada_ranze
+    - nakamura_reno
+    - mukai_hazuki
+    - yamazaki_reina
+    - yoshida_ayano
+    - watanabe_miria
+    - wada_maaya
+  absent: []
+
 - id: ul_26th_2020
   title: "26thSGアンダーライブ"
   year: 2020
