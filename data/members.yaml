@@ -152,7 +152,7 @@
   color2_name: ピンク
   icon: /icons/sample.png
   active: false
-- id: higuchi_nina
+- id: higuchi_hina
   name: 樋口 日奈
   gen: 1期生
   color1_name: 紫
@@ -418,28 +418,28 @@
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- id: kiyomiya_rei
+- id: seimiyamiya_rei
   name: 清宮 レイ
   gen: 4期生
   color1_name: オレンジ
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-- id: kuromi_asuka
+- id: kuromi_harukaka
   name: 黒見 明香
   gen: 4期生
   color1_name: 紫
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-- id: sato_rikka
+- id: sato_rika
   name: 佐藤 璃果
   gen: 4期生
   color1_name: ピンク
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: true
-- id: shibata_yuzuna
+- id: shibata_yuna
   name: 柴田 柚菜
   gen: 4期生
   color1_name: 青
@@ -495,14 +495,14 @@
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-- id: iogi_mao
+- id: ioki_mao
   name: 五百城 茉央
   gen: 5期生
   color1_name: ターコイズ
   color2_name: 青
   icon: /icons/sample.png
   active: true
-- id: ikeda_terasa
+- id: ikeda_teresa
   name: 池田 瑛紗
   gen: 5期生
   color1_name: 白
@@ -523,7 +523,7 @@
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-- id: okamoto_himena
+- id: okamoto_hina
   name: 岡本 姫奈
   gen: 5期生
   color1_name: 紫
@@ -586,21 +586,21 @@
   color2_name: 黄
   icon: /icons/sample.png
   active: true
-- id: otsu_reina
+- id: ozu_reina
   name: 小津 玲奈
   gen: 6期生
   color1_name: 紫
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: true
-- id: kaibe_shuri
+- id: kaibe_akari
   name: 海邉 朱莉
   gen: 6期生
   color1_name: 青
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-- id: kawabata_akina
+- id: kawabata_hina
   name: 川端 晃菜
   gen: 6期生
   color1_name: 緑
@@ -614,28 +614,28 @@
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-- id: setoguchi_kozuki
+- id: setoguchi_mizuki
   name: 瀬戸口 心月
   gen: 6期生
   color1_name: 青
   color2_name: 黄
   icon: /icons/sample.png
   active: true
-- id: nagashima_rino
+- id: nagashima_rio
   name: 長嶋 凛桜
   gen: 6期生
   color1_name: ピンク
   color2_name: オレンジ
   icon: /icons/sample.png
   active: true
-- id: masuda_mario
+- id: masuda_mirine
   name: 増田 三莉音
   gen: 6期生
   color1_name: 青
   color2_name: 青
   icon: /icons/sample.png
   active: true
-- id: morihira_reishin
+- id: morihira_urumi
   name: 森平 麗心
   gen: 6期生
   color1_name: 黄
