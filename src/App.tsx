@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getPenlightHex, PENLIGHT_COLORS } from "./colors";
-import type { Member } from "./types";
+import type { Member, Underlive } from "./types";
 import { getTextColor, isValidHex } from "./utils";
 import "./App.css";
 
@@ -58,10 +58,126 @@ function MemberCard({ member }: { member: Member }) {
 	);
 }
 
+function UnderlivePanel({
+	underlives,
+	members,
+}: {
+	underlives: Underlive[];
+	members: Member[];
+}) {
+	const [selectedId, setSelectedId] = useState(underlives[0]?.id ?? "");
+
+	const selected = useMemo(
+		() => underlives.find((u) => u.id === selectedId),
+		[underlives, selectedId],
+	);
+
+	const memberMap = useMemo(() => {
+		const map = new Map<string, Member>();
+		for (const m of members) {
+			map.set(m.id, m);
+		}
+		return map;
+	}, [members]);
+
+	const activeMembers = useMemo(() => {
+		if (!selected) return [];
+		return selected.member_ids
+			.map((id) => memberMap.get(id))
+			.filter((m): m is Member => m !== undefined);
+	}, [selected, memberMap]);
+
+	const absentMembers = useMemo(() => {
+		if (!selected?.absent) return [];
+		const result: { member: Member; note?: string }[] = [];
+		for (const a of selected.absent) {
+			const member = memberMap.get(a.id);
+			if (member) result.push({ member, note: a.note });
+		}
+		return result;
+	}, [selected, memberMap]);
+
+	if (underlives.length === 0) {
+		return <div className="loading">アンダーライブデータがありません</div>;
+	}
+
+	return (
+		<div className="underlive-panel">
+			<div className="underlive-controls">
+				<select
+					className="gen-select"
+					value={selectedId}
+					onChange={(e) => setSelectedId(e.target.value)}
+				>
+					{underlives.map((u) => (
+						<option key={u.id} value={u.id}>
+							{u.title}
+						</option>
+					))}
+				</select>
+			</div>
+
+			{selected && (
+				<>
+					<div className="underlive-info">
+						<div className="underlive-meta">
+							{selected.dates.length > 0 && (
+								<span className="underlive-dates">
+									{selected.dates[0]}
+									{selected.dates.length > 1 &&
+										` 〜 ${selected.dates[selected.dates.length - 1]}`}
+								</span>
+							)}
+							{selected.venue && (
+								<span className="underlive-venue">{selected.venue}</span>
+							)}
+							{selected.source_url && (
+								<a
+									href={selected.source_url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="underlive-source"
+								>
+									出典
+								</a>
+							)}
+						</div>
+					</div>
+
+					<div className="member-count">
+						出演メンバー {activeMembers.length}名
+					</div>
+					<div className="card-grid">
+						{activeMembers.map((member, i) => (
+							<MemberCard key={`${member.id}-${i}`} member={member} />
+						))}
+					</div>
+
+					{absentMembers.length > 0 && (
+						<div className="absent-section">
+							<h3 className="absent-title">欠席メンバー</h3>
+							<ul className="absent-list">
+								{absentMembers.map(({ member, note }) => (
+									<li key={member.id} className="absent-item">
+										<span className="absent-name">{member.name}</span>
+										{note && <span className="absent-note"> — {note}</span>}
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+				</>
+			)}
+		</div>
+	);
+}
+
 function App() {
 	const [members, setMembers] = useState<Member[]>([]);
+	const [underlives, setUnderlives] = useState<Underlive[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+	const [tab, setTab] = useState<"penlight" | "underlive">("penlight");
 	const [search, setSearch] = useState("");
 	const [genFilter, setGenFilter] = useState("");
 	const [showAll, setShowAll] = useState(false);
@@ -80,6 +196,19 @@ function App() {
 			.catch((err) => {
 				setError(err.message);
 				setLoading(false);
+			});
+	}, []);
+
+	useEffect(() => {
+		const jsonPath = `${import.meta.env.BASE_URL}data/underlives.json`;
+		fetch(jsonPath)
+			.then((res) => {
+				if (!res.ok) return [];
+				return res.json() as Promise<Underlive[]>;
+			})
+			.then(setUnderlives)
+			.catch(() => {
+				// underlives.json の読み込み失敗は無視する
 			});
 	}, []);
 
@@ -112,41 +241,67 @@ function App() {
 	return (
 		<div className="app">
 			<h1>乃木坂46 サイリウムカラー一覧</h1>
-			<div className="controls">
-				<input
-					type="text"
-					className="search-input"
-					placeholder="名前・期・色名で検索..."
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-				/>
-				<select
-					className="gen-select"
-					value={genFilter}
-					onChange={(e) => setGenFilter(e.target.value)}
+			<div className="tabs">
+				<button
+					type="button"
+					className={tab === "penlight" ? "tab active" : "tab"}
+					onClick={() => setTab("penlight")}
 				>
-					<option value="">すべての期</option>
-					{generations.map((g) => (
-						<option key={g} value={g}>
-							{g}
-						</option>
-					))}
-				</select>
-				<label className="show-all-label">
-					<input
-						type="checkbox"
-						checked={showAll}
-						onChange={(e) => setShowAll(e.target.checked)}
-					/>
-					卒業メンバーを含む
-				</label>
+					サイリウムカラー
+				</button>
+				<button
+					type="button"
+					className={tab === "underlive" ? "tab active" : "tab"}
+					onClick={() => setTab("underlive")}
+				>
+					アンダーライブ
+				</button>
 			</div>
-			<div className="member-count">{filtered.length}件表示</div>
-			<div className="card-grid">
-				{filtered.map((member, i) => (
-					<MemberCard key={`${member.name}-${i}`} member={member} />
-				))}
-			</div>
+
+			{tab === "penlight" && (
+				<>
+					<div className="controls">
+						<input
+							type="text"
+							className="search-input"
+							placeholder="名前・期・色名で検索..."
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+						/>
+						<select
+							className="gen-select"
+							value={genFilter}
+							onChange={(e) => setGenFilter(e.target.value)}
+						>
+							<option value="">すべての期</option>
+							{generations.map((g) => (
+								<option key={g} value={g}>
+									{g}
+								</option>
+							))}
+						</select>
+						<label className="show-all-label">
+							<input
+								type="checkbox"
+								checked={showAll}
+								onChange={(e) => setShowAll(e.target.checked)}
+							/>
+							卒業メンバーを含む
+						</label>
+					</div>
+					<div className="member-count">{filtered.length}件表示</div>
+					<div className="card-grid">
+						{filtered.map((member, i) => (
+							<MemberCard key={`${member.id}-${i}`} member={member} />
+						))}
+					</div>
+				</>
+			)}
+
+			{tab === "underlive" && (
+				<UnderlivePanel underlives={underlives} members={members} />
+			)}
+
 			<footer className="app-footer">
 				<p className="footer-title">ペンライト 色変更順</p>
 				<p className="footer-ref">
