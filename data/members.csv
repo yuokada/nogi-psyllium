@@ -45,7 +45,6 @@ name,gen,color1_name,color2_name,icon,active
 伊藤 理々杏,3期生,紫,赤,/icons/sample.png,true
 岩本 蓮加,3期生,ピンク,赤,/icons/sample.png,true
 梅澤 美波,3期生,青,水色,/icons/sample.png,true
-吉田 綾乃クリスティー,3期生,紫,ピンク,/icons/sample.png,true
 大園 桃子,3期生,ピンク,緑,/icons/sample.png,false
 久保 史緒里,3期生,水色,黄,/icons/sample.png,false
 阪口 珠美,3期生,紫,黄,/icons/sample.png,false
@@ -53,6 +52,7 @@ name,gen,color1_name,color2_name,icon,active
 中村 麗乃,3期生,青,白,/icons/sample.png,false
 向井 葉月,3期生,黄,黄,/icons/sample.png,false
 山下 美月,3期生,青,黄,/icons/sample.png,false
+吉田 綾乃クリスティー,3期生,紫,ピンク,/icons/sample.png,true
 与田 祐希,3期生,赤,緑,/icons/sample.png,false
 遠藤 さくら,4期生,白,ピンク,/icons/sample.png,true
 賀喜 遥香,4期生,オレンジ,緑,/icons/sample.png,true
