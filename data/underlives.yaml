@@ -333,3 +333,31 @@
   absent:
     - id: ito_riria
       note: "スケジュールの都合により10月5日（水）公演のみ出演"
+
+- id: ul_29th_2022
+  title: "29thSGアンダーライブ"
+  year: 2022
+  dates:
+    - "2022-03-25"
+    - "2022-03-26"
+    - "2022-03-27"
+  venue: "ぴあアリーナMM"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/65310"
+  member_ids:
+    - ito_riria
+    - kanagawa_saya
+    - kitagawa_yuri
+    - kuromi_harukaka
+    - sakaguchi_tamami
+    - sato_kaede
+    - sato_rika
+    - nakamura_reno
+    - hayashi_runa
+    - matsuo_miyu
+    - mukai_hazuki
+    - yakubo_mio
+    - yamazaki_reina
+    - yumiki_nao
+    - yoshida_ayano
+    - wada_maaya
+  absent: []
