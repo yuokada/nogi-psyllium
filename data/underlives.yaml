@@ -276,3 +276,31 @@
   absent:
     - id: nakamura_reno
       note: "スケジュールの都合により全公演休演"
+
+- id: ul_31st_2022
+  title: "31stSGアンダーライブ"
+  year: 2022
+  dates:
+    - "2022-12-01"  # 神奈川: KT Zepp Yokohama
+    - "2022-12-07"  # 北海道: Zepp Sapporo
+    - "2022-12-08"  # 北海道: Zepp Sapporo
+    - "2022-12-12"  # 福岡: Zepp Fukuoka
+    - "2022-12-14"  # 愛知: Zepp Nagoya
+    - "2022-12-15"  # 愛知: Zepp Nagoya
+    - "2022-12-16"  # 大阪: Zepp Namba
+    - "2022-12-17"  # 大阪: Zepp Namba
+    - "2022-12-19"  # 神奈川: KT Zepp Yokohama
+  venue: "KT Zepp Yokohama / Zepp Sapporo / Zepp Fukuoka / Zepp Nagoya / Zepp Namba"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/65967"
+  member_ids:
+    - ito_riria
+    - kitagawa_yuri
+    - kuromi_harukaka
+    - sato_kaede
+    - sato_rika
+    - nakamura_reno
+    - matsuo_miyu
+    - mukai_hazuki
+    - yakubo_mio
+    - yoshida_ayano
+  absent: []
