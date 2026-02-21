@@ -1,145 +1,145 @@
 .app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1rem;
 }
 
 h1 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+	text-align: center;
+	font-size: 1.8rem;
+	margin-bottom: 1rem;
 }
 
 .controls {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+	display: flex;
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+	flex-wrap: wrap;
 }
 
 .search-input {
-  flex: 1;
-  min-width: 200px;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+	flex: 1;
+	min-width: 200px;
+	padding: 0.6rem 1rem;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 6px;
 }
 
 .gen-select {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
-  cursor: pointer;
+	padding: 0.6rem 1rem;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	background: #fff;
+	cursor: pointer;
 }
 
 .member-count {
-  text-align: right;
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 0.5rem;
+	text-align: right;
+	font-size: 0.9rem;
+	color: #666;
+	margin-bottom: 0.5rem;
 }
 
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0.75rem;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 0.75rem;
 }
 
 .member-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+	transition: box-shadow 0.2s;
 }
 
 .member-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .member-icon {
-  text-align: center;
-  padding: 0.75rem 0.75rem 0;
+	text-align: center;
+	padding: 0.75rem 0.75rem 0;
 }
 
 .member-icon img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 .member-header {
-  display: flex;
-  align-items: baseline;
-  gap: 0.3rem;
-  padding: 0.6rem 0.5rem 0.3rem;
-  overflow: hidden;
-  white-space: nowrap;
+	display: flex;
+	align-items: baseline;
+	gap: 0.3rem;
+	padding: 0.6rem 0.5rem 0.3rem;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .member-name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #333;
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: #333;
 }
 
 .member-gen {
-  font-size: 0.75rem;
-  color: #777;
-  flex-shrink: 0;
+	font-size: 0.75rem;
+	color: #777;
+	flex-shrink: 0;
 }
 
 .color-boxes {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .color-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
 }
 
 .color-name {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 .color-hex {
-  font-family: monospace;
-  font-size: 0.85rem;
-  opacity: 0.8;
+	font-family: monospace;
+	font-size: 0.85rem;
+	opacity: 0.8;
 }
 
 .loading,
 .error {
-  text-align: center;
-  padding: 3rem;
-  font-size: 1.2rem;
+	text-align: center;
+	padding: 3rem;
+	font-size: 1.2rem;
 }
 
 .error {
-  color: #d32f2f;
+	color: #d32f2f;
 }
 
 @media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+	.card-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (max-width: 640px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+	.card-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 
-  h1 {
-    font-size: 1.4rem;
-  }
+	h1 {
+		font-size: 1.4rem;
+	}
 }
