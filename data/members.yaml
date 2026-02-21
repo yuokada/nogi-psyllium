@@ -477,15 +477,15 @@
 - id: matsuo_miyu
   name: 松尾 美佑
   gen: 4期生
-  color1_name: ターコイズ
-  color2_name: 白
+  color1_name: 白
+  color2_name: ターコイズ
   icon: /icons/sample.png
   active: false
 - id: yakubo_mio
   name: 矢久保 美緒
   gen: 4期生
-  color1_name: 黄
-  color2_name: ピンク
+  color1_name: ピンク
+  color2_name: 黄
   icon: /icons/sample.png
   active: false
 - id: yumiki_nao
@@ -519,8 +519,8 @@
 - id: inoue_nagi
   name: 井上 和
   gen: 5期生
-  color1_name: 白
-  color2_name: 赤
+  color1_name: 赤
+  color2_name: 白
   icon: /icons/sample.png
   active: true
 - id: okamoto_hina
@@ -540,8 +540,8 @@
 - id: okuda_iroha
   name: 奥田 いろは
   gen: 5期生
-  color1_name: ピンク
-  color2_name: 黄緑
+  color1_name: 黄緑
+  color2_name: ピンク
   icon: /icons/sample.png
   active: true
 - id: kawasaki_sakura
