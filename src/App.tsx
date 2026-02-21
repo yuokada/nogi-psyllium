@@ -23,11 +23,9 @@ const COLOR_CYCLE = [
 function MemberCard({
 	member,
 	isCenter = false,
-	centerLabel,
 }: {
 	member: Member;
 	isCenter?: boolean;
-	centerLabel?: string;
 }) {
 	const hex1 = getPenlightHex(member.color1_name) ?? "#cccccc";
 	const hex2 = member.color2_name
@@ -43,9 +41,7 @@ function MemberCard({
 			<div className="member-header">
 				<span className="member-name">{member.name}</span>
 				{member.gen && <span className="member-gen">{member.gen}</span>}
-				{isCenter && (
-					<span className="center-badge">👑 {centerLabel ?? "センター"}</span>
-				)}
+				{isCenter && <span className="center-badge">👑</span>}
 			</div>
 			<div className="color-boxes">
 				<div
@@ -131,7 +127,7 @@ function UnderlivePanel({
 			(c) => c.scope === "all" || c.scope === dayTab,
 		);
 		if (active.length === 0) return undefined;
-		return active[0].label ?? (active.length === 1 ? "センター" : "Wセンター");
+		return active[0].label ?? (active.length === 1 ? "C" : "WC");
 	}, [selected, dayTab]);
 
 	const sortedMembers = useMemo(() => {
@@ -224,7 +220,6 @@ function UnderlivePanel({
 								key={`${member.id}-${i}`}
 								member={member}
 								isCenter={activeCenterIds.has(member.id)}
-								centerLabel={centerLabel}
 							/>
 						))}
 					</div>
