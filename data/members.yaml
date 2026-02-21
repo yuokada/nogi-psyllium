@@ -610,8 +610,8 @@
 - id: suzuki_yuna
   name: 鈴木 佑捺
   gen: 6期生
-  color1_name: 白
-  color2_name: 水色
+  color1_name: 水色
+  color2_name: 白
   icon: /icons/sample.png
   active: true
 - id: setoguchi_mizuki
