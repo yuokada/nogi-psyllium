@@ -100,11 +100,15 @@ function UnderlivePanel({
 	members,
 	selectedId,
 	onSelectId,
+	showAbsent,
+	onShowAbsentChange,
 }: {
 	underlives: Underlive[];
 	members: Member[];
 	selectedId: string;
 	onSelectId: (id: string) => void;
+	showAbsent: boolean;
+	onShowAbsentChange: (value: boolean) => void;
 }) {
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
@@ -210,15 +214,24 @@ function UnderlivePanel({
 
 					{absentMembers.length > 0 && (
 						<div className="absent-section">
-							<h3 className="absent-title">欠席メンバー</h3>
-							<ul className="absent-list">
-								{absentMembers.map(({ member, note }) => (
-									<li key={member.id} className="absent-item">
-										<span className="absent-name">{member.name}</span>
-										{note && <span className="absent-note"> — {note}</span>}
-									</li>
-								))}
-							</ul>
+							<label className="absent-toggle">
+								<input
+									type="checkbox"
+									checked={showAbsent}
+									onChange={(e) => onShowAbsentChange(e.target.checked)}
+								/>
+								欠席メンバーを表示（{absentMembers.length}名）
+							</label>
+							{showAbsent && (
+								<ul className="absent-list">
+									{absentMembers.map(({ member, note }) => (
+										<li key={member.id} className="absent-item">
+											<span className="absent-name">{member.name}</span>
+											{note && <span className="absent-note"> — {note}</span>}
+										</li>
+									))}
+								</ul>
+							)}
 						</div>
 					)}
 				</>
@@ -245,6 +258,7 @@ function App() {
 	const genFilter = searchParams.get("gen") ?? "";
 	const showAll = searchParams.get("graduated") === "1";
 	const selectedUnderliveId = searchParams.get("id") ?? "";
+	const showAbsent = searchParams.get("absent") === "1";
 
 	useEffect(() => {
 		const jsonPath = `${import.meta.env.BASE_URL}data/members.json`;
@@ -327,6 +341,18 @@ function App() {
 				const next = new URLSearchParams(prev);
 				if (value) next.set("graduated", "1");
 				else next.delete("graduated");
+				return next;
+			},
+			{ replace: true },
+		);
+	}
+
+	function setShowAbsent(value: boolean) {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev);
+				if (value) next.set("absent", "1");
+				else next.delete("absent");
 				return next;
 			},
 			{ replace: true },
@@ -448,6 +474,8 @@ function App() {
 						members={members}
 						selectedId={selectedUnderliveId}
 						onSelectId={setSelectedUnderliveId}
+						showAbsent={showAbsent}
+						onShowAbsentChange={setShowAbsent}
 					/>
 				)}
 
