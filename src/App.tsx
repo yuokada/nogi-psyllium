@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { getPenlightHex, PENLIGHT_COLORS } from "./colors";
 import type { Member, Underlive } from "./types";
 import { getTextColor, isValidHex } from "./utils";
@@ -17,18 +18,6 @@ const COLOR_CYCLE = [
 	"黄緑",
 	"ターコイズ",
 ];
-
-function getHashParts(): { path: string; params: URLSearchParams } {
-	const hash = window.location.hash.slice(1); // 先頭の # を除く
-	const sepIdx = hash.indexOf("?");
-	if (sepIdx === -1) {
-		return { path: hash, params: new URLSearchParams() };
-	}
-	return {
-		path: hash.slice(0, sepIdx),
-		params: new URLSearchParams(hash.slice(sepIdx + 1)),
-	};
-}
 
 function MemberCard({
 	member,
@@ -212,26 +201,23 @@ function UnderlivePanel({
 }
 
 function App() {
+	const location = useLocation();
+	const navigate = useNavigate();
+	const [searchParams, setSearchParams] = useSearchParams();
+
 	const [members, setMembers] = useState<Member[]>([]);
 	const [underlives, setUnderlives] = useState<Underlive[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-	const [tab, setTab] = useState<"penlight" | "underlive">(() => {
-		const { path } = getHashParts();
-		return path === "underlive" ? "underlive" : "penlight";
-	});
-	const [search, setSearch] = useState(
-		() => getHashParts().params.get("q") ?? "",
-	);
-	const [genFilter, setGenFilter] = useState(
-		() => getHashParts().params.get("gen") ?? "",
-	);
-	const [showAll, setShowAll] = useState(
-		() => getHashParts().params.get("graduated") === "1",
-	);
-	const [selectedUnderliveId, setSelectedUnderliveId] = useState(
-		() => getHashParts().params.get("id") ?? "",
-	);
+
+	// タブはパスから導出
+	const tab = location.pathname === "/underlive" ? "underlive" : "penlight";
+
+	// フィルタ状態は searchParams から読む
+	const search = searchParams.get("q") ?? "";
+	const genFilter = searchParams.get("gen") ?? "";
+	const showAll = searchParams.get("graduated") === "1";
+	const selectedUnderliveId = searchParams.get("id") ?? "";
 
 	useEffect(() => {
 		const jsonPath = `${import.meta.env.BASE_URL}data/members.json`;
@@ -264,31 +250,73 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		const params = new URLSearchParams();
-		if (search) params.set("q", search);
-		if (genFilter) params.set("gen", genFilter);
-		if (showAll) params.set("graduated", "1");
-		if (selectedUnderliveId) params.set("id", selectedUnderliveId);
-		const qs = params.toString();
-		const hashPath = tab === "underlive" ? "underlive" : "";
-		const hash = hashPath
-			? qs
-				? `#${hashPath}?${qs}`
-				: `#${hashPath}`
-			: qs
-				? `#?${qs}`
-				: "";
-		window.history.replaceState(null, "", `${window.location.pathname}${hash}`);
-	}, [tab, search, genFilter, showAll, selectedUnderliveId]);
-
-	useEffect(() => {
 		if (
 			underlives.length > 0 &&
+			tab === "underlive" &&
 			!underlives.find((u) => u.id === selectedUnderliveId)
 		) {
-			setSelectedUnderliveId(underlives[0].id);
+			setSearchParams(
+				(prev) => {
+					const next = new URLSearchParams(prev);
+					next.set("id", underlives[0].id);
+					return next;
+				},
+				{ replace: true },
+			);
 		}
-	}, [underlives, selectedUnderliveId]);
+	}, [underlives, tab, selectedUnderliveId, setSearchParams]);
+
+	function setTab(newTab: "penlight" | "underlive") {
+		navigate(newTab === "underlive" ? "/underlive" : "/");
+	}
+
+	function setSearch(value: string) {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev);
+				if (value) next.set("q", value);
+				else next.delete("q");
+				return next;
+			},
+			{ replace: true },
+		);
+	}
+
+	function setGenFilter(value: string) {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev);
+				if (value) next.set("gen", value);
+				else next.delete("gen");
+				return next;
+			},
+			{ replace: true },
+		);
+	}
+
+	function setShowAll(value: boolean) {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev);
+				if (value) next.set("graduated", "1");
+				else next.delete("graduated");
+				return next;
+			},
+			{ replace: true },
+		);
+	}
+
+	function setSelectedUnderliveId(id: string) {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev);
+				if (id) next.set("id", id);
+				else next.delete("id");
+				return next;
+			},
+			{ replace: true },
+		);
+	}
 
 	const generations = useMemo(() => {
 		const gens = new Set<string>();
