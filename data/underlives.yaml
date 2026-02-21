@@ -170,6 +170,9 @@
     - "2024-11-20"  # 神奈川: KT Zepp Yokohama
   venue: "Zepp Fukuoka / Zepp Nagoya / Zepp Osaka Bayside / Zepp Sapporo / KT Zepp Yokohama"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/100560"
+  centers:
+    - id: okuda_iroha
+      scope: all
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -196,6 +199,9 @@
     - "2024-06-09"
   venue: "有明アリーナ"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/100304"
+  centers:
+    - id: tsutsui_ayame
+      scope: all
   member_ids:
     - okamoto_hina
     - ogawa_aya
@@ -225,6 +231,9 @@
     - "2024-01-27"
   venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66904"
+  centers:
+    - id: nakanishi_aruno
+      scope: all
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -251,6 +260,9 @@
     - "2023-10-01"
   venue: "横浜アリーナ"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66711"
+  centers:
+    - id: matsuo_miyu
+      scope: all
   member_ids:
     - ogawa_aya
     - okuda_iroha
@@ -281,6 +293,11 @@
     - "2023-04-27"  # 東京: 東京ガーデンシアター
   venue: "TOKYO DOME CITY HALL / グランキューブ大阪 / 名古屋国際会議場 センチュリーホール / 東京ガーデンシアター"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66268"
+  centers:
+    - id: ito_riria
+      scope: all
+    - id: hayashi_runa
+      scope: all
   member_ids:
     - ikeda_teresa
     - ito_riria
@@ -317,6 +334,9 @@
     - "2022-12-19"  # 神奈川: KT Zepp Yokohama
   venue: "KT Zepp Yokohama / Zepp Sapporo / Zepp Fukuoka / Zepp Nagoya / Zepp Namba"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65967"
+  centers:
+    - id: nakamura_reno
+      scope: all
   member_ids:
     - ito_riria
     - kitagawa_yuri
@@ -342,6 +362,9 @@
     - "2022-10-05"  # 大阪: オリックス劇場
   venue: "TACHIKAWA STAGE GARDEN / オリックス劇場"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65811"
+  centers:
+    - id: wada_maaya
+      scope: all
   member_ids:
     - ito_riria
     - kitagawa_yuri
@@ -368,6 +391,9 @@
     - "2022-03-27"
   venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65310"
+  centers:
+    - id: sato_kaede
+      scope: all
   member_ids:
     - ito_riria
     - kanagawa_saya
@@ -396,6 +422,9 @@
     - "2021-10-28"
   venue: "TACHIKAWA STAGE GARDEN"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/63880"
+  centers:
+    - id: terada_ranze
+      scope: all
   member_ids:
     - ito_riria
     - kanagawa_saya
@@ -425,6 +454,9 @@
     - "2021-05-26"
   venue: "無観客・配信のみ"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/61398"
+  centers:
+    - id: yamazaki_reina
+      scope: all
   member_ids:
     - ito_junna
     - ito_riria
@@ -450,6 +482,9 @@
     - "2020-12-20"
   venue: "配信のみ（オンライン開催）"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/58998"
+  centers:
+    - id: sakaguchi_tamami
+      scope: all
   member_ids:
     - ito_junna
     - ito_riria
