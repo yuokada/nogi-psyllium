@@ -1,0 +1,69 @@
+# アンダーライブデータ
+# member_ids: data/members.yaml の id フィールドを使用
+# absent: 欠席メンバーの id と理由
+
+- id: ul_41st_2026
+  title: "41stSGアンダーライブ"
+  year: 2026
+  dates:
+    - "2026-03-17"  # TODO: 実際の日程に修正
+    - "2026-03-18"
+    - "2026-03-19"
+  venue: "TODO: 会場名"
+  source_url: "https://www.nogizaka46.com/s/n46/page/underlive"
+  member_ids:
+    - ito_riria
+    - iwamoto_renka
+    - umezawa_minami
+    - yoshida_ayano
+    - endo_sakura
+    - kaki_haruka
+    - kanagawa_saya
+    - kuromi_asuka
+    - sato_rikka
+    - shibata_yuzuna
+    - tamura_mayu
+    - tsutsui_ayame
+    - hayashi_runa
+    - yumiki_nao
+    - iogi_mao
+    - ikeda_terasa
+    - ichinose_miku
+    - inoue_nagi
+    - okamoto_himena
+    - ogawa_aya
+    - okuda_iroha
+    - kawasaki_sakura
+    - sugawara_satsuki
+    - tomisato_nao
+    - nakanishi_aruno
+    - atago_kokone
+    - okoshi_hinano
+    - otsu_reina
+    - kaibe_shuri
+    - kawabata_akina
+    - suzuki_yuna
+    - setoguchi_kozuki
+    - nagashima_rino
+    - masuda_mario
+    - morihira_reishin
+    - yada_moeka
+  absent: []  # TODO: 欠席メンバーを追加
+
+- id: ul_40th_2025
+  title: "40thSGアンダーライブ"
+  year: 2025
+  dates: []  # TODO: 実際の日程に修正
+  venue: "TODO: 会場名"
+  source_url: ""
+  member_ids: []  # TODO: 出演メンバーを追加
+  absent: []  # TODO: 欠席メンバーを追加
+
+- id: ul_39th_2024
+  title: "39thSGアンダーライブ"
+  year: 2024
+  dates: []  # TODO: 実際の日程に修正
+  venue: "TODO: 会場名"
+  source_url: ""
+  member_ids: []  # TODO: 出演メンバーを追加
+  absent: []  # TODO: 欠席メンバーを追加
