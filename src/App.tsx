@@ -414,7 +414,7 @@ function App() {
 		<>
 			<GithubCorner href="https://github.com/yuokada/nogi-psyllium" />
 			<div className="app">
-				<h1>乃木坂46 サイリウムカラー一覧</h1>
+				<h1>乃木坂46 サイリウムカラーViewer</h1>
 				<div className="tabs">
 					<button
 						type="button"
