@@ -13,6 +13,11 @@ export interface AbsentMember {
 	note?: string;
 }
 
+export interface Center {
+	id: string;
+	label?: string;
+}
+
 export interface Underlive {
 	id: string;
 	title: string;
@@ -22,4 +27,5 @@ export interface Underlive {
 	source_url?: string;
 	member_ids: string[];
 	absent?: AbsentMember[];
+	centers?: Center[];
 }

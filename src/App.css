@@ -290,6 +290,24 @@ h1 {
 	color: #aaa;
 }
 
+/* センターカード強調 */
+.member-card--center {
+	border-color: #f0c030;
+	box-shadow: 0 2px 8px rgba(240, 192, 48, 0.4);
+}
+
+.center-badge {
+	font-size: 0.7rem;
+	color: #b8860b;
+	font-weight: 700;
+	background: #fff9e6;
+	border-radius: 4px;
+	padding: 0.1rem 0.35rem;
+	white-space: nowrap;
+	margin-left: auto;
+	flex-shrink: 0;
+}
+
 @media (max-width: 900px) {
 	.card-grid {
 		grid-template-columns: repeat(3, 1fr);

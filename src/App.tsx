@@ -18,7 +18,13 @@ const COLOR_CYCLE = [
 	"ターコイズ",
 ];
 
-function MemberCard({ member }: { member: Member }) {
+function MemberCard({
+	member,
+	isCenter = false,
+}: {
+	member: Member;
+	isCenter?: boolean;
+}) {
 	const hex1 = getPenlightHex(member.color1_name) ?? "#cccccc";
 	const hex2 = member.color2_name
 		? getPenlightHex(member.color2_name)
@@ -27,10 +33,13 @@ function MemberCard({ member }: { member: Member }) {
 	const color2Valid = hex2 ? isValidHex(hex2) : false;
 
 	return (
-		<div className="member-card">
+		<div
+			className={isCenter ? "member-card member-card--center" : "member-card"}
+		>
 			<div className="member-header">
 				<span className="member-name">{member.name}</span>
 				{member.gen && <span className="member-gen">{member.gen}</span>}
+				{isCenter && <span className="center-badge">👑</span>}
 			</div>
 			<div className="color-boxes">
 				<div
@@ -66,7 +75,6 @@ function UnderlivePanel({
 	members: Member[];
 }) {
 	const [selectedId, setSelectedId] = useState(underlives[0]?.id ?? "");
-
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
 		[underlives, selectedId],
@@ -96,6 +104,18 @@ function UnderlivePanel({
 		}
 		return result;
 	}, [selected, memberMap]);
+
+	const activeCenterIds = useMemo(() => {
+		if (!selected?.centers) return new Set<string>();
+		return new Set(selected.centers.map((c) => c.id));
+	}, [selected]);
+
+	const sortedMembers = useMemo(() => {
+		if (!activeCenterIds.size) return activeMembers;
+		const centers = activeMembers.filter((m) => activeCenterIds.has(m.id));
+		const others = activeMembers.filter((m) => !activeCenterIds.has(m.id));
+		return [...centers, ...others];
+	}, [activeMembers, activeCenterIds]);
 
 	if (underlives.length === 0) {
 		return <div className="loading">アンダーライブデータがありません</div>;
@@ -145,11 +165,15 @@ function UnderlivePanel({
 					</div>
 
 					<div className="member-count">
-						出演メンバー {activeMembers.length}名
+						出演メンバー {sortedMembers.length}名
 					</div>
 					<div className="card-grid">
-						{activeMembers.map((member, i) => (
-							<MemberCard key={`${member.id}-${i}`} member={member} />
+						{sortedMembers.map((member, i) => (
+							<MemberCard
+								key={`${member.id}-${i}`}
+								member={member}
+								isCenter={activeCenterIds.has(member.id)}
+							/>
 						))}
 					</div>
 

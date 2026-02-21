@@ -1,6 +1,13 @@
 # アンダーライブデータ
 # member_ids: data/members.yaml の id フィールドを使用
 # absent: 欠席メンバーの id と理由
+# centers: センターメンバー（省略可）
+#   id: member_ids に含まれる id
+#   label: 表示ラベル（省略時: 1名→"C", 複数→"WC"）
+#
+# 例:
+#   centers:
+#      id: okamoto_hina
 
 - id: ul_41st_2026
   title: "41stSGアンダーライブ"
@@ -11,6 +18,8 @@
     - "2026-03-19"
   venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/page/underlive"
+  centers:
+    - id: okamoto_hina
   member_ids:
     - ito_riria
     - iwamoto_renka
@@ -42,6 +51,8 @@
     - "2025-12-21"
   venue: "日本武道館"
   source_url: "https://www.eventernote.com/events/449940"
+  centers:
+    - id: ioki_mao
   member_ids:
     - ioki_mao
     - ito_riria
@@ -68,6 +79,8 @@
     - "2025-10-09"
   venue: "横浜BUNTAI"
   source_url: "https://www.eventernote.com/events/437007"
+  centers:
+    - id: kanagawa_saya
   member_ids:
     - ito_riria
     - iwamoto_renka
@@ -90,6 +103,8 @@
     - "2025-04-05"
   venue: "ぴあアリーナMM"
   source_url: "https://www.eventernote.com/events/421053"
+  centers:
+    - id: shibata_yuna
   member_ids:
     - iwamoto_renka
     - okamoto_hina
@@ -113,6 +128,8 @@
     - "2025-01-30"
   venue: "幕張メッセ イベントホール"
   source_url: "https://www.eventernote.com/events/401362"
+  centers:
+    - id: tomisato_nao
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -145,6 +162,8 @@
     - "2024-11-20"  # 神奈川: KT Zepp Yokohama
   venue: "Zepp Fukuoka / Zepp Nagoya / Zepp Osaka Bayside / Zepp Sapporo / KT Zepp Yokohama"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/100560"
+  centers:
+    - id: okuda_iroha
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -171,6 +190,8 @@
     - "2024-06-09"
   venue: "有明アリーナ"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/100304"
+  centers:
+    - id: tsutsui_ayame
   member_ids:
     - okamoto_hina
     - ogawa_aya
@@ -200,6 +221,8 @@
     - "2024-01-27"
   venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66904"
+  centers:
+    - id: nakanishi_aruno
   member_ids:
     - ito_riria
     - okamoto_hina
@@ -226,6 +249,8 @@
     - "2023-10-01"
   venue: "横浜アリーナ"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66711"
+  centers:
+    - id: matsuo_miyu
   member_ids:
     - ogawa_aya
     - okuda_iroha
@@ -256,6 +281,9 @@
     - "2023-04-27"  # 東京: 東京ガーデンシアター
   venue: "TOKYO DOME CITY HALL / グランキューブ大阪 / 名古屋国際会議場 センチュリーホール / 東京ガーデンシアター"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/66268"
+  centers:
+    - id: ito_riria
+    - id: hayashi_runa
   member_ids:
     - ikeda_teresa
     - ito_riria
@@ -292,6 +320,8 @@
     - "2022-12-19"  # 神奈川: KT Zepp Yokohama
   venue: "KT Zepp Yokohama / Zepp Sapporo / Zepp Fukuoka / Zepp Nagoya / Zepp Namba"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65967"
+  centers:
+    - id: nakamura_reno
   member_ids:
     - ito_riria
     - kitagawa_yuri
@@ -317,6 +347,8 @@
     - "2022-10-05"  # 大阪: オリックス劇場
   venue: "TACHIKAWA STAGE GARDEN / オリックス劇場"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65811"
+  centers:
+    - id: wada_maaya
   member_ids:
     - ito_riria
     - kitagawa_yuri
@@ -343,6 +375,8 @@
     - "2022-03-27"
   venue: "ぴあアリーナMM"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/65310"
+  centers:
+    - id: sato_kaede
   member_ids:
     - ito_riria
     - kanagawa_saya
@@ -371,6 +405,8 @@
     - "2021-10-28"
   venue: "TACHIKAWA STAGE GARDEN"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/63880"
+  centers:
+    - id: terada_ranze
   member_ids:
     - ito_riria
     - kanagawa_saya
@@ -400,6 +436,8 @@
     - "2021-05-26"
   venue: "無観客・配信のみ"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/61398"
+  centers:
+    - id: yamazaki_reina
   member_ids:
     - ito_junna
     - ito_riria
@@ -425,6 +463,8 @@
     - "2020-12-20"
   venue: "配信のみ（オンライン開催）"
   source_url: "https://www.nogizaka46.com/s/n46/news/detail/58998"
+  centers:
+    - id: sakaguchi_tamami
   member_ids:
     - ito_junna
     - ito_riria
