@@ -361,3 +361,34 @@
     - yoshida_ayano
     - wada_maaya
   absent: []
+
+- id: ul_28th_2021
+  title: "28thSGアンダーライブ"
+  year: 2021
+  dates:
+    - "2021-10-26"
+    - "2021-10-27"
+    - "2021-10-28"
+  venue: "TACHIKAWA STAGE GARDEN"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/63880"
+  member_ids:
+    - ito_riria
+    - kanagawa_saya
+    - kitagawa_yuri
+    - sakaguchi_tamami
+    - sato_kaede
+    - sato_rika
+    - shibata_yuna
+    - terada_ranze
+    - nakamura_reno
+    - hayashi_runa
+    - matsuo_miyu
+    - mukai_hazuki
+    - yakubo_mio
+    - yamazaki_reina
+    - yumiki_nao
+    - yoshida_ayano
+    - wada_maaya
+  absent:
+    - id: kuromi_harukaka
+      note: "学業のため休演"
