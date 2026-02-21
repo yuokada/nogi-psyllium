@@ -349,7 +349,7 @@
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-  call:
+  call: りりあ
 - id: iwamoto_renka
   name: 岩本 蓮加
   gen: 3期生
@@ -357,7 +357,7 @@
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-  call:
+  call: れんか
 - id: umezawa_minami
   name: 梅澤 美波
   gen: 3期生
@@ -365,7 +365,7 @@
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-  call:
+  call: みなみん
 - id: ozono_momoko
   name: 大園 桃子
   gen: 3期生
@@ -381,7 +381,7 @@
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-  call:
+  call: しおり
 - id: sakaguchi_tamami
   name: 阪口 珠美
   gen: 3期生
@@ -429,7 +429,7 @@
   color2_name: ピンク
   icon: /icons/sample.png
   active: true
-  call:
+  call: あやてぃー
 - id: yoda_yuki
   name: 与田 祐希
   gen: 3期生
@@ -445,7 +445,7 @@
   color2_name: ピンク
   icon: /icons/sample.png
   active: true
-  call:
+  call: さくちゃん
 - id: kaki_haruka
   name: 賀喜 遥香
   gen: 4期生
@@ -453,7 +453,7 @@
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-  call:
+  call: かっきー
 - id: kakehashi_sayaka
   name: 掛橋 沙耶香
   gen: 4期生
@@ -469,7 +469,7 @@
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-  call:
+  call: やんちゃん
 - id: kitagawa_yuri
   name: 北川 悠理
   gen: 4期生
@@ -477,7 +477,7 @@
   color2_name: オレンジ
   icon: /icons/sample.png
   active: false
-  call:
+  call: 
 - id: seimiyamiya_rei
   name: 清宮 レイ
   gen: 4期生
@@ -493,7 +493,7 @@
   color2_name: 緑
   icon: /icons/sample.png
   active: true
-  call:
+  call: くろみん
 - id: sato_rika
   name: 佐藤 璃果
   gen: 4期生
@@ -501,7 +501,7 @@
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: true
-  call:
+  call: りかちゃん
 - id: shibata_yuna
   name: 柴田 柚菜
   gen: 4期生
@@ -509,7 +509,7 @@
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-  call:
+  call: ゆんちゃん
 - id: tamura_mayu
   name: 田村 真佑
   gen: 4期生
@@ -517,7 +517,7 @@
   color2_name: 水色
   icon: /icons/sample.png
   active: true
-  call:
+  call: まゆたん
 - id: tsutsui_ayame
   name: 筒井 あやめ
   gen: 4期生
@@ -525,7 +525,7 @@
   color2_name: 紫
   icon: /icons/sample.png
   active: true
-  call:
+  call: あやめん
 - id: hayakawa_seira
   name: 早川 聖来
   gen: 4期生
@@ -541,7 +541,7 @@
   color2_name: ピンク
   icon: /icons/sample.png
   active: true
-  call:
+  call: はやし
 - id: matsuo_miyu
   name: 松尾 美佑
   gen: 4期生
@@ -549,7 +549,7 @@
   color2_name: ターコイズ
   icon: /icons/sample.png
   active: false
-  call:
+  call: まつおさん
 - id: yakubo_mio
   name: 矢久保 美緒
   gen: 4期生
@@ -557,7 +557,7 @@
   color2_name: 黄
   icon: /icons/sample.png
   active: false
-  call:
+  call: みっちゃん
 - id: yumiki_nao
   name: 弓木 奈於
   gen: 4期生
@@ -565,7 +565,7 @@
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-  call:
+  call: ゆみき
 - id: ioki_mao
   name: 五百城 茉央
   gen: 5期生
