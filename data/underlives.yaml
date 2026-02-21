@@ -304,3 +304,32 @@
     - yakubo_mio
     - yoshida_ayano
   absent: []
+
+- id: ul_30th_2022
+  title: "30thSGアンダーライブ"
+  year: 2022
+  dates:
+    - "2022-09-27"  # 東京: TACHIKAWA STAGE GARDEN
+    - "2022-09-28"  # 東京: TACHIKAWA STAGE GARDEN
+    - "2022-09-29"  # 東京: TACHIKAWA STAGE GARDEN
+    - "2022-10-03"  # 大阪: オリックス劇場
+    - "2022-10-04"  # 大阪: オリックス劇場
+    - "2022-10-05"  # 大阪: オリックス劇場
+  venue: "TACHIKAWA STAGE GARDEN / オリックス劇場"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/65811"
+  member_ids:
+    - ito_riria
+    - kitagawa_yuri
+    - kuromi_harukaka
+    - sakaguchi_tamami
+    - sato_rika
+    - nakamura_reno
+    - hayashi_runa
+    - matsuo_miyu
+    - mukai_hazuki
+    - yakubo_mio
+    - yoshida_ayano
+    - wada_maaya
+  absent:
+    - id: ito_riria
+      note: "スケジュールの都合により10月5日（水）公演のみ出演"
