@@ -39,6 +39,26 @@ h1 {
 	border-bottom-color: #333;
 }
 
+.copy-link-btn {
+	margin-left: auto;
+	padding: 0.4rem 0.9rem;
+	font-size: 0.8rem;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	background: #fff;
+	cursor: pointer;
+	color: #666;
+	align-self: center;
+	transition:
+		background 0.15s,
+		color 0.15s;
+}
+
+.copy-link-btn:hover {
+	background: #f5f5f5;
+	color: #333;
+}
+
 .underlive-controls {
 	margin-bottom: 1rem;
 }

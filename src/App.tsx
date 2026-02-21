@@ -18,6 +18,18 @@ const COLOR_CYCLE = [
 	"ターコイズ",
 ];
 
+function getHashParts(): { path: string; params: URLSearchParams } {
+	const hash = window.location.hash.slice(1); // 先頭の # を除く
+	const sepIdx = hash.indexOf("?");
+	if (sepIdx === -1) {
+		return { path: hash, params: new URLSearchParams() };
+	}
+	return {
+		path: hash.slice(0, sepIdx),
+		params: new URLSearchParams(hash.slice(sepIdx + 1)),
+	};
+}
+
 function MemberCard({
 	member,
 	isCenter = false,
@@ -70,11 +82,14 @@ function MemberCard({
 function UnderlivePanel({
 	underlives,
 	members,
+	selectedId,
+	onSelectId,
 }: {
 	underlives: Underlive[];
 	members: Member[];
+	selectedId: string;
+	onSelectId: (id: string) => void;
 }) {
-	const [selectedId, setSelectedId] = useState(underlives[0]?.id ?? "");
 	const selected = useMemo(
 		() => underlives.find((u) => u.id === selectedId),
 		[underlives, selectedId],
@@ -127,7 +142,7 @@ function UnderlivePanel({
 				<select
 					className="gen-select"
 					value={selectedId}
-					onChange={(e) => setSelectedId(e.target.value)}
+					onChange={(e) => onSelectId(e.target.value)}
 				>
 					{underlives.map((u) => (
 						<option key={u.id} value={u.id}>
@@ -201,10 +216,22 @@ function App() {
 	const [underlives, setUnderlives] = useState<Underlive[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-	const [tab, setTab] = useState<"penlight" | "underlive">("penlight");
-	const [search, setSearch] = useState("");
-	const [genFilter, setGenFilter] = useState("");
-	const [showAll, setShowAll] = useState(false);
+	const [tab, setTab] = useState<"penlight" | "underlive">(() => {
+		const { path } = getHashParts();
+		return path === "underlive" ? "underlive" : "penlight";
+	});
+	const [search, setSearch] = useState(
+		() => getHashParts().params.get("q") ?? "",
+	);
+	const [genFilter, setGenFilter] = useState(
+		() => getHashParts().params.get("gen") ?? "",
+	);
+	const [showAll, setShowAll] = useState(
+		() => getHashParts().params.get("graduated") === "1",
+	);
+	const [selectedUnderliveId, setSelectedUnderliveId] = useState(
+		() => getHashParts().params.get("id") ?? "",
+	);
 
 	useEffect(() => {
 		const jsonPath = `${import.meta.env.BASE_URL}data/members.json`;
@@ -235,6 +262,33 @@ function App() {
 				// underlives.json の読み込み失敗は無視する
 			});
 	}, []);
+
+	useEffect(() => {
+		const params = new URLSearchParams();
+		if (search) params.set("q", search);
+		if (genFilter) params.set("gen", genFilter);
+		if (showAll) params.set("graduated", "1");
+		if (selectedUnderliveId) params.set("id", selectedUnderliveId);
+		const qs = params.toString();
+		const hashPath = tab === "underlive" ? "underlive" : "";
+		const hash = hashPath
+			? qs
+				? `#${hashPath}?${qs}`
+				: `#${hashPath}`
+			: qs
+				? `#?${qs}`
+				: "";
+		window.history.replaceState(null, "", `${window.location.pathname}${hash}`);
+	}, [tab, search, genFilter, showAll, selectedUnderliveId]);
+
+	useEffect(() => {
+		if (
+			underlives.length > 0 &&
+			!underlives.find((u) => u.id === selectedUnderliveId)
+		) {
+			setSelectedUnderliveId(underlives[0].id);
+		}
+	}, [underlives, selectedUnderliveId]);
 
 	const generations = useMemo(() => {
 		const gens = new Set<string>();
@@ -280,6 +334,15 @@ function App() {
 				>
 					アンダーライブ
 				</button>
+				<button
+					type="button"
+					className="copy-link-btn"
+					onClick={() => {
+						navigator.clipboard.writeText(window.location.href);
+					}}
+				>
+					リンクをコピー
+				</button>
 			</div>
 
 			{tab === "penlight" && (
@@ -323,7 +386,12 @@ function App() {
 			)}
 
 			{tab === "underlive" && (
-				<UnderlivePanel underlives={underlives} members={members} />
+				<UnderlivePanel
+					underlives={underlives}
+					members={members}
+					selectedId={selectedUnderliveId}
+					onSelectId={setSelectedUnderliveId}
+				/>
 			)}
 
 			<footer className="app-footer">
