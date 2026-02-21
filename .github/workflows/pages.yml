@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: cp -r data dist/
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
       - id: deployment
