@@ -6,6 +6,7 @@ export interface Member {
 	color2_name?: string;
 	icon?: string;
 	active?: boolean;
+	call?: string;
 }
 
 export interface AbsentMember {
