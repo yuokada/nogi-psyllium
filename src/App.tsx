@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { getPenlightHex, PENLIGHT_COLORS } from "./colors";
 import type { Member, Underlive } from "./types";
@@ -240,6 +240,124 @@ function UnderlivePanel({
 	);
 }
 
+const ALL_COLOR_NAMES = Object.keys(PENLIGHT_COLORS);
+
+function fisherYatesShuffle<T>(arr: T[]): T[] {
+	const result = [...arr];
+	for (let i = result.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[result[i], result[j]] = [result[j], result[i]];
+	}
+	return result;
+}
+
+function QuizPanel({ members }: { members: Member[] }) {
+	const activeMembers = useMemo(
+		() => members.filter((m) => m.active === true),
+		[members],
+	);
+
+	const [currentMember, setCurrentMember] = useState<Member | null>(null);
+	const [choices, setChoices] = useState<string[]>([]);
+	const [selected, setSelected] = useState<string | null>(null);
+
+	const generateQuestion = useCallback((memberList: Member[]) => {
+		if (memberList.length === 0) return;
+		const member = memberList[Math.floor(Math.random() * memberList.length)];
+		const correctAnswers = [member.color1_name];
+		if (member.color2_name) correctAnswers.push(member.color2_name);
+
+		const wrongColors = ALL_COLOR_NAMES.filter(
+			(c) => !correctAnswers.includes(c),
+		);
+		const shuffledWrong = fisherYatesShuffle(wrongColors);
+		const numWrong = Math.min(4 - correctAnswers.length, shuffledWrong.length);
+
+		const choiceSet = [...correctAnswers, ...shuffledWrong.slice(0, numWrong)];
+		setCurrentMember(member);
+		setChoices(fisherYatesShuffle(choiceSet));
+		setSelected(null);
+	}, []);
+
+	useEffect(() => {
+		generateQuestion(activeMembers);
+	}, [activeMembers, generateQuestion]);
+
+	if (activeMembers.length === 0) {
+		return <div className="loading">メンバーデータがありません</div>;
+	}
+
+	if (!currentMember) {
+		return <div className="loading">読み込み中...</div>;
+	}
+
+	const correctAnswers = [currentMember.color1_name];
+	if (currentMember.color2_name) correctAnswers.push(currentMember.color2_name);
+
+	const isAnswered = selected !== null;
+	const isCorrect = selected !== null && correctAnswers.includes(selected);
+
+	return (
+		<div className="quiz-panel">
+			<div className="quiz-card">
+				<p className="quiz-label">このメンバーのサイリウムカラーは？</p>
+				<p className="quiz-member-name">{currentMember.name}</p>
+				{currentMember.gen && (
+					<p className="quiz-member-gen">{currentMember.gen}</p>
+				)}
+				<div className="quiz-choices">
+					{choices.map((colorName) => {
+						const hex = getPenlightHex(colorName) ?? "#cccccc";
+						const isThisCorrect = correctAnswers.includes(colorName);
+						let choiceClass = "quiz-choice";
+						if (isAnswered) {
+							if (isThisCorrect) choiceClass += " quiz-choice--correct";
+							else if (colorName === selected)
+								choiceClass += " quiz-choice--wrong";
+							else choiceClass += " quiz-choice--dimmed";
+						}
+						return (
+							<button
+								key={colorName}
+								type="button"
+								className={choiceClass}
+								onClick={() => {
+									if (!isAnswered) setSelected(colorName);
+								}}
+							>
+								<span
+									className="quiz-choice-swatch"
+									style={{ backgroundColor: hex }}
+								/>
+								<span className="quiz-choice-name">{colorName}</span>
+							</button>
+						);
+					})}
+				</div>
+				{isAnswered && (
+					<div
+						className={`quiz-result ${isCorrect ? "quiz-result--correct" : "quiz-result--wrong"}`}
+					>
+						<span>{isCorrect ? "⭕ 正解！" : "❌ 不正解"}</span>
+						<span className="quiz-result-answer">
+							正解: {correctAnswers.join(" / ")}
+						</span>
+					</div>
+				)}
+			</div>
+			{isAnswered && (
+				<button
+					type="button"
+					className="quiz-next-btn"
+					onClick={() => generateQuestion(activeMembers)}
+				>
+					次の問題 →
+				</button>
+			)}
+		</div>
+	);
+}
+
 function App() {
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -251,7 +369,12 @@ function App() {
 	const [error, setError] = useState<string | null>(null);
 
 	// タブはパスから導出
-	const tab = location.pathname === "/underlive" ? "underlive" : "penlight";
+	const tab =
+		location.pathname === "/underlive"
+			? "underlive"
+			: location.pathname === "/quiz"
+				? "quiz"
+				: "penlight";
 
 	// フィルタ状態は searchParams から読む
 	const search = searchParams.get("q") ?? "";
@@ -320,8 +443,10 @@ function App() {
 		}
 	}, [underlives, tab, selectedUnderliveId, setSearchParams]);
 
-	function setTab(newTab: "penlight" | "underlive") {
-		navigate(newTab === "underlive" ? "/underlive" : "/");
+	function setTab(newTab: "penlight" | "underlive" | "quiz") {
+		if (newTab === "underlive") navigate("/underlive");
+		else if (newTab === "quiz") navigate("/quiz");
+		else navigate("/");
 	}
 
 	function setSearch(value: string) {
@@ -432,6 +557,13 @@ function App() {
 					</button>
 					<button
 						type="button"
+						className={tab === "quiz" ? "tab active" : "tab"}
+						onClick={() => setTab("quiz")}
+					>
+						クイズ
+					</button>
+					<button
+						type="button"
 						className="copy-link-btn"
 						onClick={() => {
 							navigator.clipboard.writeText(window.location.href);
@@ -503,6 +635,8 @@ function App() {
 						onShowAbsentChange={setShowAbsent}
 					/>
 				)}
+
+				{tab === "quiz" && <QuizPanel members={members} />}
 
 				<footer className="app-footer">
 					<p className="footer-title">ペンライト 色変更順</p>
