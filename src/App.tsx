@@ -240,17 +240,6 @@ function UnderlivePanel({
 	);
 }
 
-const ALL_COLOR_NAMES = Object.keys(PENLIGHT_COLORS);
-
-function fisherYatesShuffle<T>(arr: T[]): T[] {
-	const result = [...arr];
-	for (let i = result.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[result[i], result[j]] = [result[j], result[i]];
-	}
-	return result;
-}
-
 function QuizPanel({ members }: { members: Member[] }) {
 	const activeMembers = useMemo(
 		() => members.filter((m) => m.active === true),
@@ -258,25 +247,13 @@ function QuizPanel({ members }: { members: Member[] }) {
 	);
 
 	const [currentMember, setCurrentMember] = useState<Member | null>(null);
-	const [choices, setChoices] = useState<string[]>([]);
-	const [selected, setSelected] = useState<string | null>(null);
+	const [answered, setAnswered] = useState(false);
 
 	const generateQuestion = useCallback((memberList: Member[]) => {
 		if (memberList.length === 0) return;
 		const member = memberList[Math.floor(Math.random() * memberList.length)];
-		const correctAnswers = [member.color1_name];
-		if (member.color2_name) correctAnswers.push(member.color2_name);
-
-		const wrongColors = ALL_COLOR_NAMES.filter(
-			(c) => !correctAnswers.includes(c),
-		);
-		const shuffledWrong = fisherYatesShuffle(wrongColors);
-		const numWrong = Math.min(4 - correctAnswers.length, shuffledWrong.length);
-
-		const choiceSet = [...correctAnswers, ...shuffledWrong.slice(0, numWrong)];
 		setCurrentMember(member);
-		setChoices(fisherYatesShuffle(choiceSet));
-		setSelected(null);
+		setAnswered(false);
 	}, []);
 
 	useEffect(() => {
@@ -291,61 +268,32 @@ function QuizPanel({ members }: { members: Member[] }) {
 		return <div className="loading">読み込み中...</div>;
 	}
 
-	const correctAnswers = [currentMember.color1_name];
-	if (currentMember.color2_name) correctAnswers.push(currentMember.color2_name);
-
-	const isAnswered = selected !== null;
-	const isCorrect = selected !== null && correctAnswers.includes(selected);
+	const answerText = currentMember.color2_name
+		? `${currentMember.color1_name} x ${currentMember.color2_name}`
+		: currentMember.color1_name;
 
 	return (
 		<div className="quiz-panel">
 			<div className="quiz-card">
-				<p className="quiz-label">このメンバーのサイリウムカラーは？</p>
-				<p className="quiz-member-name">{currentMember.name}</p>
+				<p className="quiz-question">
+					Q: {currentMember.name}のサイリウムカラーは?
+				</p>
 				{currentMember.gen && (
 					<p className="quiz-member-gen">{currentMember.gen}</p>
 				)}
-				<div className="quiz-choices">
-					{choices.map((colorName) => {
-						const hex = getPenlightHex(colorName) ?? "#cccccc";
-						const isThisCorrect = correctAnswers.includes(colorName);
-						let choiceClass = "quiz-choice";
-						if (isAnswered) {
-							if (isThisCorrect) choiceClass += " quiz-choice--correct";
-							else if (colorName === selected)
-								choiceClass += " quiz-choice--wrong";
-							else choiceClass += " quiz-choice--dimmed";
-						}
-						return (
-							<button
-								key={colorName}
-								type="button"
-								className={choiceClass}
-								onClick={() => {
-									if (!isAnswered) setSelected(colorName);
-								}}
-							>
-								<span
-									className="quiz-choice-swatch"
-									style={{ backgroundColor: hex }}
-								/>
-								<span className="quiz-choice-name">{colorName}</span>
-							</button>
-						);
-					})}
-				</div>
-				{isAnswered && (
-					<div
-						className={`quiz-result ${isCorrect ? "quiz-result--correct" : "quiz-result--wrong"}`}
+				{!answered ? (
+					<button
+						type="button"
+						className="quiz-reveal-btn"
+						onClick={() => setAnswered(true)}
 					>
-						<span>{isCorrect ? "⭕ 正解！" : "❌ 不正解"}</span>
-						<span className="quiz-result-answer">
-							正解: {correctAnswers.join(" / ")}
-						</span>
-					</div>
+						答えを見る
+					</button>
+				) : (
+					<p className="quiz-answer">A: {answerText}</p>
 				)}
 			</div>
-			{isAnswered && (
+			{answered && (
 				<button
 					type="button"
 					className="quiz-next-btn"
