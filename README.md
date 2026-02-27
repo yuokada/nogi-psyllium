@@ -99,6 +99,33 @@ npm run build
 3. `npm run dev` で表示を確認する
 4. 問題なければコミットしてプッシュする
 
+## JSONスキーマファイルの更新
+
+`schema/` ディレクトリに YAML データファイルの構造を定義した JSON スキーマファイルがあります。
+
+| スキーマファイル | 対象 |
+| --- | --- |
+| `schema/members.schema.json` | `data/members.yaml` |
+| `schema/underlives.schema.json` | `data/underlives.yaml` |
+
+### ローカルでのスキーマ検証
+
+```bash
+pip install check-jsonschema
+
+check-jsonschema --schemafile schema/members.schema.json data/members.yaml
+check-jsonschema --schemafile schema/underlives.schema.json data/underlives.yaml
+```
+
+### スキーマを更新するタイミング
+
+- **新しいフィールドを追加する場合**: 対応するスキーマファイルの `properties` に新しいフィールドを定義し、必須の場合は `required` 配列にも追加します
+- **サイリウムカラーを追加する場合**: `src/colors.ts` に色を追加したあと、`schema/members.schema.json` の `color1_name` と `color2_name` の `enum` にも追加します
+
+### GitHub Actions による自動検証
+
+`data/*.yaml` または `schema/*.json` を変更してプッシュ・プルリクエストを作成すると、自動的にスキーマ検証が実行されます。
+
 ## その他のコマンド
 
 ```bash
