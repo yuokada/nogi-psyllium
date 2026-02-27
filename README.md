@@ -101,30 +101,30 @@ npm run build
 
 ## JSONスキーマファイルの更新
 
-`schema/` ディレクトリに YAML データファイルの構造を定義した JSON スキーマファイルがあります。
+`schema/` ディレクトリに YAML データファイルの構造を定義した YAML スキーマファイルがあります。
 
 | スキーマファイル | 対象 |
 | --- | --- |
-| `schema/members.schema.json` | `data/members.yaml` |
-| `schema/underlives.schema.json` | `data/underlives.yaml` |
+| `schema/members.schema.yaml` | `data/members.yaml` |
+| `schema/underlives.schema.yaml` | `data/underlives.yaml` |
 
 ### ローカルでのスキーマ検証
 
 ```bash
 pip install check-jsonschema
 
-check-jsonschema --schemafile schema/members.schema.json data/members.yaml
-check-jsonschema --schemafile schema/underlives.schema.json data/underlives.yaml
+check-jsonschema --schemafile schema/members.schema.yaml data/members.yaml
+check-jsonschema --schemafile schema/underlives.schema.yaml data/underlives.yaml
 ```
 
 ### スキーマを更新するタイミング
 
 - **新しいフィールドを追加する場合**: 対応するスキーマファイルの `properties` に新しいフィールドを定義し、必須の場合は `required` 配列にも追加します
-- **サイリウムカラーを追加する場合**: `src/colors.ts` に色を追加したあと、`schema/members.schema.json` の `color1_name` と `color2_name` の `enum` にも追加します
+- **サイリウムカラーを追加する場合**: `src/colors.ts` に色を追加したあと、`schema/members.schema.yaml` の `color1_name` と `color2_name` の `enum` にも追加します
 
 ### GitHub Actions による自動検証
 
-`data/*.yaml` または `schema/*.json` を変更してプッシュ・プルリクエストを作成すると、自動的にスキーマ検証が実行されます。
+`data/*.yaml` または `schema/*.yaml` を変更してプッシュ・プルリクエストを作成すると、自動的にスキーマ検証が実行されます。
 
 ## その他のコマンド
 

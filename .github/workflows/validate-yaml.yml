@@ -4,12 +4,12 @@ on:
   push:
     paths:
       - "data/*.yaml"
-      - "schema/*.json"
+      - "schema/*.yaml"
       - ".github/workflows/validate-yaml.yml"
   pull_request:
     paths:
       - "data/*.yaml"
-      - "schema/*.json"
+      - "schema/*.yaml"
       - ".github/workflows/validate-yaml.yml"
 
 jobs:
@@ -22,6 +22,6 @@ jobs:
       - name: Install check-jsonschema
         run: pip install check-jsonschema==0.36.2
       - name: Validate members.yaml
-        run: check-jsonschema --schemafile schema/members.schema.json data/members.yaml
+        run: check-jsonschema --schemafile schema/members.schema.yaml data/members.yaml
       - name: Validate underlives.yaml
-        run: check-jsonschema --schemafile schema/underlives.schema.json data/underlives.yaml
+        run: check-jsonschema --schemafile schema/underlives.schema.yaml data/underlives.yaml
