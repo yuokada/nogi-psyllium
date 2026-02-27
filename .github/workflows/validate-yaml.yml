@@ -1,0 +1,27 @@
+name: Validate YAML schemas
+
+on:
+  push:
+    paths:
+      - "data/*.yaml"
+      - "schema/*.json"
+      - ".github/workflows/validate-yaml.yml"
+  pull_request:
+    paths:
+      - "data/*.yaml"
+      - "schema/*.json"
+      - ".github/workflows/validate-yaml.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema==0.36.2
+      - name: Validate members.yaml
+        run: check-jsonschema --schemafile schema/members.schema.json data/members.yaml
+      - name: Validate underlives.yaml
+        run: check-jsonschema --schemafile schema/underlives.schema.json data/underlives.yaml

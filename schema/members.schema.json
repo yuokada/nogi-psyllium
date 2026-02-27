@@ -1,0 +1,38 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "array",
+	"items": {
+		"type": "object",
+		"required": ["id", "name", "color1_name"],
+		"additionalProperties": false,
+		"properties": {
+			"id": {
+				"type": "string",
+				"pattern": "^[a-z][a-z0-9_]*$"
+			},
+			"name": {
+				"type": "string"
+			},
+			"gen": {
+				"type": "string"
+			},
+			"color1_name": {
+				"type": "string",
+				"enum": ["白", "オレンジ", "青", "黄", "紫", "緑", "ピンク", "赤", "水色", "黄緑", "ターコイズ", "黒"]
+			},
+			"color2_name": {
+				"type": "string",
+				"enum": ["白", "オレンジ", "青", "黄", "紫", "緑", "ピンク", "赤", "水色", "黄緑", "ターコイズ", "黒"]
+			},
+			"icon": {
+				"type": "string"
+			},
+			"active": {
+				"type": "boolean"
+			},
+			"call": {
+				"type": ["string", "null"]
+			}
+		}
+	}
+}
