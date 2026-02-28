@@ -1,4 +1,4 @@
-export type GithubCornerProps = {
+type GithubCornerProps = {
 	href: string;
 };
 

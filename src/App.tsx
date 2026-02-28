@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import useSWR from "swr";
 import { AppFooter } from "./components/AppFooter";
 import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
@@ -8,57 +9,75 @@ import { UnderlivePanel } from "./components/UnderlivePanel";
 import type { Member, Underlive } from "./types";
 import "./App.css";
 
-type AppState = {
-	members: Member[];
-	underlives: Underlive[];
-	loading: boolean;
-	error: string | null;
+const isMember = (value: unknown): value is Member => {
+	if (!value || typeof value !== "object") return false;
+	const v = value as Record<string, unknown>;
+	return (
+		typeof v.id === "string" &&
+		typeof v.name === "string" &&
+		typeof v.color1_name === "string"
+	);
 };
 
-type AppAction =
-	| { type: "membersLoaded"; payload: Member[] }
-	| { type: "membersLoadFailed"; payload: string }
-	| { type: "underlivesLoaded"; payload: Underlive[] };
-
-const initialState: AppState = {
-	members: [],
-	underlives: [],
-	loading: true,
-	error: null,
+const isUnderlive = (value: unknown): value is Underlive => {
+	if (!value || typeof value !== "object") return false;
+	const v = value as Record<string, unknown>;
+	return (
+		typeof v.id === "string" &&
+		typeof v.title === "string" &&
+		typeof v.year === "number" &&
+		Array.isArray(v.dates) &&
+		Array.isArray(v.member_ids)
+	);
 };
 
-function appReducer(state: AppState, action: AppAction): AppState {
-	switch (action.type) {
-		case "membersLoaded":
-			return {
-				...state,
-				members: action.payload,
-				loading: false,
-				error: null,
-			};
-		case "membersLoadFailed":
-			return {
-				...state,
-				loading: false,
-				error: action.payload,
-			};
-		case "underlivesLoaded":
-			return {
-				...state,
-				underlives: action.payload,
-			};
-		default:
-			return state;
+const fetchMembers = async (url: string): Promise<Member[]> => {
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`データ読み込みエラー: ${res.status}`);
+	const json: unknown = await res.json();
+	if (!Array.isArray(json) || !json.every(isMember)) {
+		throw new Error("メンバーデータの形式が不正です");
 	}
-}
+	return json;
+};
+
+const fetchUnderlives = async (url: string): Promise<Underlive[]> => {
+	try {
+		const res = await fetch(url);
+		if (!res.ok) return [];
+		const json: unknown = await res.json();
+		if (!Array.isArray(json) || !json.every(isUnderlive)) return [];
+		return json;
+	} catch {
+		return [];
+	}
+};
 
 function App() {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const [state, dispatch] = useReducer(appReducer, initialState);
-	const { members, underlives, loading, error } = state;
+	const membersPath = `${import.meta.env.BASE_URL}data/members.json`;
+	const underlivesPath = `${import.meta.env.BASE_URL}data/underlives.json`;
+
+	const {
+		data: membersData,
+		error: membersError,
+		isLoading: membersLoading,
+	} = useSWR(membersPath, fetchMembers, {
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false,
+		shouldRetryOnError: false,
+	});
+	const { data: underlivesData } = useSWR(underlivesPath, fetchUnderlives, {
+		shouldRetryOnError: false,
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false,
+	});
+
+	const members = membersData ?? [];
+	const underlives = underlivesData ?? [];
 
 	const tab =
 		location.pathname === "/underlive"
@@ -83,36 +102,6 @@ function App() {
 			setInputValue(search);
 		}
 	}, [search]);
-
-	useEffect(() => {
-		const jsonPath = `${import.meta.env.BASE_URL}data/members.json`;
-		fetch(jsonPath)
-			.then((res) => {
-				if (!res.ok) throw new Error(`データ読み込みエラー: ${res.status}`);
-				return res.json() as Promise<Member[]>;
-			})
-			.then((data) => {
-				dispatch({ type: "membersLoaded", payload: data });
-			})
-			.catch((err) => {
-				dispatch({ type: "membersLoadFailed", payload: err.message });
-			});
-	}, []);
-
-	useEffect(() => {
-		const jsonPath = `${import.meta.env.BASE_URL}data/underlives.json`;
-		fetch(jsonPath)
-			.then((res) => {
-				if (!res.ok) return [];
-				return res.json() as Promise<Underlive[]>;
-			})
-			.then((data) => {
-				dispatch({ type: "underlivesLoaded", payload: data });
-			})
-			.catch(() => {
-				// underlives.json の読み込み失敗は無視する
-			});
-	}, []);
 
 	useEffect(() => {
 		if (
@@ -220,8 +209,9 @@ function App() {
 		});
 	}, [members, search, genFilter, showAll]);
 
-	if (loading) return <div className="loading">読み込み中...</div>;
-	if (error) return <div className="error">エラー: {error}</div>;
+	if (membersLoading) return <div className="loading">読み込み中...</div>;
+	if (membersError)
+		return <div className="error">エラー: {membersError.message}</div>;
 
 	return (
 		<>
