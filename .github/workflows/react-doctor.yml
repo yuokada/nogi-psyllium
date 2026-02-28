@@ -12,10 +12,10 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
-      - uses: millionco/react-doctor@v0.0.1
+      - uses: millionco/react-doctor@main
         with:
           diff: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
