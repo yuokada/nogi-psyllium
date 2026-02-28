@@ -7,6 +7,7 @@ export interface Member {
 	icon?: string;
 	active?: boolean;
 	call?: string;
+	profile_url?: string;
 }
 
 export interface AbsentMember {

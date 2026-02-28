@@ -350,6 +350,7 @@
   icon: /icons/sample.png
   active: true
   call: りりあ
+  profile_url: https://www.nogizaka46.com/s/n46/artist/36749
 - id: iwamoto_renka
   name: 岩本 蓮加
   gen: 3期生
@@ -358,6 +359,7 @@
   icon: /icons/sample.png
   active: true
   call: れんか
+  profile_url: https://www.nogizaka46.com/s/n46/artist/36750
 - id: umezawa_minami
   name: 梅澤 美波
   gen: 3期生
@@ -366,6 +368,7 @@
   icon: /icons/sample.png
   active: true
   call: みなみん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/36751
 - id: ozono_momoko
   name: 大園 桃子
   gen: 3期生
@@ -430,6 +433,7 @@
   icon: /icons/sample.png
   active: true
   call: あやてぃー
+  profile_url: https://www.nogizaka46.com/s/n46/artist/36759
 - id: yoda_yuki
   name: 与田 祐希
   gen: 3期生
@@ -446,6 +450,7 @@
   icon: /icons/sample.png
   active: true
   call: さくちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/48006
 - id: kaki_haruka
   name: 賀喜 遥香
   gen: 4期生
@@ -454,6 +459,7 @@
   icon: /icons/sample.png
   active: true
   call: かっきー
+  profile_url: https://www.nogizaka46.com/s/n46/artist/48008
 - id: kakehashi_sayaka
   name: 掛橋 沙耶香
   gen: 4期生
@@ -470,6 +476,7 @@
   icon: /icons/sample.png
   active: true
   call: やんちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/48010
 - id: kitagawa_yuri
   name: 北川 悠理
   gen: 4期生
@@ -486,6 +493,7 @@
   icon: /icons/sample.png
   active: true
   call: くろみん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55383
 - id: sato_rika
   name: 佐藤 璃果
   gen: 4期生
@@ -494,6 +502,7 @@
   icon: /icons/sample.png
   active: true
   call: りかちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55384
 - id: shibata_yuna
   name: 柴田 柚菜
   gen: 4期生
@@ -502,6 +511,7 @@
   icon: /icons/sample.png
   active: true
   call: ゆんちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/48013
 - id: seimiyamiya_rei
   name: 清宮 レイ
   gen: 4期生
@@ -518,6 +528,7 @@
   icon: /icons/sample.png
   active: true
   call: まゆたん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/48015
 - id: tsutsui_ayame
   name: 筒井 あやめ
   gen: 4期生
@@ -526,6 +537,7 @@
   icon: /icons/sample.png
   active: true
   call: あやめん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/48017
 - id: hayakawa_seira
   name: 早川 聖来
   gen: 4期生
@@ -542,6 +554,7 @@
   icon: /icons/sample.png
   active: true
   call: はやし
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55385
 - id: matsuo_miyu
   name: 松尾 美佑
   gen: 4期生
@@ -566,6 +579,7 @@
   icon: /icons/sample.png
   active: true
   call: ゆみき
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55387
 - id: ioki_mao
   name: 五百城 茉央
   gen: 5期生
@@ -574,6 +588,7 @@
   icon: /icons/sample.png
   active: true
   call: まおちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55396
 - id: ikeda_teresa
   name: 池田 瑛紗
   gen: 5期生
@@ -582,6 +597,7 @@
   icon: /icons/sample.png
   active: true
   call: てれさ
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55397
 - id: ichinose_miku
   name: 一ノ瀬 美空
   gen: 5期生
@@ -590,6 +606,7 @@
   icon: /icons/sample.png
   active: true
   call: みーきゅん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55390
 - id: inoue_nagi
   name: 井上 和
   gen: 5期生
@@ -598,6 +615,7 @@
   icon: /icons/sample.png
   active: true
   call: なぎちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55389
 - id: okamoto_hina
   name: 岡本 姫奈
   gen: 5期生
@@ -606,6 +624,7 @@
   icon: /icons/sample.png
   active: true
   call: ひなちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55401
 - id: ogawa_aya
   name: 小川 彩
   gen: 5期生
@@ -614,6 +633,7 @@
   icon: /icons/sample.png
   active: true
   call: あーや
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55392
 - id: okuda_iroha
   name: 奥田 いろは
   gen: 5期生
@@ -622,6 +642,7 @@
   icon: /icons/sample.png
   active: true
   call: いろは
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55394
 - id: kawasaki_sakura
   name: 川﨑 桜
   gen: 5期生
@@ -630,6 +651,7 @@
   icon: /icons/sample.png
   active: true
   call: さくたん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55400
 - id: sugawara_satsuki
   name: 菅原 咲月
   gen: 5期生
@@ -638,6 +660,7 @@
   icon: /icons/sample.png
   active: true
   call: さつき
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55391
 - id: tomisato_nao
   name: 冨里 奈央
   gen: 5期生
@@ -646,6 +669,7 @@
   icon: /icons/sample.png
   active: true
   call: なおちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55393
 - id: nakanishi_aruno
   name: 中西 アルノ
   gen: 5期生
@@ -654,6 +678,7 @@
   icon: /icons/sample.png
   active: true
   call: アルノ
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55395
 - id: atago_kokone
   name: 愛宕 心響
   gen: 6期生
@@ -662,6 +687,7 @@
   icon: /icons/sample.png
   active: true
   call: ここねん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63101
 - id: okoshi_hinano
   name: 大越 ひなの
   gen: 6期生
@@ -670,6 +696,7 @@
   icon: /icons/sample.png
   active: true
   call: ひなの
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63102
 - id: ozu_reina
   name: 小津 玲奈
   gen: 6期生
@@ -678,6 +705,7 @@
   icon: /icons/sample.png
   active: true
   call: 小津ちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63103
 - id: kaibe_akari
   name: 海邉 朱莉
   gen: 6期生
@@ -686,6 +714,7 @@
   icon: /icons/sample.png
   active: true
   call: あかり
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63104
 - id: kawabata_hina
   name: 川端 晃菜
   gen: 6期生
@@ -694,6 +723,7 @@
   icon: /icons/sample.png
   active: true
   call: ひーつん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63105
 - id: suzuki_yuna
   name: 鈴木 佑捺
   gen: 6期生
@@ -702,6 +732,7 @@
   icon: /icons/sample.png
   active: true
   call: ゆうな
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63106
 - id: setoguchi_mizuki
   name: 瀬戸口 心月
   gen: 6期生
@@ -710,6 +741,7 @@
   icon: /icons/sample.png
   active: true
   call: みつき
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63107
 - id: nagashima_rio
   name: 長嶋 凛桜
   gen: 6期生
@@ -718,6 +750,7 @@
   icon: /icons/sample.png
   active: true
   call: りおたん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63108
 - id: masuda_mirine
   name: 増田 三莉音
   gen: 6期生
@@ -726,6 +759,7 @@
   icon: /icons/sample.png
   active: true
   call: みりね
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63109
 - id: morihira_urumi
   name: 森平 麗心
   gen: 6期生
@@ -734,6 +768,7 @@
   icon: /icons/sample.png
   active: true
   call: うるみん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63110
 - id: yada_moeka
   name: 矢田 萌華
   gen: 6期生
@@ -742,3 +777,4 @@
   icon: /icons/sample.png
   active: true
   call: 矢田ちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/63111

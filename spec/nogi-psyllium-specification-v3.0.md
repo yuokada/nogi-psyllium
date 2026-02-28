@@ -114,6 +114,7 @@ data/underlives.yaml  ─┤ yq (predev / prebuild)
 | `color2_name` | string | | サイリウムカラー2（カラーマスタの色名） |
 | `icon` | string | | アイコン画像のパス（例: `/icons/sample.png`） |
 | `active` | boolean | | `true`: 在籍中、`false`: 卒業済み（省略時: 非表示扱い） |
+| `profile_url` | string | | 公式プロフィールURL（例: `https://www.nogizaka46.com/s/n46/artist/55401`）現役メンバーのみ設定 |
 
 ### 記述例
 
@@ -125,6 +126,7 @@ data/underlives.yaml  ─┤ yq (predev / prebuild)
   color2_name: 赤
   icon: /icons/sample.png
   active: true
+  profile_url: https://www.nogizaka46.com/s/n46/artist/XXXXX
 ```
 
 ### サイリウムカラーマスタ（`src/colors.ts`）
@@ -237,6 +239,7 @@ yq -o=json data/underlives.yaml > public/data/underlives.json
 - 期（任意）
 - サイリウムカラー1（色名・背景色・自動テキスト色）
 - サイリウムカラー2（任意、同上）
+- 公式プロフィールリンク（`profile_url` が設定されている現役メンバーのみ）
 
 ## 6.2 アンダーライブタブ（`/#/underlive`）
 
@@ -391,6 +394,8 @@ interface Member {
   color2_name?: string;
   icon?: string;
   active?: boolean;
+  call?: string;
+  profile_url?: string;
 }
 
 interface AbsentMember {

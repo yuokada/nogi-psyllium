@@ -372,6 +372,14 @@ h1 {
 	flex-shrink: 0;
 }
 
+.member-profile-link {
+	font-size: 0.75rem;
+	text-decoration: none;
+	flex-shrink: 0;
+	margin-left: auto;
+	line-height: 1;
+}
+
 @media (max-width: 900px) {
 	.card-grid {
 		grid-template-columns: repeat(3, 1fr);
