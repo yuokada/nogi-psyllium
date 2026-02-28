@@ -130,8 +130,11 @@ check-jsonschema --schemafile schema/underlives.schema.yaml data/underlives.yaml
 
 ```bash
 npm run lint      # Biome によるコードチェック
+npm run doctor    # React のアンチパターン検出（react-doctor）
 npm run preview   # ビルド成果物のプレビュー
 ```
+
+`npm run doctor` は `react-doctor.config.json` を参照します。現在は `react-doctor/no-fetch-in-effect` を ignore に設定しています。
 
 ## pre-commit
 
