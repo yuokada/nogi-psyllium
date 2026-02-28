@@ -1,195 +1,55 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { PENLIGHT_COLORS } from "./colors";
+import { AppFooter } from "./components/AppFooter";
+import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
 import { QuizPanel } from "./components/QuizPanel";
+import { UnderlivePanel } from "./components/UnderlivePanel";
 import type { Member, Underlive } from "./types";
 import "./App.css";
 
-const COLOR_CYCLE = [
-	"白",
-	"オレンジ",
-	"青",
-	"黄",
-	"紫",
-	"緑",
-	"ピンク",
-	"赤",
-	"水色",
-	"黄緑",
-	"ターコイズ",
-];
-
-function GithubCorner({ href }: { href: string }) {
-	return (
-		<a
-			href={href}
-			className="github-corner"
-			aria-label="View source on GitHub"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
-				<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
-				<path
-					d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-					fill="currentColor"
-					style={{ transformOrigin: "130px 106px" }}
-					className="octo-arm"
-				/>
-				<path
-					d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-					fill="currentColor"
-					className="octo-body"
-				/>
-			</svg>
-		</a>
-	);
-}
-
-function UnderlivePanel({
-	underlives,
-	members,
-	selectedId,
-	onSelectId,
-	showAbsent,
-	onShowAbsentChange,
-}: {
-	underlives: Underlive[];
+type AppState = {
 	members: Member[];
-	selectedId: string;
-	onSelectId: (id: string) => void;
-	showAbsent: boolean;
-	onShowAbsentChange: (value: boolean) => void;
-}) {
-	const selected = useMemo(
-		() => underlives.find((u) => u.id === selectedId),
-		[underlives, selectedId],
-	);
+	underlives: Underlive[];
+	loading: boolean;
+	error: string | null;
+};
 
-	const memberMap = useMemo(() => {
-		const map = new Map<string, Member>();
-		for (const m of members) {
-			map.set(m.id, m);
-		}
-		return map;
-	}, [members]);
+type AppAction =
+	| { type: "membersLoaded"; payload: Member[] }
+	| { type: "membersLoadFailed"; payload: string }
+	| { type: "underlivesLoaded"; payload: Underlive[] };
 
-	const activeMembers = useMemo(() => {
-		if (!selected) return [];
-		return selected.member_ids
-			.map((id) => memberMap.get(id))
-			.filter((m): m is Member => m !== undefined);
-	}, [selected, memberMap]);
+const initialState: AppState = {
+	members: [],
+	underlives: [],
+	loading: true,
+	error: null,
+};
 
-	const absentMembers = useMemo(() => {
-		if (!selected?.absent) return [];
-		const result: { member: Member; note?: string }[] = [];
-		for (const a of selected.absent) {
-			const member = memberMap.get(a.id);
-			if (member) result.push({ member, note: a.note });
-		}
-		return result;
-	}, [selected, memberMap]);
-
-	const activeCenterIds = useMemo(() => {
-		if (!selected?.centers) return new Set<string>();
-		return new Set(selected.centers.map((c) => c.id));
-	}, [selected]);
-
-	const sortedMembers = useMemo(() => {
-		if (!activeCenterIds.size) return activeMembers;
-		const centers = activeMembers.filter((m) => activeCenterIds.has(m.id));
-		const others = activeMembers.filter((m) => !activeCenterIds.has(m.id));
-		return [...centers, ...others];
-	}, [activeMembers, activeCenterIds]);
-
-	if (underlives.length === 0) {
-		return <div className="loading">アンダーライブデータがありません</div>;
+function appReducer(state: AppState, action: AppAction): AppState {
+	switch (action.type) {
+		case "membersLoaded":
+			return {
+				...state,
+				members: action.payload,
+				loading: false,
+				error: null,
+			};
+		case "membersLoadFailed":
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+		case "underlivesLoaded":
+			return {
+				...state,
+				underlives: action.payload,
+			};
+		default:
+			return state;
 	}
-
-	return (
-		<div className="underlive-panel">
-			<div className="underlive-controls">
-				<select
-					className="gen-select"
-					value={selectedId}
-					onChange={(e) => onSelectId(e.target.value)}
-				>
-					{underlives.map((u) => (
-						<option key={u.id} value={u.id}>
-							{u.title}
-						</option>
-					))}
-				</select>
-			</div>
-
-			{selected && (
-				<>
-					<div className="underlive-info">
-						<div className="underlive-meta">
-							{selected.dates.length > 0 && (
-								<span className="underlive-dates">
-									{selected.dates[0]}
-									{selected.dates.length > 1 &&
-										` 〜 ${selected.dates[selected.dates.length - 1]}`}
-								</span>
-							)}
-							{selected.venue && (
-								<span className="underlive-venue">{selected.venue}</span>
-							)}
-							{selected.source_url && (
-								<a
-									href={selected.source_url}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="underlive-source"
-								>
-									出典
-								</a>
-							)}
-						</div>
-					</div>
-
-					<div className="member-count">
-						出演メンバー {sortedMembers.length}名
-					</div>
-					<div className="card-grid">
-						{sortedMembers.map((member, i) => (
-							<MemberCard
-								key={`${member.id}-${i}`}
-								member={member}
-								isCenter={activeCenterIds.has(member.id)}
-							/>
-						))}
-					</div>
-
-					{absentMembers.length > 0 && (
-						<div className="absent-section">
-							<label className="absent-toggle">
-								<input
-									type="checkbox"
-									checked={showAbsent}
-									onChange={(e) => onShowAbsentChange(e.target.checked)}
-								/>
-								欠席メンバーを表示（{absentMembers.length}名）
-							</label>
-							{showAbsent && (
-								<ul className="absent-list">
-									{absentMembers.map(({ member, note }) => (
-										<li key={member.id} className="absent-item">
-											<span className="absent-name">{member.name}</span>
-											{note && <span className="absent-note"> — {note}</span>}
-										</li>
-									))}
-								</ul>
-							)}
-						</div>
-					)}
-				</>
-			)}
-		</div>
-	);
 }
 
 function App() {
@@ -197,12 +57,9 @@ function App() {
 	const navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const [members, setMembers] = useState<Member[]>([]);
-	const [underlives, setUnderlives] = useState<Underlive[]>([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
+	const [state, dispatch] = useReducer(appReducer, initialState);
+	const { members, underlives, loading, error } = state;
 
-	// タブはパスから導出
 	const tab =
 		location.pathname === "/underlive"
 			? "underlive"
@@ -210,20 +67,17 @@ function App() {
 				? "quiz"
 				: "penlight";
 
-	// フィルタ状態は searchParams から読む
 	const search = searchParams.get("q") ?? "";
 	const genFilter = searchParams.get("gen") ?? "";
 	const showAll = searchParams.get("graduated") === "1";
 	const selectedUnderliveId = searchParams.get("id") ?? "";
 	const showAbsent = searchParams.get("absent") === "1";
 
-	// IME コンポジション対応: 入力中は URL を更新せずローカル state で管理する
 	const [inputValue, setInputValue] = useState(
 		() => searchParams.get("q") ?? "",
 	);
 	const composingRef = useRef(false);
 
-	// ブラウザ戻る/進むで URL が変化したとき inputValue を同期する
 	useEffect(() => {
 		if (!composingRef.current) {
 			setInputValue(search);
@@ -238,12 +92,10 @@ function App() {
 				return res.json() as Promise<Member[]>;
 			})
 			.then((data) => {
-				setMembers(data);
-				setLoading(false);
+				dispatch({ type: "membersLoaded", payload: data });
 			})
 			.catch((err) => {
-				setError(err.message);
-				setLoading(false);
+				dispatch({ type: "membersLoadFailed", payload: err.message });
 			});
 	}, []);
 
@@ -254,7 +106,9 @@ function App() {
 				if (!res.ok) return [];
 				return res.json() as Promise<Underlive[]>;
 			})
-			.then(setUnderlives)
+			.then((data) => {
+				dispatch({ type: "underlivesLoaded", payload: data });
+			})
 			.catch(() => {
 				// underlives.json の読み込み失敗は無視する
 			});
@@ -452,8 +306,8 @@ function App() {
 						</div>
 						<div className="member-count">{filtered.length}件表示</div>
 						<div className="card-grid">
-							{filtered.map((member, i) => (
-								<MemberCard key={`${member.id}-${i}`} member={member} />
+							{filtered.map((member) => (
+								<MemberCard key={member.id} member={member} />
 							))}
 						</div>
 					</>
@@ -472,33 +326,7 @@ function App() {
 
 				{tab === "quiz" && <QuizPanel members={members} />}
 
-				<footer className="app-footer">
-					<p className="footer-title">ペンライト 色変更順</p>
-					<div className="color-cycle">
-						{COLOR_CYCLE.map((name, i) => (
-							<div key={name} className="cycle-item">
-								<div
-									className="cycle-swatch"
-									style={{ backgroundColor: PENLIGHT_COLORS[name] }}
-								/>
-								<span className="cycle-name">{name}</span>
-								{i < COLOR_CYCLE.length - 1 && (
-									<span className="cycle-arrow">→</span>
-								)}
-							</div>
-						))}
-					</div>
-					<p className="footer-ref">
-						色順参考：
-						<a
-							href="https://www.nogizaka46shop.com/category/60"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							乃木坂46公式ショップ
-						</a>
-					</p>
-				</footer>
+				<AppFooter />
 			</div>
 		</>
 	);

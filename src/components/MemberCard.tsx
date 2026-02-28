@@ -2,7 +2,7 @@ import { getPenlightHex } from "../colors";
 import type { Member } from "../types";
 import { getTextColor, isValidHex } from "../utils";
 
-export type MemberCardProps = {
+type MemberCardProps = {
 	member: Member;
 	isCenter?: boolean;
 };
