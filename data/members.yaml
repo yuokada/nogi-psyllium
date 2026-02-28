@@ -606,6 +606,7 @@
   icon: /icons/sample.png
   active: true
   call: ひなちゃん
+  profile_url: https://www.nogizaka46.com/s/n46/artist/55401
 - id: ogawa_aya
   name: 小川 彩
   gen: 5期生

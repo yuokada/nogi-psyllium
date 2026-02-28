@@ -53,3 +53,6 @@ items:
       type:
         - string
         - "null"
+    profile_url:
+      type: string
+      format: uri

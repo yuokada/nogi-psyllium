@@ -68,6 +68,17 @@ function MemberCard({
 				<span className="member-name">{member.name}</span>
 				{member.gen && <span className="member-gen">{member.gen}</span>}
 				{isCenter && <span className="center-badge">👑</span>}
+				{member.active === true && member.profile_url && (
+					<a
+						href={member.profile_url}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="member-profile-link"
+						aria-label={`${member.name}の公式プロフィール`}
+					>
+						🔗
+					</a>
+				)}
 			</div>
 			<div className="color-boxes">
 				<div
