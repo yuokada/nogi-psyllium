@@ -9,16 +9,48 @@ import { UnderlivePanel } from "./components/UnderlivePanel";
 import type { Member, Underlive } from "./types";
 import "./App.css";
 
+const isMember = (value: unknown): value is Member => {
+	if (!value || typeof value !== "object") return false;
+	const v = value as Record<string, unknown>;
+	return (
+		typeof v.id === "string" &&
+		typeof v.name === "string" &&
+		typeof v.color1_name === "string"
+	);
+};
+
+const isUnderlive = (value: unknown): value is Underlive => {
+	if (!value || typeof value !== "object") return false;
+	const v = value as Record<string, unknown>;
+	return (
+		typeof v.id === "string" &&
+		typeof v.title === "string" &&
+		typeof v.year === "number" &&
+		Array.isArray(v.dates) &&
+		Array.isArray(v.member_ids)
+	);
+};
+
 const fetchMembers = async (url: string): Promise<Member[]> => {
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`データ読み込みエラー: ${res.status}`);
-	return (await res.json()) as Member[];
+	const json: unknown = await res.json();
+	if (!Array.isArray(json) || !json.every(isMember)) {
+		throw new Error("メンバーデータの形式が不正です");
+	}
+	return json;
 };
 
 const fetchUnderlives = async (url: string): Promise<Underlive[]> => {
-	const res = await fetch(url);
-	if (!res.ok) return [];
-	return (await res.json()) as Underlive[];
+	try {
+		const res = await fetch(url);
+		if (!res.ok) return [];
+		const json: unknown = await res.json();
+		if (!Array.isArray(json) || !json.every(isUnderlive)) return [];
+		return json;
+	} catch {
+		return [];
+	}
 };
 
 function App() {
@@ -33,8 +65,16 @@ function App() {
 		data: membersData,
 		error: membersError,
 		isLoading: membersLoading,
-	} = useSWR(membersPath, fetchMembers);
-	const { data: underlivesData } = useSWR(underlivesPath, fetchUnderlives);
+	} = useSWR(membersPath, fetchMembers, {
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false,
+		shouldRetryOnError: false,
+	});
+	const { data: underlivesData } = useSWR(underlivesPath, fetchUnderlives, {
+		shouldRetryOnError: false,
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false,
+	});
 
 	const members = membersData ?? [];
 	const underlives = underlivesData ?? [];
