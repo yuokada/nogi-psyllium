@@ -95,30 +95,41 @@ URL parameters store filter/selection state for shareable links.
 ### 1. Plan Mode Default
 
 - Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
-- If something goes sideways, STOP and re-plan immediately — don’t keep pushing
+- If something goes sideways, STOP and re-plan immediately — don't keep pushing
 - Use plan mode for verification steps, not just building
 - Write detailed specs upfront to reduce ambiguity
+- For complex tasks, separate roles:
+  - Plan Author
+  - Staff Engineer Reviewer
+- Do not begin implementation until Plan Review passes
 
 ### 2. Subagent Strategy
 
-- Use subagents liberally to keep the main context window clean
+- Use subagents liberally to keep main context window clean
 - Offload research, exploration, and parallel analysis to subagents
 - For complex problems, throw more compute at it via subagents
 - One task per subagent for focused execution
+- For large changes, use parallel sessions (3–5) or git worktrees
+- Keep execution contexts isolated
 
 ### 3. Self-Improvement Loop
-
 - After ANY correction from the user: update `tasks/lessons.md` with the pattern
+- If the pattern is systemic, update this CLAUDE.md
 - Write rules for yourself that prevent the same mistake
-- Ruthlessly iterate on these lessons until the mistake rate drops
-- Review lessons at session start for the relevant project
+- Ruthlessly iterate on these lessons until mistake rate drops
+- Review lessons at session start for relevant project
 
 ### 4. Verification Before Done
 
 - Never mark a task complete without proving it works
 - Diff behavior between main and your changes when relevant
-- Ask yourself: “Would a staff engineer approve this?”
+- Ask yourself: "Would a staff engineer approve this?"
 - Run tests, check logs, demonstrate correctness
+- When fixing bugs, require:
+  - Logs
+  - Failing test output
+  - Clear reproduction steps
+- Validate against CI expectations before marking done
 
 ### 5. Demand Elegance
 
@@ -129,10 +140,22 @@ URL parameters store filter/selection state for shareable links.
 
 ### 6. Autonomous Bug Fixing
 
-- When given a bug report: just fix it. Don’t ask for hand-holding
+- When given a bug report: just fix it.
 - Point at logs, errors, failing tests — then resolve them
+- Do not require hand-holding
+- Assume ownership of full resolution path:
+  - Root cause
+  - Fix
+  - Validation
 - Require zero context switching from the user
-- Go fix failing CI tests without being told how
+- Fix failing CI tests proactively
+
+### 7. Operational Discipline
+- Automate formatting/linting after modifications when environment allows
+- Maintain reusable slash-commands for frequent workflows
+- Version-control command templates under `.claude/commands/`
+- Pre-approve safe commands when permissions model supports it
+- Optimize for minimal context switching
 
 ---
 
@@ -143,7 +166,9 @@ URL parameters store filter/selection state for shareable links.
 3. **Track Progress**: Mark items complete as you go
 4. **Explain Changes**: Provide a high-level summary at each step
 5. **Document Results**: Add a review section to `tasks/todo.md`
-6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+6. **Capture Lessons**:
+    - Update `tasks/lessons.md` after corrections
+   - Escalate recurring issues into CLAUDE.md rules
 
 ---
 
@@ -152,3 +177,5 @@ URL parameters store filter/selection state for shareable links.
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
 - **No Laziness**: Find root causes. No temporary fixes. Maintain senior developer standards.
 - **Minimal Impact**: Changes should only touch what’s necessary. Avoid introducing bugs.
+- **Systemic Thinking**: Fix classes of problems, not isolated instances
+- **Parallelize Intelligently**: Use additional compute or sessions when complexity demands it
