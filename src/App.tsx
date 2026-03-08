@@ -198,7 +198,7 @@ function App() {
 			(prev) => {
 				const next = new URLSearchParams(prev);
 				if (value) next.set("companion", "1");
-				else next.delete("companion");
+				else next.set("companion", "0");
 				return next;
 			},
 			{ replace: true },
