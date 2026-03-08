@@ -285,9 +285,7 @@ export function BookmarkletPanel({
 
 	useEffect(() => {
 		return () => {
-			if (copyResetTimeoutRef.current !== null) {
-				window.clearTimeout(copyResetTimeoutRef.current);
-			}
+			window.clearTimeout(copyResetTimeoutRef.current);
 		};
 	}, []);
 
