@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { AppFooter } from "./components/AppFooter";
 import { BookmarkletPanel } from "./components/BookmarkletPanel";
@@ -7,8 +7,11 @@ import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
 import { QuizPanel } from "./components/QuizPanel";
 import { UnderlivePanel } from "./components/UnderlivePanel";
+import { useUrlParams } from "./hooks/useUrlParams";
 import type { Member, Underlive } from "./types";
 import "./App.css";
+
+type AppTab = "penlight" | "underlive" | "quiz" | "bookmarklet";
 
 const isMember = (value: unknown): value is Member => {
 	if (!value || typeof value !== "object") return false;
@@ -54,10 +57,28 @@ const fetchUnderlives = async (url: string): Promise<Underlive[]> => {
 	}
 };
 
+function isNonEmptyString(value: string | undefined): value is string {
+	return typeof value === "string" && value.length > 0;
+}
+
 function App() {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [searchParams, setSearchParams] = useSearchParams();
+	const {
+		search,
+		genFilter,
+		showAll,
+		selectedUnderliveId,
+		showAbsent,
+		hasCompanionParam,
+		companionInQuery,
+		setSearch,
+		setGenFilter,
+		setShowAll,
+		setShowAbsent,
+		setSelectedUnderliveId,
+		setCompanionInQuery,
+	} = useUrlParams();
 
 	const membersPath = `${import.meta.env.BASE_URL}data/members.json`;
 	const underlivesPath = `${import.meta.env.BASE_URL}data/underlives.json`;
@@ -89,18 +110,7 @@ function App() {
 					? "bookmarklet"
 					: "penlight";
 
-	const search = searchParams.get("q") ?? "";
-	const genFilter = searchParams.get("gen") ?? "";
-	const showAll = searchParams.get("graduated") === "1";
-	const selectedUnderliveId = searchParams.get("id") ?? "";
-	const showAbsent = searchParams.get("absent") === "1";
-	const companionParam = searchParams.get("companion");
-	const hasCompanionParam = companionParam !== null;
-	const companionInQuery = companionParam === "1";
-
-	const [inputValue, setInputValue] = useState(
-		() => searchParams.get("q") ?? "",
-	);
+	const [inputValue, setInputValue] = useState(() => search);
 	const composingRef = useRef(false);
 
 	useEffect(() => {
@@ -115,94 +125,15 @@ function App() {
 			tab === "underlive" &&
 			!underlives.find((u) => u.id === selectedUnderliveId)
 		) {
-			setSearchParams(
-				(prev) => {
-					const next = new URLSearchParams(prev);
-					next.set("id", underlives[0].id);
-					return next;
-				},
-				{ replace: true },
-			);
+			setSelectedUnderliveId(underlives[0].id);
 		}
-	}, [underlives, tab, selectedUnderliveId, setSearchParams]);
+	}, [underlives, tab, selectedUnderliveId, setSelectedUnderliveId]);
 
-	function setTab(newTab: "penlight" | "underlive" | "quiz" | "bookmarklet") {
+	function setTab(newTab: AppTab) {
 		if (newTab === "underlive") navigate("/underlive");
 		else if (newTab === "quiz") navigate("/quiz");
 		else if (newTab === "bookmarklet") navigate("/bookmarklet");
 		else navigate("/");
-	}
-
-	function setSearch(value: string) {
-		setSearchParams(
-			(prev) => {
-				const next = new URLSearchParams(prev);
-				if (value) next.set("q", value);
-				else next.delete("q");
-				return next;
-			},
-			{ replace: true },
-		);
-	}
-
-	function setGenFilter(value: string) {
-		setSearchParams(
-			(prev) => {
-				const next = new URLSearchParams(prev);
-				if (value) next.set("gen", value);
-				else next.delete("gen");
-				return next;
-			},
-			{ replace: true },
-		);
-	}
-
-	function setShowAll(value: boolean) {
-		setSearchParams(
-			(prev) => {
-				const next = new URLSearchParams(prev);
-				if (value) next.set("graduated", "1");
-				else next.delete("graduated");
-				return next;
-			},
-			{ replace: true },
-		);
-	}
-
-	function setShowAbsent(value: boolean) {
-		setSearchParams(
-			(prev) => {
-				const next = new URLSearchParams(prev);
-				if (value) next.set("absent", "1");
-				else next.delete("absent");
-				return next;
-			},
-			{ replace: true },
-		);
-	}
-
-	function setSelectedUnderliveId(id: string) {
-		setSearchParams(
-			(prev) => {
-				const next = new URLSearchParams(prev);
-				if (id) next.set("id", id);
-				else next.delete("id");
-				return next;
-			},
-			{ replace: true },
-		);
-	}
-
-	function setCompanionInQuery(value: boolean) {
-		setSearchParams(
-			(prev) => {
-				const next = new URLSearchParams(prev);
-				if (value) next.set("companion", "1");
-				else next.set("companion", "0");
-				return next;
-			},
-			{ replace: true },
-		);
 	}
 
 	const generations = useMemo(() => {
@@ -220,9 +151,9 @@ function App() {
 			if (search) {
 				const q = search.toLowerCase();
 				const fields = [m.name, m.gen, m.color1_name, m.color2_name].filter(
-					Boolean,
+					isNonEmptyString,
 				);
-				return fields.some((f) => f!.toLowerCase().includes(q));
+				return fields.some((f) => f.toLowerCase().includes(q));
 			}
 			return true;
 		});
