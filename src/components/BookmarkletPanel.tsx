@@ -6,7 +6,7 @@ type BookmarkletPanelProps = {
 	onCompanionQueryChange: (value: boolean) => void;
 };
 
-type FormData = {
+type BookmarkletFormData = {
 	last_name: string;
 	first_name: string;
 	last_name_kana: string;
@@ -80,7 +80,7 @@ const PREFECTURES = [
 	"沖縄県",
 ] as const;
 
-const DEFAULT_FORM_DATA: FormData = {
+const DEFAULT_FORM_DATA: BookmarkletFormData = {
 	last_name: "",
 	first_name: "",
 	last_name_kana: "",
@@ -102,11 +102,11 @@ const DEFAULT_FORM_DATA: FormData = {
 	companion_email: "",
 };
 
-function parseStoredData(stored: string): Partial<FormData> {
+function parseStoredData(stored: string): Partial<BookmarkletFormData> {
 	try {
 		const json: unknown = JSON.parse(stored);
 		if (!json || typeof json !== "object") return {};
-		return json as Partial<FormData>;
+		return json as Partial<BookmarkletFormData>;
 	} catch {
 		return {};
 	}
@@ -116,7 +116,7 @@ function q(value: string): string {
 	return JSON.stringify(value);
 }
 
-function buildBookmarkletScript(formData: FormData): string {
+function buildBookmarkletScript(formData: BookmarkletFormData): string {
 	const [year = "", month = "", day = ""] = formData.birthday.split("-");
 	const hasCompanion = formData.companion === "あり";
 
@@ -206,7 +206,7 @@ export function BookmarkletPanel({
 	companionInQuery,
 	onCompanionQueryChange,
 }: BookmarkletPanelProps) {
-	const [formData, setFormData] = useState<FormData>(() => {
+	const [formData, setFormData] = useState<BookmarkletFormData>(() => {
 		if (typeof window === "undefined") return DEFAULT_FORM_DATA;
 		const stored = window.sessionStorage.getItem(STORAGE_KEY);
 		const base = stored
