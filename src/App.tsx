@@ -20,10 +20,10 @@ const APP_TAB_PATHS: Record<AppTab, string> = {
 };
 
 function getTabFromPathname(pathname: string): AppTab {
-	if (pathname === APP_TAB_PATHS.underlive) return "underlive";
-	if (pathname === APP_TAB_PATHS.quiz) return "quiz";
-	if (pathname === APP_TAB_PATHS.bookmarklet) return "bookmarklet";
-	return "penlight";
+	const tab = (Object.keys(APP_TAB_PATHS) as AppTab[]).find(
+		(key) => APP_TAB_PATHS[key] === pathname,
+	);
+	return tab ?? "penlight";
 }
 
 const isMember = (value: unknown): value is Member => {
