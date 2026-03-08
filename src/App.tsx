@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import useSWR from "swr";
 import { AppFooter } from "./components/AppFooter";
+import { BookmarkletPanel } from "./components/BookmarkletPanel";
 import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
 import { QuizPanel } from "./components/QuizPanel";
@@ -84,13 +85,18 @@ function App() {
 			? "underlive"
 			: location.pathname === "/quiz"
 				? "quiz"
-				: "penlight";
+				: location.pathname === "/bookmarklet"
+					? "bookmarklet"
+					: "penlight";
 
 	const search = searchParams.get("q") ?? "";
 	const genFilter = searchParams.get("gen") ?? "";
 	const showAll = searchParams.get("graduated") === "1";
 	const selectedUnderliveId = searchParams.get("id") ?? "";
 	const showAbsent = searchParams.get("absent") === "1";
+	const companionParam = searchParams.get("companion");
+	const hasCompanionParam = companionParam !== null;
+	const companionInQuery = companionParam === "1";
 
 	const [inputValue, setInputValue] = useState(
 		() => searchParams.get("q") ?? "",
@@ -120,9 +126,10 @@ function App() {
 		}
 	}, [underlives, tab, selectedUnderliveId, setSearchParams]);
 
-	function setTab(newTab: "penlight" | "underlive" | "quiz") {
+	function setTab(newTab: "penlight" | "underlive" | "quiz" | "bookmarklet") {
 		if (newTab === "underlive") navigate("/underlive");
 		else if (newTab === "quiz") navigate("/quiz");
+		else if (newTab === "bookmarklet") navigate("/bookmarklet");
 		else navigate("/");
 	}
 
@@ -186,6 +193,18 @@ function App() {
 		);
 	}
 
+	function setCompanionInQuery(value: boolean) {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev);
+				if (value) next.set("companion", "1");
+				else next.set("companion", "0");
+				return next;
+			},
+			{ replace: true },
+		);
+	}
+
 	const generations = useMemo(() => {
 		const gens = new Set<string>();
 		members.forEach((m) => {
@@ -239,6 +258,13 @@ function App() {
 						onClick={() => setTab("quiz")}
 					>
 						クイズ
+					</button>
+					<button
+						type="button"
+						className={tab === "bookmarklet" ? "tab active" : "tab"}
+						onClick={() => setTab("bookmarklet")}
+					>
+						ブックマークレット
 					</button>
 					<button
 						type="button"
@@ -315,6 +341,13 @@ function App() {
 				)}
 
 				{tab === "quiz" && <QuizPanel members={members} />}
+				{tab === "bookmarklet" && (
+					<BookmarkletPanel
+						hasCompanionParam={hasCompanionParam}
+						companionInQuery={companionInQuery}
+						onCompanionQueryChange={setCompanionInQuery}
+					/>
+				)}
 
 				<AppFooter />
 			</div>
