@@ -12,6 +12,19 @@ import type { Member, Underlive } from "./types";
 import "./App.css";
 
 type AppTab = "penlight" | "underlive" | "quiz" | "bookmarklet";
+const APP_TAB_PATHS: Record<AppTab, string> = {
+	penlight: "/",
+	underlive: "/underlive",
+	quiz: "/quiz",
+	bookmarklet: "/bookmarklet",
+};
+
+function getTabFromPathname(pathname: string): AppTab {
+	const tab = (Object.keys(APP_TAB_PATHS) as AppTab[]).find(
+		(key) => APP_TAB_PATHS[key] === pathname,
+	);
+	return tab ?? "penlight";
+}
 
 const isMember = (value: unknown): value is Member => {
 	if (!value || typeof value !== "object") return false;
@@ -101,14 +114,7 @@ function App() {
 	const members = membersData ?? [];
 	const underlives = underlivesData ?? [];
 
-	const tab =
-		location.pathname === "/underlive"
-			? "underlive"
-			: location.pathname === "/quiz"
-				? "quiz"
-				: location.pathname === "/bookmarklet"
-					? "bookmarklet"
-					: "penlight";
+	const tab = getTabFromPathname(location.pathname);
 
 	const [inputValue, setInputValue] = useState(() => search);
 	const composingRef = useRef(false);
@@ -130,10 +136,7 @@ function App() {
 	}, [underlives, tab, selectedUnderliveId, setSelectedUnderliveId]);
 
 	function setTab(newTab: AppTab) {
-		if (newTab === "underlive") navigate("/underlive");
-		else if (newTab === "quiz") navigate("/quiz");
-		else if (newTab === "bookmarklet") navigate("/bookmarklet");
-		else navigate("/");
+		navigate(APP_TAB_PATHS[newTab]);
 	}
 
 	const generations = useMemo(() => {
