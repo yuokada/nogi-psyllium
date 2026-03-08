@@ -1,4 +1,4 @@
-import { type ChangeEvent, useEffect, useMemo, useState } from "react";
+import { type ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 
 type BookmarkletPanelProps = {
 	hasCompanionParam: boolean;
@@ -29,6 +29,7 @@ type BookmarkletFormData = {
 };
 
 const STORAGE_KEY = "nogi_psyllium_bookmarklet_form_v1";
+const COPY_STATUS_RESET_DELAY = 2000;
 
 const PREFECTURES = [
 	"北海道",
@@ -247,6 +248,7 @@ export function BookmarkletPanel({
 	companionInQuery,
 	onCompanionQueryChange,
 }: BookmarkletPanelProps) {
+	const copyResetTimeoutRef = useRef<number | undefined>(undefined);
 	const [formData, setFormData] = useState<BookmarkletFormData>(() => {
 		let stored: string | null = null;
 		if (typeof window !== "undefined") {
@@ -282,6 +284,12 @@ export function BookmarkletPanel({
 		);
 	}, [hasCompanionParam, companionInQuery]);
 
+	useEffect(() => {
+		return () => {
+			window.clearTimeout(copyResetTimeoutRef.current);
+		};
+	}, []);
+
 	const bookmarkletScript = useMemo(
 		() => buildBookmarkletScript(formData),
 		[formData],
@@ -304,9 +312,14 @@ export function BookmarkletPanel({
 	};
 
 	const handleCopy = async () => {
+		window.clearTimeout(copyResetTimeoutRef.current);
+
 		if (!navigator.clipboard?.writeText) {
 			setCopyStatus("コピー機能未対応");
-			setTimeout(() => setCopyStatus("コードをコピー"), 2000);
+			copyResetTimeoutRef.current = window.setTimeout(
+				() => setCopyStatus("コードをコピー"),
+				COPY_STATUS_RESET_DELAY,
+			);
 			return;
 		}
 
@@ -316,7 +329,10 @@ export function BookmarkletPanel({
 		} catch {
 			setCopyStatus("コピー失敗");
 		}
-		setTimeout(() => setCopyStatus("コードをコピー"), 2000);
+		copyResetTimeoutRef.current = window.setTimeout(
+			() => setCopyStatus("コードをコピー"),
+			COPY_STATUS_RESET_DELAY,
+		);
 	};
 
 	return (
