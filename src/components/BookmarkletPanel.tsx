@@ -29,6 +29,7 @@ type BookmarkletFormData = {
 };
 
 const STORAGE_KEY = "nogi_psyllium_bookmarklet_form_v1";
+const COPY_STATUS_RESET_DELAY = 2000;
 
 const PREFECTURES = [
 	"北海道",
@@ -247,7 +248,7 @@ export function BookmarkletPanel({
 	companionInQuery,
 	onCompanionQueryChange,
 }: BookmarkletPanelProps) {
-	const copyResetTimeoutRef = useRef<number | null>(null);
+	const copyResetTimeoutRef = useRef<number | undefined>(undefined);
 	const [formData, setFormData] = useState<BookmarkletFormData>(() => {
 		let stored: string | null = null;
 		if (typeof window !== "undefined") {
@@ -311,15 +312,13 @@ export function BookmarkletPanel({
 	};
 
 	const handleCopy = async () => {
-		if (copyResetTimeoutRef.current !== null) {
-			window.clearTimeout(copyResetTimeoutRef.current);
-		}
+		window.clearTimeout(copyResetTimeoutRef.current);
 
 		if (!navigator.clipboard?.writeText) {
 			setCopyStatus("コピー機能未対応");
 			copyResetTimeoutRef.current = window.setTimeout(
 				() => setCopyStatus("コードをコピー"),
-				2000,
+				COPY_STATUS_RESET_DELAY,
 			);
 			return;
 		}
@@ -332,7 +331,7 @@ export function BookmarkletPanel({
 		}
 		copyResetTimeoutRef.current = window.setTimeout(
 			() => setCopyStatus("コードをコピー"),
-			2000,
+			COPY_STATUS_RESET_DELAY,
 		);
 	};
 
