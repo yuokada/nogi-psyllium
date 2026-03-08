@@ -1,4 +1,4 @@
-import { type ChangeEvent, useEffect, useMemo, useState } from "react";
+import { type ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 
 type BookmarkletPanelProps = {
 	hasCompanionParam: boolean;
@@ -247,6 +247,7 @@ export function BookmarkletPanel({
 	companionInQuery,
 	onCompanionQueryChange,
 }: BookmarkletPanelProps) {
+	const copyResetTimeoutRef = useRef<number | null>(null);
 	const [formData, setFormData] = useState<BookmarkletFormData>(() => {
 		let stored: string | null = null;
 		if (typeof window !== "undefined") {
@@ -282,6 +283,14 @@ export function BookmarkletPanel({
 		);
 	}, [hasCompanionParam, companionInQuery]);
 
+	useEffect(() => {
+		return () => {
+			if (copyResetTimeoutRef.current !== null) {
+				window.clearTimeout(copyResetTimeoutRef.current);
+			}
+		};
+	}, []);
+
 	const bookmarkletScript = useMemo(
 		() => buildBookmarkletScript(formData),
 		[formData],
@@ -304,9 +313,16 @@ export function BookmarkletPanel({
 	};
 
 	const handleCopy = async () => {
+		if (copyResetTimeoutRef.current !== null) {
+			window.clearTimeout(copyResetTimeoutRef.current);
+		}
+
 		if (!navigator.clipboard?.writeText) {
 			setCopyStatus("コピー機能未対応");
-			setTimeout(() => setCopyStatus("コードをコピー"), 2000);
+			copyResetTimeoutRef.current = window.setTimeout(
+				() => setCopyStatus("コードをコピー"),
+				2000,
+			);
 			return;
 		}
 
@@ -316,7 +332,10 @@ export function BookmarkletPanel({
 		} catch {
 			setCopyStatus("コピー失敗");
 		}
-		setTimeout(() => setCopyStatus("コードをコピー"), 2000);
+		copyResetTimeoutRef.current = window.setTimeout(
+			() => setCopyStatus("コードをコピー"),
+			2000,
+		);
 	};
 
 	return (
