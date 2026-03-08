@@ -102,11 +102,52 @@ const DEFAULT_FORM_DATA: BookmarkletFormData = {
 	companion_email: "",
 };
 
+function isString(value: unknown): value is string {
+	return typeof value === "string";
+}
+
+function isCompanionValue(
+	value: unknown,
+): value is BookmarkletFormData["companion"] {
+	return value === "あり" || value === "なし";
+}
+
 function parseStoredData(stored: string): Partial<BookmarkletFormData> {
 	try {
 		const json: unknown = JSON.parse(stored);
 		if (!json || typeof json !== "object") return {};
-		return json as Partial<BookmarkletFormData>;
+
+		const data = json as { [K in keyof BookmarkletFormData]?: unknown };
+		const result: Partial<BookmarkletFormData> = {};
+
+		if (isString(data.last_name)) result.last_name = data.last_name;
+		if (isString(data.first_name)) result.first_name = data.first_name;
+		if (isString(data.last_name_kana))
+			result.last_name_kana = data.last_name_kana;
+		if (isString(data.first_name_kana))
+			result.first_name_kana = data.first_name_kana;
+		if (isString(data.email)) result.email = data.email;
+		if (isString(data.postal_code)) result.postal_code = data.postal_code;
+		if (isString(data.prefecture)) result.prefecture = data.prefecture;
+		if (isString(data.city)) result.city = data.city;
+		if (isString(data.address1)) result.address1 = data.address1;
+		if (isString(data.address2)) result.address2 = data.address2;
+		if (isString(data.phone)) result.phone = data.phone;
+		if (isString(data.birthday)) result.birthday = data.birthday;
+		if (isString(data.gender)) result.gender = data.gender;
+		if (isCompanionValue(data.companion)) result.companion = data.companion;
+		if (isString(data.companion_last_name))
+			result.companion_last_name = data.companion_last_name;
+		if (isString(data.companion_first_name))
+			result.companion_first_name = data.companion_first_name;
+		if (isString(data.companion_phone))
+			result.companion_phone = data.companion_phone;
+		if (isString(data.companion_address))
+			result.companion_address = data.companion_address;
+		if (isString(data.companion_email))
+			result.companion_email = data.companion_email;
+
+		return result;
 	} catch {
 		return {};
 	}
@@ -207,8 +248,14 @@ export function BookmarkletPanel({
 	onCompanionQueryChange,
 }: BookmarkletPanelProps) {
 	const [formData, setFormData] = useState<BookmarkletFormData>(() => {
-		if (typeof window === "undefined") return DEFAULT_FORM_DATA;
-		const stored = window.sessionStorage.getItem(STORAGE_KEY);
+		let stored: string | null = null;
+		if (typeof window !== "undefined") {
+			try {
+				stored = window.sessionStorage.getItem(STORAGE_KEY);
+			} catch {
+				// sessionStorage may be unavailable in private mode or restricted environments
+			}
+		}
 		const base = stored
 			? { ...DEFAULT_FORM_DATA, ...parseStoredData(stored) }
 			: { ...DEFAULT_FORM_DATA };
@@ -220,7 +267,11 @@ export function BookmarkletPanel({
 	const [copyStatus, setCopyStatus] = useState("コードをコピー");
 
 	useEffect(() => {
-		window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+		try {
+			window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+		} catch {
+			// sessionStorage may be unavailable in private mode or restricted environments
+		}
 	}, [formData]);
 
 	useEffect(() => {
