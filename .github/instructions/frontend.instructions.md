@@ -1,5 +1,5 @@
 ---
-applyTo: "src/**/*.{ts,tsx,css},package.json,biome.json,index.html"
+applyTo: "src/**/*.{ts,tsx,css},package.json,biome.json,index.html,vite.config.ts,tsconfig*.json"
 ---
 
 フロントエンド関連ファイルを編集する場合は、以下を守ってください。
