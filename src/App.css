@@ -261,7 +261,7 @@ h1 {
 	text-overflow: ellipsis;
 }
 
-.member-gen {
+.member-call {
 	font-size: 0.75rem;
 	color: #777;
 	flex-shrink: 0;
@@ -431,7 +431,7 @@ h1 {
 	margin: 0;
 }
 
-.quiz-member-gen {
+.quiz-member-call {
 	font-size: 0.9rem;
 	color: #888;
 	text-align: center;

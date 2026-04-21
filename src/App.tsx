@@ -153,7 +153,7 @@ function App() {
 			if (genFilter && m.gen !== genFilter) return false;
 			if (search) {
 				const q = search.toLowerCase();
-				const fields = [m.name, m.gen, m.color1_name, m.color2_name].filter(
+				const fields = [m.name, m.call, m.color1_name, m.color2_name].filter(
 					isNonEmptyString,
 				);
 				return fields.some((f) => f.toLowerCase().includes(q));
@@ -217,7 +217,7 @@ function App() {
 							<input
 								type="text"
 								className="search-input"
-								placeholder="名前・期・色名で検索..."
+								placeholder="名前・コール・色名で検索..."
 								value={inputValue}
 								onChange={(e) => {
 									setInputValue(e.target.value);

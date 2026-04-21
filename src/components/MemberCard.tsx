@@ -14,6 +14,7 @@ export function MemberCard({ member, isCenter = false }: MemberCardProps) {
 		: undefined;
 	const color1Valid = isValidHex(hex1);
 	const color2Valid = hex2 ? isValidHex(hex2) : false;
+	const label = member.call || member.gen;
 
 	return (
 		<div
@@ -21,7 +22,7 @@ export function MemberCard({ member, isCenter = false }: MemberCardProps) {
 		>
 			<div className="member-header">
 				<span className="member-name">{member.name}</span>
-				{member.gen && <span className="member-gen">{member.gen}</span>}
+				{label && <span className="member-call">{label}</span>}
 				{isCenter && <span className="center-badge">👑</span>}
 				{member.active === true && member.profile_url && (
 					<a
