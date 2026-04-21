@@ -27,7 +27,7 @@
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^5.1.1",
 		"jsdom": "^28.1.0",
-		"react-doctor": "^0.0.29",
+		"react-doctor": "^0.0.37",
 		"typescript": "~5.9.3",
 		"vite": "^7.3.1",
 		"vitest": "^4.0.18"
