@@ -9,6 +9,18 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "react-router-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/plugin-react"
     cooldown:
       default-days: 5
       semver-major-days: 30
