@@ -1,6 +1,12 @@
 ---
 name: Dependabot/Renovate auto-approve
-on: pull_request
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
 
 permissions:
   pull-requests: write
