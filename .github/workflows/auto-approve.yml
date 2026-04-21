@@ -24,8 +24,8 @@ jobs:
     # if: github.actor == 'renovate[bot]'
     if: github.event.pull_request.user.login == 'renovate[bot]'
     steps:
-        if: contains(github.event.pull_request.labels.*.name, 'automerge-safe')
       - name: Approve the pull request
+        if: contains(github.event.pull_request.labels.*.name, 'automerge-safe')
         run: gh pr review --approve "${{ github.event.pull_request.html_url }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
