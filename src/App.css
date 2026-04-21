@@ -255,6 +255,10 @@ h1 {
 	font-size: 0.95rem;
 	font-weight: 700;
 	color: #333;
+	min-width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .member-gen {
