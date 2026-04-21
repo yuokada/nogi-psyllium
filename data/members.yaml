@@ -358,7 +358,7 @@
   color2_name: 赤
   icon: /icons/sample.png
   active: true
-  call: れんか
+  call: れんたん
   profile_url: https://www.nogizaka46.com/s/n46/artist/36750
 - id: umezawa_minami
   name: 梅澤 美波
@@ -441,7 +441,7 @@
   color2_name: 緑
   icon: /icons/sample.png
   active: false
-  call:
+  call: よだちゃん
 - id: endo_sakura
   name: 遠藤 さくら
   gen: 4期生
@@ -578,7 +578,7 @@
   color2_name: 黄緑
   icon: /icons/sample.png
   active: true
-  call: ゆみき
+  call: ゆみっきー
   profile_url: https://www.nogizaka46.com/s/n46/artist/55387
 - id: ioki_mao
   name: 五百城 茉央
