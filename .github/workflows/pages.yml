@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir public/data/
           npm run build
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
       - id: deployment
