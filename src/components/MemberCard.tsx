@@ -21,7 +21,7 @@ export function MemberCard({ member, isCenter = false }: MemberCardProps) {
 		>
 			<div className="member-header">
 				<span className="member-name">{member.name}</span>
-				{member.gen && <span className="member-gen">{member.gen}</span>}
+				{member.call && <span className="member-call">{member.call}</span>}
 				{isCenter && <span className="center-badge">👑</span>}
 				{member.active === true && member.profile_url && (
 					<a

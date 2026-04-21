@@ -43,8 +43,8 @@ export function QuizPanel({ members }: QuizPanelProps) {
 				<p className="quiz-question">
 					Q: {currentMember.name}のサイリウムカラーは?
 				</p>
-				{currentMember.gen && (
-					<p className="quiz-member-gen">{currentMember.gen}</p>
+				{currentMember.call && (
+					<p className="quiz-member-call">{currentMember.call}</p>
 				)}
 				{!answered ? (
 					<button
