@@ -36,7 +36,7 @@ export function QuizPanel({ members }: QuizPanelProps) {
 	const answerText = currentMember.color2_name
 		? `${currentMember.color1_name} x ${currentMember.color2_name}`
 		: currentMember.color1_name;
-	const memberHint = currentMember.call || currentMember.gen;
+	const memberHints = [currentMember.gen, currentMember.call].filter(Boolean);
 
 	return (
 		<div className="quiz-panel">
@@ -44,7 +44,9 @@ export function QuizPanel({ members }: QuizPanelProps) {
 				<p className="quiz-question">
 					Q: {currentMember.name}のサイリウムカラーは?
 				</p>
-				{memberHint && <p className="quiz-member-call">{memberHint}</p>}
+				{memberHints.length > 0 && (
+					<p className="quiz-member-call">{memberHints.join(" / ")}</p>
+				)}
 				{!answered ? (
 					<button
 						type="button"
