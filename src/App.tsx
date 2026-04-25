@@ -195,13 +195,6 @@ function App() {
 					</button>
 					<button
 						type="button"
-						className={tab === "bookmarklet" ? "tab active" : "tab"}
-						onClick={() => setTab("bookmarklet")}
-					>
-						ブックマークレット
-					</button>
-					<button
-						type="button"
 						className="copy-link-btn"
 						onClick={() => {
 							navigator.clipboard.writeText(window.location.href);
