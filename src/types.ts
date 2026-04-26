@@ -31,3 +31,17 @@ export interface Underlive {
 	absent?: AbsentMember[];
 	centers?: Center[];
 }
+
+export type TimelineItemKind = "underlive";
+
+export interface TimelineItem {
+	id: string;
+	kind: TimelineItemKind;
+	dates: string[];
+	sortDate: string;
+	title: string;
+	label: string;
+	venue?: string;
+	sourceUrl?: string;
+	underliveId: string;
+}

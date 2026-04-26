@@ -6,14 +6,17 @@ import { BookmarkletPanel } from "./components/BookmarkletPanel";
 import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
 import { QuizPanel } from "./components/QuizPanel";
+import { TimelinePanel } from "./components/TimelinePanel";
 import { UnderlivePanel } from "./components/UnderlivePanel";
 import { useUrlParams } from "./hooks/useUrlParams";
+import { buildTimelineItems } from "./timeline";
 import type { Member, Underlive } from "./types";
 import "./App.css";
 
-type AppTab = "penlight" | "underlive" | "quiz" | "bookmarklet";
+type AppTab = "penlight" | "timeline" | "underlive" | "quiz" | "bookmarklet";
 const APP_TAB_PATHS: Record<AppTab, string> = {
 	penlight: "/",
+	timeline: "/timeline",
 	underlive: "/underlive",
 	quiz: "/quiz",
 	bookmarklet: "/bookmarklet",
@@ -162,6 +165,11 @@ function App() {
 		});
 	}, [members, search, genFilter, showAll]);
 
+	const timelineItems = useMemo(
+		() => buildTimelineItems(underlives),
+		[underlives],
+	);
+
 	if (membersLoading) return <div className="loading">読み込み中...</div>;
 	if (membersError)
 		return <div className="error">エラー: {membersError.message}</div>;
@@ -178,6 +186,13 @@ function App() {
 						onClick={() => setTab("penlight")}
 					>
 						サイリウムカラー
+					</button>
+					<button
+						type="button"
+						className={tab === "timeline" ? "tab active" : "tab"}
+						onClick={() => setTab("timeline")}
+					>
+						タイムライン
 					</button>
 					<button
 						type="button"
@@ -255,6 +270,8 @@ function App() {
 						</div>
 					</>
 				)}
+
+				{tab === "timeline" && <TimelinePanel items={timelineItems} />}
 
 				{tab === "underlive" && (
 					<UnderlivePanel
