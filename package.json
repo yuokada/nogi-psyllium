@@ -4,9 +4,9 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"predev": "yq -o=json data/members.yaml > public/data/members.json && yq -o=json data/underlives.yaml > public/data/underlives.json",
+		"predev": "yq -o=json data/members.yaml > public/data/members.json && yq -o=json data/underlives.yaml > public/data/underlives.json && yq -o=json data/singles.yaml > public/data/singles.json",
 		"dev": "vite",
-		"prebuild": "yq -o=json data/members.yaml > public/data/members.json && yq -o=json data/underlives.yaml > public/data/underlives.json",
+		"prebuild": "yq -o=json data/members.yaml > public/data/members.json && yq -o=json data/underlives.yaml > public/data/underlives.json && yq -o=json data/singles.yaml > public/data/singles.json",
 		"build": "tsc -b && vite build",
 		"test": "vitest run",
 		"lint": "biome check .",

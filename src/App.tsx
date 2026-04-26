@@ -10,7 +10,7 @@ import { TimelinePanel } from "./components/TimelinePanel";
 import { UnderlivePanel } from "./components/UnderlivePanel";
 import { useUrlParams } from "./hooks/useUrlParams";
 import { buildTimelineItems } from "./timeline";
-import type { Member, Underlive } from "./types";
+import type { Member, SingleRelease, Underlive } from "./types";
 import "./App.css";
 
 type AppTab = "penlight" | "timeline" | "underlive" | "quiz" | "bookmarklet";
@@ -51,6 +51,17 @@ const isUnderlive = (value: unknown): value is Underlive => {
 	);
 };
 
+const isSingleRelease = (value: unknown): value is SingleRelease => {
+	if (!value || typeof value !== "object") return false;
+	const v = value as Record<string, unknown>;
+	return (
+		typeof v.id === "string" &&
+		typeof v.number === "string" &&
+		typeof v.title === "string" &&
+		typeof v.release_date === "string"
+	);
+};
+
 const fetchMembers = async (url: string): Promise<Member[]> => {
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`データ読み込みエラー: ${res.status}`);
@@ -67,6 +78,18 @@ const fetchUnderlives = async (url: string): Promise<Underlive[]> => {
 		if (!res.ok) return [];
 		const json: unknown = await res.json();
 		if (!Array.isArray(json) || !json.every(isUnderlive)) return [];
+		return json;
+	} catch {
+		return [];
+	}
+};
+
+const fetchSingles = async (url: string): Promise<SingleRelease[]> => {
+	try {
+		const res = await fetch(url);
+		if (!res.ok) return [];
+		const json: unknown = await res.json();
+		if (!Array.isArray(json) || !json.every(isSingleRelease)) return [];
 		return json;
 	} catch {
 		return [];
@@ -98,6 +121,7 @@ function App() {
 
 	const membersPath = `${import.meta.env.BASE_URL}data/members.json`;
 	const underlivesPath = `${import.meta.env.BASE_URL}data/underlives.json`;
+	const singlesPath = `${import.meta.env.BASE_URL}data/singles.json`;
 
 	const {
 		data: membersData,
@@ -113,9 +137,15 @@ function App() {
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false,
 	});
+	const { data: singlesData } = useSWR(singlesPath, fetchSingles, {
+		shouldRetryOnError: false,
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false,
+	});
 
 	const members = membersData ?? [];
 	const underlives = underlivesData ?? [];
+	const singles = singlesData ?? [];
 
 	const tab = getTabFromPathname(location.pathname);
 
@@ -166,8 +196,8 @@ function App() {
 	}, [members, search, genFilter, showAll]);
 
 	const timelineItems = useMemo(
-		() => buildTimelineItems(underlives),
-		[underlives],
+		() => buildTimelineItems(underlives, singles),
+		[underlives, singles],
 	);
 
 	if (membersLoading) return <div className="loading">読み込み中...</div>;

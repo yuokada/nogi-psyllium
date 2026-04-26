@@ -25,3 +25,4 @@ dist-ssr
 
 public/data/members.json
 public/data/underlives.json
+public/data/singles.json

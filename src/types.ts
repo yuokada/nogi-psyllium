@@ -32,7 +32,15 @@ export interface Underlive {
 	centers?: Center[];
 }
 
-export type TimelineItemKind = "underlive";
+export interface SingleRelease {
+	id: string;
+	number: string;
+	title: string;
+	release_date: string;
+	source_url?: string;
+}
+
+export type TimelineItemKind = "underlive" | "single_release";
 
 export interface TimelineItem {
 	id: string;
@@ -43,5 +51,5 @@ export interface TimelineItem {
 	label: string;
 	venue?: string;
 	sourceUrl?: string;
-	underliveId: string;
+	underliveId?: string;
 }
