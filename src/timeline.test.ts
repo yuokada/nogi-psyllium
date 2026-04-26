@@ -58,12 +58,21 @@ describe("buildTimelineItems", () => {
 			title: "39thシングル「Same numbers」",
 			label: "シングル発売",
 			dates: ["2025-07-30"],
+			displayDate: "2025.07.30",
 			sortDate: "2025-07-30",
 			sourceUrl: "https://example.com/single",
 		});
 		expect(items[0]).toMatchObject({
 			kind: "underlive",
-			dates: ["2025-10-09", "2025-10-08", "2025-10-07"],
+			dates: ["2025-10-07", "2025-10-08", "2025-10-09"],
+			displayDate: "2025.10.07-2025.10.09",
+			sortDate: "2025-10-09",
+		});
+		expect(items[2]).toMatchObject({
+			kind: "underlive",
+			dates: ["2025-04-05"],
+			displayDate: "2025.04.05",
+			sortDate: "2025-04-05",
 		});
 	});
 });

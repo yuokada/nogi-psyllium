@@ -52,6 +52,7 @@ export interface TimelineItem {
 	id: string;
 	kind: TimelineItemKind;
 	dates: string[];
+	displayDate: string;
 	sortDate: string;
 	title: string;
 	label: string;

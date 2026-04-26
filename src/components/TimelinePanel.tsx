@@ -14,19 +14,31 @@ export function TimelinePanel({ items }: TimelinePanelProps) {
 			<div className="member-count">{items.length}件表示</div>
 			<ul className="timeline-list">
 				{items.map((item) => (
-					<li key={item.id} className="timeline-item">
-						<div className="timeline-content">
+					<li key={item.id} className="timeline-row">
+						<div className="timeline-date-column">
+							<div
+								className={`timeline-date-pill timeline-date-pill-${item.kind}`}
+							>
+								{item.displayDate}
+							</div>
+						</div>
+						<div className="timeline-rail" aria-hidden="true">
+							<span className={`timeline-node timeline-node-${item.kind}`} />
+						</div>
+						<div className="timeline-body">
 							<div className="timeline-title-row">
 								<h2 className="timeline-title">{item.title}</h2>
 								<span className="timeline-kind">{item.label}</span>
 							</div>
-							<ul className="timeline-dates">
-								{item.dates.map((date) => (
-									<li key={date} className="timeline-date">
-										{date}
-									</li>
-								))}
-							</ul>
+							{item.dates.length > 1 && (
+								<ul className="timeline-dates">
+									{item.dates.map((date) => (
+										<li key={date} className="timeline-date">
+											{date.replaceAll("-", ".")}
+										</li>
+									))}
+								</ul>
+							)}
 							<div className="timeline-meta">
 								{item.venue && (
 									<span className="timeline-venue">{item.venue}</span>
