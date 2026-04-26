@@ -9,6 +9,7 @@ import { QuizPanel } from "./components/QuizPanel";
 import { TimelinePanel } from "./components/TimelinePanel";
 import { UnderlivePanel } from "./components/UnderlivePanel";
 import { useUrlParams } from "./hooks/useUrlParams";
+import { isSingleRelease } from "./singles";
 import { buildTimelineItems } from "./timeline";
 import type { Member, SingleRelease, Underlive } from "./types";
 import "./App.css";
@@ -48,17 +49,6 @@ const isUnderlive = (value: unknown): value is Underlive => {
 		typeof v.year === "number" &&
 		Array.isArray(v.dates) &&
 		Array.isArray(v.member_ids)
-	);
-};
-
-const isSingleRelease = (value: unknown): value is SingleRelease => {
-	if (!value || typeof value !== "object") return false;
-	const v = value as Record<string, unknown>;
-	return (
-		typeof v.id === "string" &&
-		typeof v.number === "string" &&
-		typeof v.title === "string" &&
-		typeof v.release_date === "string"
 	);
 };
 

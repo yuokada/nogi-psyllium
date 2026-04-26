@@ -30,6 +30,12 @@ describe("buildTimelineItems", () => {
 				title: "Same numbers",
 				release_date: "2025-07-30",
 				source_url: "https://example.com/single",
+				tracks: [
+					{
+						title: "Same numbers",
+						editions: ["共通"],
+					},
+				],
 			},
 			{
 				id: "single_38th",

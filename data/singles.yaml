@@ -3,45 +3,165 @@
   title: "最後に階段を駆け上がったのはいつだ？"
   release_date: "2026-04-08"
   source_url: "https://www.nogizaka46.com/s/n46/page/41st_single"
+  tracks:
+    - title: "最後に階段を駆け上がったのはいつだ？"
+      editions: ["共通"]
+    - title: "愛って羨ましい"
+      editions: ["共通"]
+    - title: "桜橋を教えてくれた"
+      editions: ["TYPE-A"]
+    - title: "君ばかり"
+      editions: ["TYPE-B"]
+    - title: "年齢の境界線"
+      editions: ["TYPE-C"]
+    - title: "パシフィック・リーグに連れてって"
+      editions: ["TYPE-D"]
+    - title: "もう一つの太陽"
+      editions: ["通常盤"]
 
 - id: single_40th
   number: "40th"
   title: "ビリヤニ"
   release_date: "2025-11-26"
   source_url: "https://www.nogizaka46.com/s/n46/page/40th_single"
+  tracks:
+    - title: "ビリヤニ"
+      editions: ["共通"]
+    - title: "市営ダンスホール"
+      editions: ["共通"]
+    - title: "純粋とは何か？"
+      editions: ["TYPE-A"]
+    - title: "新宿バックオフ"
+      editions: ["TYPE-B"]
+    - title: "Spark a revolution!"
+      editions: ["TYPE-C"]
+    - title: "夢の匂い"
+      editions: ["TYPE-D"]
+    - title: "ぐるぐるカーテン(6期生 ver.)"
+      editions: ["通常盤"]
 
 - id: single_39th
   number: "39th"
   title: "Same numbers"
   release_date: "2025-07-30"
   source_url: "https://www.nogizaka46.com/s/n46/page/39th_single"
+  tracks:
+    - title: "Same numbers"
+      editions: ["共通"]
+    - title: "真夏日よ"
+      editions: ["共通"]
+    - title: "なぜ 僕たちは走るのか？"
+      editions: ["TYPE-A"]
+    - title: "あの頃におかえり"
+      editions: ["TYPE-B"]
+    - title: "不道徳な夏"
+      editions: ["TYPE-C"]
+    - title: "ってかさ"
+      editions: ["TYPE-D"]
+    - title: "君と猫"
+      editions: ["通常盤"]
 
 - id: single_38th
   number: "38th"
   title: "ネーブルオレンジ"
   release_date: "2025-03-26"
   source_url: "https://www.nogizaka46.com/s/n46/page/38th_single"
+  tracks:
+    - title: "ネーブルオレンジ"
+      editions: ["共通"]
+    - title: "懐かしさの先"
+      editions: ["共通"]
+    - title: "交感神経優位"
+      editions: ["TYPE-A"]
+    - title: "タイムリミット片想い"
+      editions: ["TYPE-B"]
+    - title: "天空の豆の木"
+      editions: ["TYPE-C"]
+    - title: "100日目"
+      editions: ["TYPE-D"]
+    - title: "キスのシルエット"
+      editions: ["通常盤"]
 
 - id: single_37th
   number: "37th"
   title: "歩道橋"
   release_date: "2024-12-11"
   source_url: "https://www.nogizaka46.com/s/n46/page/37th_single"
+  tracks:
+    - title: "歩道橋"
+      editions: ["共通"]
+    - title: "相対性理論に異議を唱える"
+      editions: ["共通"]
+    - title: "世界一のダイヤモンド"
+      editions: ["TYPE-A"]
+    - title: "夕陽は何色か？"
+      editions: ["TYPE-B"]
+    - title: "乃木坂饅頭"
+      editions: ["TYPE-C"]
+    - title: "雪が降る日にまた会おう"
+      editions: ["TYPE-D"]
+    - title: "それまでの猶予"
+      editions: ["通常盤"]
 
 - id: single_36th
   number: "36th"
   title: "チートデイ"
   release_date: "2024-08-21"
   source_url: "https://www.nogizaka46.com/s/n46/page/36th_single"
+  tracks:
+    - title: "チートデイ"
+      editions: ["共通"]
+    - title: "あの光"
+      editions: ["共通"]
+    - title: "落とし物"
+      editions: ["TYPE-A"]
+    - title: "君にDitto"
+      editions: ["TYPE-B"]
+    - title: "懐かない仔猫"
+      editions: ["TYPE-C"]
+    - title: "Keep in touch"
+      editions: ["TYPE-D"]
+    - title: "熱狂の捌け口"
+      editions: ["通常盤"]
 
 - id: single_35th
   number: "35th"
   title: "チャンスは平等"
   release_date: "2024-04-10"
   source_url: "https://www.nogizaka46.com/s/n46/page/35th_single"
+  tracks:
+    - title: "チャンスは平等"
+      editions: ["共通"]
+    - title: "車道側"
+      editions: ["共通"]
+    - title: "「じゃあね」が切ない"
+      editions: ["TYPE-A"]
+    - title: "あと７曲"
+      editions: ["TYPE-B"]
+    - title: "ぶんぶくちゃがま"
+      editions: ["TYPE-C"]
+    - title: "サルビアの花を覚えているかい？"
+      editions: ["TYPE-D"]
+    - title: "夏桜"
+      editions: ["通常盤"]
 
 - id: single_34th
   number: "34th"
   title: "Monopoly"
   release_date: "2023-12-06"
   source_url: "https://www.nogizaka46.com/s/n46/page/34th_single"
+  tracks:
+    - title: "Monopoly"
+      editions: ["共通"]
+    - title: "思い出が止まらなくなる"
+      editions: ["共通"]
+    - title: "助手席をずっと空けていた"
+      editions: ["TYPE-A"]
+    - title: "羊飼いよ"
+      editions: ["TYPE-B"]
+    - title: "手ごねハンバーグ"
+      editions: ["TYPE-C"]
+    - title: "スタイリッシュ"
+      editions: ["TYPE-D"]
+    - title: "いつの日にか、あの歌を･･･"
+      editions: ["通常盤"]

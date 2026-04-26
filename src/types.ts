@@ -38,6 +38,12 @@ export interface SingleRelease {
 	title: string;
 	release_date: string;
 	source_url?: string;
+	tracks?: SingleTrack[];
+}
+
+export interface SingleTrack {
+	title: string;
+	editions: string[];
 }
 
 export type TimelineItemKind = "underlive" | "single_release";
