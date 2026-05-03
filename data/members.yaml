@@ -500,7 +500,7 @@
   color1_name: ピンク
   color2_name: ターコイズ
   icon: /icons/sample.png
-  active: true
+  active: false
   call: りかちゃん
   profile_url: https://www.nogizaka46.com/s/n46/artist/55384
 - id: shibata_yuna
