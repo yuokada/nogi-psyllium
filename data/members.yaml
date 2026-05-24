@@ -366,7 +366,7 @@
   color1_name: 青
   color2_name: 水色
   icon: /icons/sample.png
-  active: true
+  active: false
   call: みなみん
   profile_url: https://www.nogizaka46.com/s/n46/artist/36751
 - id: ozono_momoko
