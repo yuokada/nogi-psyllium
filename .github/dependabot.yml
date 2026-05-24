@@ -22,8 +22,8 @@ updates:
           - "vite"
           - "@vitejs/plugin-react"
     cooldown:
-      default-days: 5
+      default-days: 7
       semver-major-days: 30
-      semver-minor-days: 7
-      semver-patch-days: 3
+      # semver-minor-days: 7
+      # semver-patch-days: 7
     # open-pull-requests-limit: 15
