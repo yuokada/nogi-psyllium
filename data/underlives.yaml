@@ -9,6 +9,33 @@
 #   centers:
 #      id: okamoto_hina
 
+- id: ul_42nd_2026
+  title: "42ndSGアンダーライブ"
+  year: 2026
+  dates:
+    - "2026-09-29"
+    - "2026-09-30"
+  venue: "東京体育館"
+  source_url: "https://www.nogizaka46.com/s/n46/news/detail/102043"
+  centers:
+    - id: ogawa_aya
+  member_ids:
+    - atago_kokone
+    - ito_riria
+    - ogawa_aya
+    - okamoto_hina
+    - okuda_iroha
+    - ozu_reina
+    - kaibe_akari
+    - kanagawa_saya
+    - kawabata_hina
+    - kuromi_harukaka
+    - shibata_yuna
+    - suzuki_yuna
+    - tomisato_nao
+    - nagashima_rio
+  absent: []
+
 - id: ul_41st_2026
   title: "41stSGアンダーライブ"
   year: 2026
