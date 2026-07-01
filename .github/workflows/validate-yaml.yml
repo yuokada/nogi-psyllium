@@ -18,7 +18,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install check-jsonschema
         run: pip install check-jsonschema==0.36.2
       - name: Validate members.yaml
