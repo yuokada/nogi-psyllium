@@ -44,27 +44,22 @@
 h1 {
 	text-align: center;
 	font-size: 1.8rem;
-	margin: 0;
-}
-
-.app-header {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto;
-	align-items: center;
-	gap: 0.75rem;
-	padding-right: 4.5rem;
 	margin-bottom: 1rem;
 }
 
 .theme-toggle {
 	display: inline-flex;
+	width: 2.25rem;
+	height: 2.25rem;
 	align-items: center;
-	gap: 0.35rem;
-	padding: 0.4rem 0.7rem;
+	justify-content: center;
+	padding: 0;
 	border: 1px solid var(--color-border-control);
-	border-radius: 999px;
+	border-radius: 6px;
 	background: var(--color-surface);
 	color: var(--color-text-muted);
+	font-size: 1rem;
+	line-height: 1;
 	cursor: pointer;
 	transition:
 		background 0.15s,
@@ -76,20 +71,21 @@ h1 {
 	color: var(--color-text-strong);
 }
 
-@media (max-width: 768px) {
-	.app-header {
-		grid-template-columns: 1fr;
-		justify-items: center;
-		padding-right: 0;
-	}
-}
-
 .tabs {
 	display: flex;
 	gap: 0;
 	margin-bottom: 1.5rem;
 	border-bottom: 2px solid var(--color-border);
 	flex-wrap: wrap;
+}
+
+.tabs-actions {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 0.5rem;
+	margin-left: auto;
+	padding: 0 0.25rem 0.35rem;
 }
 
 .tab {
@@ -115,7 +111,6 @@ h1 {
 }
 
 .copy-link-btn {
-	margin-left: auto;
 	padding: 0.4rem 0.9rem;
 	font-size: 0.8rem;
 	border: 1px solid var(--color-border-control);
@@ -123,7 +118,6 @@ h1 {
 	background: var(--color-surface);
 	cursor: pointer;
 	color: var(--color-text-muted);
-	align-self: center;
 	transition:
 		background 0.15s,
 		color 0.15s;

@@ -55,11 +55,15 @@ describe("ThemeToggle", () => {
 		});
 
 		expect(button.getAttribute("aria-pressed")).toBe("false");
+		expect(button.getAttribute("title")).toBe("ダークテーマをオンにする");
+		expect(button.textContent).toBe("🌙");
+		expect(button.querySelector('[aria-hidden="true"]')).not.toBeNull();
 		fireEvent.click(button);
 
 		expect(document.documentElement.dataset.theme).toBe("dark");
 		expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe("dark");
 		expect(button.getAttribute("aria-pressed")).toBe("true");
+		expect(button.getAttribute("title")).toBe("ダークテーマをオフにする");
 		fireEvent.click(button);
 		expect(button.getAttribute("aria-pressed")).toBe("false");
 	});

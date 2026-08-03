@@ -25,7 +25,6 @@ export function ThemeToggle({ initialTheme }: ThemeToggleProps) {
 			title={`ダークテーマを${theme === "dark" ? "オフ" : "オン"}にする`}
 		>
 			<span aria-hidden="true">🌙</span>
-			<span className="theme-toggle-label">ダークテーマ</span>
 		</button>
 	);
 }

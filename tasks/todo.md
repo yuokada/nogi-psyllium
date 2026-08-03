@@ -17,8 +17,9 @@ Plan Review: PASS（保存値 → OS 設定 →ライトの優先順位、URL �
 - テーマは URL 状態と分離し、切替時は `<html data-theme>` と `localStorage` のみ更新する。
 - 全画面の共通配色を意味ベースの CSS 変数へ移行し、サイリウム固有色と既存の動的文字色は変更していない。
 - Staff review を反映し、トグルの accessible name を「ダークテーマ」に固定して状態を `aria-pressed` で表現した。
-- ヘッダーを通常フローのレスポンシブ grid に変更し、768px以下は縦配置、GitHub Corner の領域も確保した。
 - テーマ切替前後で URL の `href`・`search`・`hash` が不変であるテストを追加した。
+- テーマ切替をヘッダーからタブ列へ移し、「リンクをコピー」と隣接する補助操作グループとして右寄せした。狭い画面ではグループ単位で折り返す。
+- テーマ切替の表示を月アイコンのみの正方形ボタンに簡素化し、accessible name・`aria-pressed`・titleは維持した。
 - Staff Engineer 再レビュー: APPROVED（ブロッキング指摘なし）。
 - `npm test`: 2ファイル・10テスト成功。
 - `npm run lint`: エラーなし（既存の Biome schema / CLI patch version 差の info のみ）。

@@ -176,9 +176,8 @@ function App({ initialTheme }: AppProps) {
 		<>
 			<GithubCorner href="https://github.com/yuokada/nogi-psyllium" />
 			<div className="app">
-				<header className="app-header">
+				<header>
 					<h1>乃木坂46 サイリウムカラーViewer</h1>
-					<ThemeToggle initialTheme={initialTheme} />
 				</header>
 				<div className="tabs">
 					<button
@@ -202,15 +201,18 @@ function App({ initialTheme }: AppProps) {
 					>
 						クイズ
 					</button>
-					<button
-						type="button"
-						className="copy-link-btn"
-						onClick={() => {
-							navigator.clipboard.writeText(window.location.href);
-						}}
-					>
-						リンクをコピー
-					</button>
+					<div className="tabs-actions">
+						<ThemeToggle initialTheme={initialTheme} />
+						<button
+							type="button"
+							className="copy-link-btn"
+							onClick={() => {
+								navigator.clipboard.writeText(window.location.href);
+							}}
+						>
+							リンクをコピー
+						</button>
+					</div>
 				</div>
 
 				{tab === "penlight" && (
