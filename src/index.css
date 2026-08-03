@@ -26,9 +26,11 @@
 	--color-github-mark: #ffffff;
 	--color-center-text: #8a6500;
 	--color-center-surface: #fff9e6;
+	--color-center-border: #f0c030;
 	--shadow-card: 0 2px 6px rgba(0, 0, 0, 0.08);
 	--shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
 	--shadow-panel: 0 4px 16px rgba(0, 0, 0, 0.1);
+	--shadow-center-card: 0 2px 8px rgba(240, 192, 48, 0.4);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -59,9 +61,11 @@
 	--color-github-mark: #121212;
 	--color-center-text: #ffe082;
 	--color-center-surface: #463b15;
+	--color-center-border: #ffe082;
 	--shadow-card: 0 2px 8px rgba(0, 0, 0, 0.45);
 	--shadow-card-hover: 0 4px 14px rgba(0, 0, 0, 0.6);
 	--shadow-panel: 0 4px 18px rgba(0, 0, 0, 0.5);
+	--shadow-center-card: 0 2px 10px rgba(255, 224, 130, 0.32);
 }
 
 *,

@@ -20,6 +20,7 @@ Plan Review: PASS（保存値 → OS 設定 →ライトの優先順位、URL �
 - テーマ切替前後で URL の `href`・`search`・`hash` が不変であるテストを追加した。
 - テーマ切替をヘッダーからタブ列へ移し、「リンクをコピー」と隣接する補助操作グループとして右寄せした。狭い画面ではグループ単位で折り返す。
 - テーマ切替の表示を月アイコンのみの正方形ボタンに簡素化し、accessible name・`aria-pressed`・titleは維持した。
+- Copilot review を反映し、センターカードの枠線とシャドウをテーマ別CSS変数へ移行し、仕様書のテーマ切替配置を現行UIへ合わせた。
 - Staff Engineer 再レビュー: APPROVED（ブロッキング指摘なし）。
 - `npm test`: 2ファイル・10テスト成功。
 - `npm run lint`: エラーなし（既存の Biome schema / CLI patch version 差の info のみ）。

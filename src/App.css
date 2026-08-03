@@ -395,8 +395,8 @@ h1 {
 
 /* センターカード強調 */
 .member-card--center {
-	border-color: #f0c030;
-	box-shadow: 0 2px 8px rgba(240, 192, 48, 0.4);
+	border-color: var(--color-center-border);
+	box-shadow: var(--shadow-center-card);
 }
 
 .center-badge {
