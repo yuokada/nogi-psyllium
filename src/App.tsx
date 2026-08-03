@@ -6,8 +6,10 @@ import { BookmarkletPanel } from "./components/BookmarkletPanel";
 import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
 import { QuizPanel } from "./components/QuizPanel";
+import { ThemeToggle } from "./components/ThemeToggle";
 import { UnderlivePanel } from "./components/UnderlivePanel";
 import { useUrlParams } from "./hooks/useUrlParams";
+import type { Theme } from "./theme";
 import type { Member, Underlive } from "./types";
 import "./App.css";
 
@@ -74,7 +76,11 @@ function isNonEmptyString(value: string | undefined): value is string {
 	return typeof value === "string" && value.length > 0;
 }
 
-function App() {
+type AppProps = {
+	initialTheme: Theme;
+};
+
+function App({ initialTheme }: AppProps) {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const {
@@ -170,7 +176,9 @@ function App() {
 		<>
 			<GithubCorner href="https://github.com/yuokada/nogi-psyllium" />
 			<div className="app">
-				<h1>乃木坂46 サイリウムカラーViewer</h1>
+				<header>
+					<h1>乃木坂46 サイリウムカラーViewer</h1>
+				</header>
 				<div className="tabs">
 					<button
 						type="button"
@@ -193,15 +201,18 @@ function App() {
 					>
 						クイズ
 					</button>
-					<button
-						type="button"
-						className="copy-link-btn"
-						onClick={() => {
-							navigator.clipboard.writeText(window.location.href);
-						}}
-					>
-						リンクをコピー
-					</button>
+					<div className="tabs-actions">
+						<ThemeToggle initialTheme={initialTheme} />
+						<button
+							type="button"
+							className="copy-link-btn"
+							onClick={() => {
+								navigator.clipboard.writeText(window.location.href);
+							}}
+						>
+							リンクをコピー
+						</button>
+					</div>
 				</div>
 
 				{tab === "penlight" && (
