@@ -6,8 +6,10 @@ import { BookmarkletPanel } from "./components/BookmarkletPanel";
 import { GithubCorner } from "./components/GithubCorner";
 import { MemberCard } from "./components/MemberCard";
 import { QuizPanel } from "./components/QuizPanel";
+import { ThemeToggle } from "./components/ThemeToggle";
 import { UnderlivePanel } from "./components/UnderlivePanel";
 import { useUrlParams } from "./hooks/useUrlParams";
+import type { Theme } from "./theme";
 import type { Member, Underlive } from "./types";
 import "./App.css";
 
@@ -74,7 +76,11 @@ function isNonEmptyString(value: string | undefined): value is string {
 	return typeof value === "string" && value.length > 0;
 }
 
-function App() {
+type AppProps = {
+	initialTheme: Theme;
+};
+
+function App({ initialTheme }: AppProps) {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const {
@@ -170,7 +176,10 @@ function App() {
 		<>
 			<GithubCorner href="https://github.com/yuokada/nogi-psyllium" />
 			<div className="app">
-				<h1>乃木坂46 サイリウムカラーViewer</h1>
+				<header className="app-header">
+					<h1>乃木坂46 サイリウムカラーViewer</h1>
+					<ThemeToggle initialTheme={initialTheme} />
+				</header>
 				<div className="tabs">
 					<button
 						type="button"

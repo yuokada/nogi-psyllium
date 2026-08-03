@@ -84,6 +84,7 @@ data/underlives.yaml  ─┤ yq (predev / prebuild)
 │   ├── App.tsx             # メインコンポーネント
 │   ├── App.css             # スタイル
 │   ├── main.tsx            # エントリポイント（HashRouter）
+│   ├── theme.ts            # テーマの初期解決・DOM 適用・保存
 │   ├── colors.ts           # サイリウムカラーマスタ
 │   ├── types.ts            # TypeScript 型定義
 │   ├── utils.ts            # ユーティリティ（輝度計算など）
@@ -267,6 +268,19 @@ yq -o=json data/underlives.yaml > public/data/underlives.json
 - リンク先: `https://github.com/yuokada/nogi-psyllium`
 - ホバー時に腕が振るアニメーション（モバイルはページロード時）
 
+## 6.5 ライト / ダークテーマ切替
+
+- ヘッダーのテーマ切替ボタンでライト / ダークテーマを切り替える
+- 選択したテーマは `localStorage` の `nogi-psyllium-theme` に保存する
+- 初期テーマは次の優先順位で決定する:
+  1. `localStorage` に保存された有効な値（`light` / `dark`）
+  2. OS の `prefers-color-scheme: dark`
+  3. ライトテーマ
+- React の初回描画前に `<html data-theme="light|dark">` へ適用する
+- `localStorage` / `matchMedia` が利用できない場合も例外を画面へ伝播させずフォールバックする
+- テーマ選択は URL パラメータに含めず、検索・タブ・共有 URL の状態に干渉しない
+- OS 設定変更へのリアルタイム追従と `system` を含む3状態切替は対象外
+
 ---
 
 # 7. URL 仕様（HashRouter）
@@ -339,6 +353,13 @@ HashRouter を採用しているため、GitHub Pages でリダイレクト設�
 輝度 > 0.179 → テキストカラー: #000000（黒）
 輝度 ≤ 0.179 → テキストカラー: #ffffff（白）
 ```
+
+## 8.4 テーマ配色
+
+- 背景、サーフェス、本文、補助テキスト、枠線、アクセント、エラー表示は意味ベースの CSS カスタムプロパティで定義する
+- サイリウムの色見本はテーマに依存せず `src/colors.ts` の固有色を維持する
+- 色見本上の文字色はテーマではなく既存の WCAG 相対輝度計算で決定する
+- フォームコントロール、全タブ、カード、GitHub Corners、読み込み・エラー表示も選択テーマを反映する
 
 ---
 
@@ -430,7 +451,6 @@ interface Underlive {
 - メンバー詳細ページ
 - 並び替え機能（名前順・期順）
 - お気に入り機能
-- ダーク / ライトテーマ切替
 - `underlive_index.json` による一覧軽量化
 - 他ライブカテゴリへの拡張（3期生ライブ等）
 

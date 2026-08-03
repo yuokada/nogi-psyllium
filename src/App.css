@@ -5,8 +5,8 @@
 }
 
 .github-corner svg {
-	fill: #151513;
-	color: #fff;
+	fill: var(--color-github-corner);
+	color: var(--color-github-mark);
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -44,14 +44,51 @@
 h1 {
 	text-align: center;
 	font-size: 1.8rem;
+	margin: 0;
+}
+
+.app-header {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 0.75rem;
+	padding-right: 4.5rem;
 	margin-bottom: 1rem;
+}
+
+.theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.4rem 0.7rem;
+	border: 1px solid var(--color-border-control);
+	border-radius: 999px;
+	background: var(--color-surface);
+	color: var(--color-text-muted);
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		color 0.15s;
+}
+
+.theme-toggle:hover {
+	background: var(--color-surface-muted);
+	color: var(--color-text-strong);
+}
+
+@media (max-width: 768px) {
+	.app-header {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		padding-right: 0;
+	}
 }
 
 .tabs {
 	display: flex;
 	gap: 0;
 	margin-bottom: 1.5rem;
-	border-bottom: 2px solid #ddd;
+	border-bottom: 2px solid var(--color-border);
 	flex-wrap: wrap;
 }
 
@@ -61,31 +98,31 @@ h1 {
 	border: none;
 	background: none;
 	cursor: pointer;
-	color: #777;
+	color: var(--color-text-subtle);
 	border-bottom: 2px solid transparent;
 	margin-bottom: -2px;
 	transition: color 0.15s;
 }
 
 .tab:hover {
-	color: #444;
+	color: var(--color-text-strong);
 }
 
 .tab.active {
-	color: #333;
+	color: var(--color-text-strong);
 	font-weight: 700;
-	border-bottom-color: #333;
+	border-bottom-color: var(--color-text-strong);
 }
 
 .copy-link-btn {
 	margin-left: auto;
 	padding: 0.4rem 0.9rem;
 	font-size: 0.8rem;
-	border: 1px solid #ccc;
+	border: 1px solid var(--color-border-control);
 	border-radius: 6px;
-	background: #fff;
+	background: var(--color-surface);
 	cursor: pointer;
-	color: #666;
+	color: var(--color-text-muted);
 	align-self: center;
 	transition:
 		background 0.15s,
@@ -93,8 +130,8 @@ h1 {
 }
 
 .copy-link-btn:hover {
-	background: #f5f5f5;
-	color: #333;
+	background: var(--color-surface-muted);
+	color: var(--color-text-strong);
 }
 
 .underlive-controls {
@@ -111,7 +148,7 @@ h1 {
 	gap: 0.75rem;
 	align-items: center;
 	font-size: 0.9rem;
-	color: #555;
+	color: var(--color-text-muted);
 }
 
 .underlive-dates {
@@ -119,11 +156,11 @@ h1 {
 }
 
 .underlive-venue {
-	color: #777;
+	color: var(--color-text-subtle);
 }
 
 .underlive-source {
-	color: #888;
+	color: var(--color-text-faint);
 	font-size: 0.8rem;
 	text-decoration: underline;
 }
@@ -131,7 +168,7 @@ h1 {
 .absent-section {
 	margin-top: 2rem;
 	padding-top: 1rem;
-	border-top: 1px solid #eee;
+	border-top: 1px solid var(--color-border);
 }
 
 .absent-toggle {
@@ -139,7 +176,7 @@ h1 {
 	align-items: center;
 	gap: 0.4rem;
 	font-size: 0.95rem;
-	color: #666;
+	color: var(--color-text-muted);
 	cursor: pointer;
 	user-select: none;
 	margin-bottom: 0.5rem;
@@ -156,8 +193,8 @@ h1 {
 
 .absent-item {
 	font-size: 0.9rem;
-	color: #777;
-	background: #f5f5f5;
+	color: var(--color-text-subtle);
+	background: var(--color-surface-muted);
 	border-radius: 4px;
 	padding: 0.3rem 0.6rem;
 }
@@ -167,7 +204,7 @@ h1 {
 }
 
 .absent-note {
-	color: #999;
+	color: var(--color-text-faint);
 }
 
 .controls {
@@ -182,16 +219,19 @@ h1 {
 	min-width: 200px;
 	padding: 0.6rem 1rem;
 	font-size: 1rem;
-	border: 1px solid #ccc;
+	border: 1px solid var(--color-border-control);
+	background: var(--color-surface);
+	color: var(--color-text);
 	border-radius: 6px;
 }
 
 .gen-select {
 	padding: 0.6rem 1rem;
 	font-size: 1rem;
-	border: 1px solid #ccc;
+	border: 1px solid var(--color-border-control);
 	border-radius: 6px;
-	background: #fff;
+	background: var(--color-surface);
+	color: var(--color-text);
 	cursor: pointer;
 }
 
@@ -207,7 +247,7 @@ h1 {
 .member-count {
 	text-align: right;
 	font-size: 0.9rem;
-	color: #666;
+	color: var(--color-text-muted);
 	margin-bottom: 0.5rem;
 }
 
@@ -218,16 +258,16 @@ h1 {
 }
 
 .member-card {
-	border: 1px solid #ddd;
+	border: 1px solid var(--color-border);
 	border-radius: 10px;
 	overflow: hidden;
-	background: #fff;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-card);
 	transition: box-shadow 0.2s;
 }
 
 .member-card:hover {
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	box-shadow: var(--shadow-card-hover);
 }
 
 .member-icon {
@@ -254,7 +294,7 @@ h1 {
 .member-name {
 	font-size: 0.95rem;
 	font-weight: 700;
-	color: #333;
+	color: var(--color-text-strong);
 	min-width: 0;
 	overflow: hidden;
 	white-space: nowrap;
@@ -263,7 +303,7 @@ h1 {
 
 .member-call {
 	font-size: 0.75rem;
-	color: #777;
+	color: var(--color-text-subtle);
 	flex-shrink: 0;
 }
 
@@ -300,30 +340,30 @@ h1 {
 }
 
 .error {
-	color: #d32f2f;
+	color: var(--color-error);
 }
 
 .app-footer {
 	margin-top: 2rem;
 	padding-top: 1rem;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid var(--color-border);
 	text-align: center;
 }
 
 .footer-title {
 	font-size: 0.85rem;
-	color: #666;
+	color: var(--color-text-muted);
 	margin-bottom: 0.25rem;
 }
 
 .footer-ref {
 	font-size: 0.75rem;
-	color: #999;
+	color: var(--color-text-faint);
 	margin-bottom: 0.5rem;
 }
 
 .footer-ref a {
-	color: #888;
+	color: var(--color-text-faint);
 	text-decoration: underline;
 }
 
@@ -351,12 +391,12 @@ h1 {
 
 .cycle-name {
 	font-size: 0.8rem;
-	color: #555;
+	color: var(--color-text-muted);
 }
 
 .cycle-arrow {
 	font-size: 0.75rem;
-	color: #aaa;
+	color: var(--color-text-faint);
 }
 
 /* センターカード強調 */
@@ -367,9 +407,9 @@ h1 {
 
 .center-badge {
 	font-size: 0.7rem;
-	color: #b8860b;
+	color: var(--color-center-text);
 	font-weight: 700;
-	background: #fff9e6;
+	background: var(--color-center-surface);
 	border-radius: 4px;
 	padding: 0.1rem 0.35rem;
 	white-space: nowrap;
@@ -413,10 +453,10 @@ h1 {
 .quiz-card {
 	width: 100%;
 	max-width: 480px;
-	border: 1px solid #ddd;
+	border: 1px solid var(--color-border);
 	border-radius: 12px;
-	background: #fff;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-panel);
 	padding: 2rem;
 	display: flex;
 	flex-direction: column;
@@ -427,13 +467,13 @@ h1 {
 	font-size: 1.2rem;
 	font-weight: 700;
 	text-align: center;
-	color: #333;
+	color: var(--color-text-strong);
 	margin: 0;
 }
 
 .quiz-member-call {
 	font-size: 0.9rem;
-	color: #888;
+	color: var(--color-text-faint);
 	text-align: center;
 	margin: 0;
 }
@@ -442,7 +482,7 @@ h1 {
 	font-size: 1.4rem;
 	font-weight: 700;
 	text-align: center;
-	color: #7c3aed;
+	color: var(--color-accent);
 	margin: 0.5rem 0 0;
 }
 
@@ -451,8 +491,8 @@ h1 {
 	padding: 0.65rem 1.8rem;
 	font-size: 1rem;
 	font-weight: 700;
-	color: #fff;
-	background: #7c3aed;
+	color: var(--color-accent-contrast);
+	background: var(--color-accent);
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
@@ -460,7 +500,7 @@ h1 {
 }
 
 .quiz-reveal-btn:hover {
-	background: #6d28d9;
+	background: var(--color-accent-hover);
 }
 
 .quiz-next-btn {
@@ -469,14 +509,14 @@ h1 {
 	font-weight: 700;
 	border: none;
 	border-radius: 8px;
-	background: #333;
-	color: #fff;
+	background: var(--color-text-strong);
+	color: var(--color-background);
 	cursor: pointer;
 	transition: background 0.15s;
 }
 
 .quiz-next-btn:hover {
-	background: #555;
+	background: var(--color-text-muted);
 }
 
 /* Bookmarklet */
@@ -486,7 +526,7 @@ h1 {
 
 .bookmarklet-description {
 	margin: 0 0 1rem;
-	color: #555;
+	color: var(--color-text-muted);
 	font-size: 0.9rem;
 }
 
@@ -502,16 +542,17 @@ h1 {
 	flex-direction: column;
 	gap: 0.35rem;
 	font-size: 0.9rem;
-	color: #555;
+	color: var(--color-text-muted);
 }
 
 .bookmarklet-form-grid input,
 .bookmarklet-form-grid select {
 	padding: 0.6rem 1rem;
 	font-size: 1rem;
-	border: 1px solid #ccc;
+	border: 1px solid var(--color-border-control);
 	border-radius: 6px;
-	background: #fff;
+	background: var(--color-surface);
+	color: var(--color-text);
 }
 
 .bookmarklet-form-grid .full-width {
@@ -527,7 +568,7 @@ h1 {
 
 .bookmarklet-radio-group > span {
 	font-size: 0.9rem;
-	color: #555;
+	color: var(--color-text-muted);
 }
 
 .bookmarklet-radio-group label {
@@ -540,13 +581,13 @@ h1 {
 .bookmarklet-help {
 	margin: 0 0 0.45rem;
 	font-size: 0.9rem;
-	color: #555;
+	color: var(--color-text-muted);
 }
 
 .bookmarklet-link {
 	display: inline-block;
 	margin-bottom: 0.6rem;
-	color: #666;
+	color: var(--color-text-muted);
 	text-decoration: underline;
 	word-break: break-all;
 }
@@ -555,7 +596,9 @@ h1 {
 	width: 100%;
 	padding: 0.6rem 1rem;
 	font-size: 0.85rem;
-	border: 1px solid #ccc;
+	border: 1px solid var(--color-border-control);
+	background: var(--color-surface);
+	color: var(--color-text);
 	border-radius: 6px;
 	margin-bottom: 0.8rem;
 }
@@ -563,19 +606,19 @@ h1 {
 .bookmarklet-copy-btn {
 	padding: 0.4rem 0.9rem;
 	font-size: 0.8rem;
-	border: 1px solid #ccc;
+	border: 1px solid var(--color-border-control);
 	border-radius: 6px;
-	background: #fff;
+	background: var(--color-surface);
 	cursor: pointer;
-	color: #666;
+	color: var(--color-text-muted);
 	transition:
 		background 0.15s,
 		color 0.15s;
 }
 
 .bookmarklet-copy-btn:hover {
-	background: #f5f5f5;
-	color: #333;
+	background: var(--color-surface-muted);
+	color: var(--color-text-strong);
 }
 
 @media (max-width: 640px) {
