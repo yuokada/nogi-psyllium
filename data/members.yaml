@@ -431,7 +431,7 @@
   color1_name: 紫
   color2_name: ピンク
   icon: /icons/sample.png
-  active: true
+  active: false
   call: あやてぃー
   profile_url: https://www.nogizaka46.com/s/n46/artist/36759
 - id: yoda_yuki
