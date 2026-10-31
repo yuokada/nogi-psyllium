@@ -14,17 +14,17 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"react": "^19.2.8",
-		"react-dom": "^19.2.8",
-		"react-router-dom": "^7.18.1",
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1",
+		"react-router-dom": "^7.18.4",
 		"swr": "^2.5.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.6.3",
 		"@testing-library/react": "^16.3.2",
 		"@types/node": "^26.4.0",
-		"@types/react": "^19.2.17",
-		"@types/react-dom": "^19.2.3",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
 		"@vitejs/plugin-react": "^6.1.2",
 		"jsdom": "^29.1.1",
 		"react-doctor": "^0.2.4",
