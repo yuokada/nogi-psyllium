@@ -9,6 +9,32 @@
 #   centers:
 #      id: okamoto_hina
 
+- id: ul_43rd_2026
+  title: "43rdSGアンダーライブ"
+  year: 2026
+  dates:
+    - "2026-12-17"
+    - "2026-12-18"
+  venue: "日本武道館"
+  source_url: "https://www.nogizaka46.com/s/n46/search/artist?ima=0019&ct=under"
+  member_ids:
+    - atago_kokone
+    - ito_riria
+    - iwamoto_renka
+    - okuda_iroha
+    - ozu_reina
+    - kaibe_akari
+    - kawabata_hina
+    - kuromi_harukaka
+    - shibata_yuna
+    - suzuki_yuna
+    - tsutsui_ayame
+    - tomisato_nao
+    - nagashima_rio
+    - masuda_mirine
+    - morihira_urumi
+  absent: []
+
 - id: ul_42nd_2026
   title: "42ndSGアンダーライブ"
   year: 2026
