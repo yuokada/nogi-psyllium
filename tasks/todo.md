@@ -27,3 +27,14 @@ Plan Review: PASS（保存値 → OS 設定 →ライトの優先順位、URL �
 - `npm run build`: 成功（CI と同様に事前に `public/data/` を作成）。
 - React Doctor: `npx -y react-doctor@latest` は oxc-parser の macOS ARM native binding 欠落、ローカル版は内部 TypeError で診断開始前に停止。コード診断結果は取得できなかった。
 - `git diff --check`: 問題なし。
+
+# Dependency PR merge follow-up (2026-11-01)
+
+## Review
+
+- PR #104、#107、#97 はマージ済み（merge commit `f04100c`、`9e962d7`、`c38581c`）。後続の PR #110 もマージ済み（`b1c90e5`）。この一連のマージ作業は完了しており、マージ前専用のチェック項目は現在のタスクとしては不要。
+- PR #97 は `typescript` と lockfile の更新のみ。`tsconfig` は `strict`、`target`、`module`、`moduleResolution: "bundler"`、`types` を明示しており、TypeScript 7 で廃止された設定は見当たらなかった。
+- PR #97 の CI では `validate` が成功。ユーザーによるローカル動作確認も済んでいるため、事前 worktree 検証を後追いで行う必要はない。
+- PR #110 のチェックでは `react-doctor` job はスキップされており、ツール実行自体の検証結果は未確認。ただし、これはマージ済み依存更新の記録であり、このマージ計画の未完了タスクにはしない。
+- 現在 open の Dependabot PR は #111、#112、#113。以前の「open PR が残っていないこと」という条件はこの後続PRに適用しない。
+- master 最新コミットの Actions 状況は GitHub API 接続エラーのため取得できず、未確認。個別のマージ計画はすでに完了しているので、これを残タスクにはしない。
