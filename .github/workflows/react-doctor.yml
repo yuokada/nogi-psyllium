@@ -6,6 +6,19 @@ on:
   pull_request:
 
 jobs:
+  dependabot-metadata:
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      update-type: ${{ steps.metadata.outputs.update-type }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+
   react-doctor:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
@@ -18,5 +31,26 @@ jobs:
           fetch-depth: 0
       - uses: millionco/react-doctor@main
         with:
-          diff: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          scope: changed
+
+  react-doctor-dependabot-major:
+    needs: dependabot-metadata
+    if: >-
+      always() &&
+      github.actor == 'dependabot[bot]' &&
+      needs.dependabot-metadata.result == 'success' &&
+      needs.dependabot-metadata.outputs.update-type == 'version-update:semver-major'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: millionco/react-doctor@main
+        with:
+          scope: changed
+          comment: false
+          review-comments: false
+          commit-status: false
