@@ -12,7 +12,8 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/biomejs/pre-commit
-    rev: v0.6.1
+    rev: v2.6.4
     hooks:
       - id: biome-check
+        language_version: 22.16.0
         additional_dependencies: ["@biomejs/biome@2.4.4"]
