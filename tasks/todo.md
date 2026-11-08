@@ -27,3 +27,17 @@ Plan Review: PASS（保存値 → OS 設定 →ライトの優先順位、URL �
 - `npm run build`: 成功（CI と同様に事前に `public/data/` を作成）。
 - React Doctor: `npx -y react-doctor@latest` は oxc-parser の macOS ARM native binding 欠落、ローカル版は内部 TypeError で診断開始前に停止。コード診断結果は取得できなかった。
 - `git diff --check`: 問題なし。
+
+# pre-commit の Node 環境構築エラー
+
+Plan Review: PASS（公式 Biome フックを維持する。nodeenv が最新版 alpha を選ばないよう、フック用 Node 22.16.0 を指定し、pre-commit を再実行する）
+
+- [x] pre-commit ログとフック設定を照合して原因を特定する
+- [x] 公式 Biome フックに Node 22.16.0 を指定する
+- [x] pre-commit フックを再実行して結果を確認する
+
+## Review
+
+- 公式 Biome フックに `language_version: 22.16.0` を追加し、Node 27 alpha の自動選択を止めた。
+- 通常の `pre-commit run` で全フックが成功。設定ファイルのみステージ済み。
+- `pre-commit validate-config` と `git diff --check` が成功。
